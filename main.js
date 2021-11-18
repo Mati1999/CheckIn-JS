@@ -15,10 +15,12 @@ let nombre = prompt("Ingresa tu nombre");
 let apellido = prompt("Ahora ingresa tu apellido");
 let nombreCompleto = alert(`Hola ${nombre} ${apellido}`);
 
+
 let anoNacimiento = prompt("Ahora ingresa el año de tu nacimiento, porfavor.");
 let anoActual = 2021;
 let anoNacimientoParseado = parseInt(anoNacimiento);
 let edad = parseInt(anoActual - anoNacimientoParseado);
+
 
 let informacion = alert(
     `PRESENTACIÓN:
