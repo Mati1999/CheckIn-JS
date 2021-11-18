@@ -20,8 +20,6 @@ let anoActual = 2021;
 let anoNacimientoParseado = parseInt(anoNacimiento);
 let edad = parseInt(anoActual - anoNacimientoParseado);
 
-console.log(edad);
-
 let informacion = alert(
     `PRESENTACIÓN:
     Nombre y Apellido: ${nombre} ${apellido}.
