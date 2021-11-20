@@ -30,7 +30,7 @@ if (edad >= 18) {
     }
 } else if (edad < 18 && edad > 0) {
 
-    alert("Perece que eres menor de edad :C");
+    alert("Parece que eres menor de edad :C");
     let padres = prompt(`Vienes con tus padres? Si o No?`).toUpperCase();
 
     if (padres === "SI") {
