@@ -1,54 +1,30 @@
 /**
  * @challenge: Crear un algoritmo JS simple
  * 
- * @version: v1.1.0
+ * @version: v1.0.0
  * @author: Matias Aguilera
- * @fecha: 19/11/2021
+ * @fecha: 17/11/2021
  *
  * History:
 
  */
 
-document.write("125".indexOf("."));
 
-alert(`Bienvenido al Cine Coder!!
-A continuación voy a hacerte una serie de preguntas para saber si puedes entrar a ver una película.
-Empecemos!!!
-`)
+let bienvenida = alert("Bienvenido, vamos a mostrar a continuación tu información personal");
+let nombre = prompt("Ingresa tu nombre");
+let apellido = prompt("Ahora ingresa tu apellido");
+let nombreCompleto = alert(`Hola ${nombre} ${apellido}`);
 
-let edad = prompt(`Primero necesito saber que edad tienes. Ingresa tu edad porfavor.`);
 
-if (edad >= 18) {
-    alert(`Genial! Eres mayor de edad.`);
+let anoNacimiento = prompt("Ahora ingresa el año de tu nacimiento, porfavor.");
+let anoActual = 2021;
+let anoNacimientoParseado = parseInt(anoNacimiento);
+let edad = parseInt(anoActual - anoNacimientoParseado);
 
-    let pelicula = prompt(`Que película quieres ver? "El hombre araña", "Batman", "Superman".`).toUpperCase();
 
-    if (pelicula === "EL HOMBRE ARAÑA") {
-        alert(`Aquí tienes las entradas para El hombre araña.`)
-    } else if (pelicula === "BATMAN") {
-        alert(`Aquí tienes las entradas para Batman.`)
-    } else if (pelicula === "SUPERMAN") {
-        alert(`Aquí tienes las entradas para Superman.`)
-    }
-} else if (edad < 18 && edad > 0) {
-
-    alert("Parece que eres menor de edad :C");
-    let padres = prompt(`Vienes con tus padres? Si o No?`).toUpperCase();
-
-    if (padres === "SI") {
-        let pelicula = prompt(`Que película quieres ver? "El hombre araña", "Batman", "Superman".`).toUpperCase();
-
-        if (pelicula === "EL HOMBRE ARAÑA") {
-            alert(`Aquí tienes las entradas para El hombre araña.`)
-        } else if (pelicula === "BATMAN") {
-            alert(`Aquí tienes las entradas para Batman.`)
-        } else if (pelicula === "SUPERMAN") {
-            alert(`Aquí tienes las entradas para Superman.`)
-        }
-    } else {
-        alert("Lo lamento, no puedo darte entradas para una película.");
-    }
-} else {
-    alert("Parece que no quieres responder...")
-}
-
+let informacion = alert(
+    `PRESENTACIÓN:
+     Nombre y Apellido: ${nombre} ${apellido}.
+     Edad: ${edad} años.
+     MUCHAS GRACIAS POR DARTE A CONOCER!
+     `)
