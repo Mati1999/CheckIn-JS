@@ -9,7 +9,6 @@
 
  */
 
-document.write("125".indexOf("."));
 
 alert(`Bienvenido al Cine Coder!!
 A continuación voy a hacerte una serie de preguntas para saber si puedes entrar a ver una película.
