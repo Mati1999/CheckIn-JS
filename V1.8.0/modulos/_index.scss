@@ -1,0 +1,497 @@
+@import '../utilidades/variables';
+@import 'mediaQueries';
+
+
+.indexMain {
+    background: linear-gradient(to bottom, $colorSecundario, $colorSecundarioTransparent);
+    padding-bottom: 2rem;
+}
+
+/*   CARRUSEL DE IMAGENES   */
+
+.indexMain__carrusel {
+    @include medidas(100%, 50vh);
+
+    .indexMain__carruselContainer {
+        @include medidas(100%, 100%);
+    }
+}
+
+.carousel-inner {
+    height: 100%;
+}
+
+.carousel-item {
+    @include medidas(100%, 100%);
+    position: relative;
+
+    & img {
+        @include medidas(100%, 100%);
+        object-fit: cover;
+        filter: brightness(70%);
+    }
+
+    &__h3,
+    &__h4,
+    &__a {
+        position: absolute;
+        color: $colorTerciario;
+        font-size: 3rem;
+        top: 1rem;
+        left: 10rem;
+
+        @include tablet {
+            font-size: 2.5rem;
+            left: 8rem;
+        }
+
+        @include mobile {
+            font-size: 2.5rem;
+            left: 6rem;
+        }
+
+        @include miniMobile {
+            font-size: 2rem;
+            left: 3rem;
+        }
+    }
+
+    &__h4 {
+        font-size: 2rem;
+        top: 6rem;
+
+        @include mobile {
+            font-size: 1.5rem;
+            top: 8rem;
+        }
+
+        @include miniMobile {
+            font-size: 1.2rem;
+        }
+    }
+
+    &__a {
+        top: 9rem;
+        text-decoration: 1px solid transparent;
+        font-size: 3rem;
+        font-weight: 700;
+        transition: $transicion;
+
+        @include tablet {
+            top: 11rem;
+        }
+
+        @include mobile {
+            font-size: 1rem;
+            top: 12rem;
+        }
+
+        @include miniMobile {
+            font-size: 1.2rem;
+            top: 12.5rem;
+        }
+    }
+
+    &:hover>&__a {
+        color: $colorTerciario;
+        transform: scale(1.1, 1.1);
+        text-decoration: underline;
+    }
+}
+
+.carousel-control-next,
+.carousel-control-prev {
+    width: 11%;
+}
+
+/*   SECTION CATEGORÍAS   */
+
+.indexMain__categorias {
+    padding: 0 5rem;
+    margin-top: 2rem;
+
+    @include miniMobile {
+        padding: 0 1rem;
+    }
+}
+
+.indexMain__categoriasTitulo {
+    width: 100%;
+    margin-bottom: 1rem;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 1rem;
+
+    @include miniMobile {
+        margin-bottom: 0;
+    }
+
+    & h2 {
+        color: $colorPrimario;
+
+        @include miniMobile {
+            font-size: 1.2rem;
+        }
+    }
+
+    & a {
+        text-decoration: none;
+
+        @include miniMobile {
+            text-align: right;
+        }
+
+    }
+
+    & h4 {
+        color: $colorPrimario;
+        border-bottom: transparent;
+        transition: $transicion;
+
+        @include miniMobile {
+            font-size: .9rem;
+        }
+
+    }
+
+    & a:hover>h4 {
+        border-bottom: $borderPrimario;
+    }
+}
+
+.indexMain__modalProducto {
+
+    &:focus {
+        box-shadow: none;
+    }
+}
+
+.producto {
+    overflow: hidden;
+    padding: .2rem;
+    border-radius: .5rem;
+    background: $blanco;
+    transition: $transicion;
+
+    & img {
+        width: 100%;
+        border-radius: .5rem;
+        transition: $transicion;
+    }
+
+    &:hover {
+        @include shadowTranslate(4px, 4px, 10px, $colorPrimario, 0, -3px);
+    }
+
+    &--destacado,
+    &--oferta {
+        position: relative;
+    }
+}
+
+.modalProducto {
+
+
+    .modal-dialog {
+        display: flex;
+        justify-content: center;
+        margin-top: 10%;
+
+        @include tablet {
+            margin-top: 20%;
+        }
+
+        @include mobile {
+            margin-top: 20%;
+        }
+
+        @include miniMobile {
+            margin-top: 10%;
+        }
+    }
+
+    .modal-content {
+        width: 100%;
+
+        @include miniMobile {
+            width: 75%;
+        }
+    }
+
+    .modal-body {
+        width: 100%;
+    }
+
+}
+
+.tarjetaModal {
+    flex-direction: row;
+    width: 100%;
+
+    @include miniMobile {
+        flex-direction: column;
+    }
+
+    &__img {
+        width: 50%;
+
+        @include miniMobile {
+            width: 100%;
+        }
+    }
+
+    &__info {
+        color: $blanco;
+        background: $colorSecundario;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    &__nombre {
+        font-size: 2rem;
+    }
+
+    &__description {
+        font-size: 1.2rem;
+    }
+
+    &__talles {
+        h5 {
+            font-size: 1.5rem;
+        }
+    }
+
+    &__talle {
+        display: flex;
+        justify-content: space-between;
+
+        div {
+            display: flex;
+            flex: 1;
+        }
+
+        input {
+            display: none;
+        }
+
+        label {
+            font-size: 1.2rem;
+            position: relative;
+            display: flex;
+            align-items: center;
+            width: 100%;
+        }
+
+        label:before {
+            content: "";
+            @include medidas(25px, 25px);
+            border: 3px solid $colorPrimario;
+            border-radius: 50%;
+            margin-right: 10px;
+            transition: $transicion;
+
+            @include miniMobile {
+                @include medidas(30px, 30px);
+            }
+        }
+
+        input[type="radio"]:checked+label:before {
+            @include medidas(25px, 25px);
+            border: 3px solid $colorPrimario;
+            background-color: $colorTerciario;
+
+            @include miniMobile {
+                @include medidas(30px, 30px);
+            }
+        }
+    }
+
+    &__boton {
+        border-radius: 1.2rem;
+
+        background: $colorPrimario;
+        color: $colorTerciario;
+        transition: $transicion;
+
+        @include miniMobile {
+            margin-top: 1rem;
+        }
+    }
+
+    &__boton:hover {
+        background: $colorTerciario;
+        color: $colorPrimario;
+    }
+
+    &__boton:focus {
+        box-shadow: none
+    }
+}
+
+
+.producto__numeroTop {
+    @include medidas(3rem, 2rem);
+    position: absolute;
+    right: .2rem;
+    background-color: $colorTerciario;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-top-right-radius: .3rem;
+    border-bottom-left-radius: .3rem;
+    z-index: 110;
+
+    & span {
+        font-weight: 700;
+        color: $colorPrimario;
+    }
+}
+
+.producto__info {
+    position: relative;
+    z-index: 100;
+    display: flex;
+    padding: .5rem;
+    justify-content: flex-start;
+    flex-direction: column;
+    align-items: flex-start;
+    background: $blanco;
+    text-align: left;
+
+
+    h5 {
+        font-family: 100;
+        font-size: 1.1rem;
+    }
+
+    span {
+        font-weight: 700;
+        font-size: 1.3rem;
+        display: flex;
+        flex-direction: column;
+
+        .badge {
+            font-size: 1.4rem;
+            margin-right: auto;
+        }
+    }
+}
+
+/*   SECTION DESTACADOS   */
+
+.indexMain__destacados {
+    /* grid-area: loMasVendido; */
+    padding: 0 5rem;
+
+    @include miniMobile {
+        padding: 0 1rem;
+    }
+}
+
+.indexMain__destacadosTitulo {
+    width: 100%;
+    margin-bottom: 1rem;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 1rem;
+
+    @include miniMobile {
+        margin-bottom: 0;
+    }
+
+    & h2 {
+        color: $colorPrimario;
+
+        @include miniMobile {
+            font-size: 1.2rem;
+        }
+    }
+
+    & a {
+        text-decoration: none;
+
+        @include miniMobile {
+            text-align: right;
+        }
+    }
+
+    & h4 {
+        color: $colorPrimario;
+        border-bottom: transparent;
+        transition: $transicion;
+
+        @include miniMobile {
+            font-size: .9rem;
+        }
+
+    }
+
+    & a:hover>h4 {
+        border-bottom: $borderPrimario;
+    }
+
+}
+
+
+
+/*   SECTION OFERTAS   */
+
+.indexMain__ofertas {
+    padding: 0 5rem;
+
+    @include miniMobile {
+        padding: 0 1rem;
+    }
+}
+
+.indexMain__ofertasTitulo {
+    width: 100%;
+    margin-bottom: 1rem;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 1rem;
+
+    @include miniMobile {
+        margin-bottom: 0;
+    }
+
+    & h2 {
+        display: inline;
+        color: $colorPrimario;
+
+        @include miniMobile {
+            font-size: 1.2rem;
+        }
+
+    }
+
+    & a {
+        text-decoration: none;
+
+        @include miniMobile {
+            text-align: right;
+        }
+    }
+
+    & h4 {
+        color: $colorPrimario;
+        border-bottom: transparent;
+        transition: $transicion;
+
+        @include miniMobile {
+            font-size: .9rem;
+        }
+    }
+
+    & a:hover>h4 {
+        border-bottom: $borderPrimario;
+    }
+}
+
+.producto__info--oferta :nth-child(2) {
+
+    .precio {
+        text-decoration: line-through;
+    }
+}

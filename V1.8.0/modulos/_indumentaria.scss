@@ -1,0 +1,172 @@
+@import '../utilidades/variables';
+@import 'mediaQueries';
+
+.indumentariaMain {
+    height: 100%;
+    background: linear-gradient(to bottom, $colorSecundario, $colorTerciario);
+}
+
+.filtroResponsive__button {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    font-size: 1.5rem;
+    border: $borderTerciario;
+    background: $colorSecundario;
+    width: 15%;
+    margin: .5rem 0 0 auto;
+
+    &:focus {
+        box-shadow: none;
+    }
+
+    @include mobile {
+        width: 25%;
+    }
+
+    @include miniMobile {
+        width: 50%;
+    }
+}
+
+.filtroResponsive__container {
+    background: $colorTerciario;
+
+    .offcanvas-header h5 {
+        font-size: 2rem;
+    }
+
+}
+
+.filtro {
+    height: 100%;
+    padding: 0 1rem 0 0;
+
+    @include tablet {
+        padding: 0 4rem 0 0;
+    }
+
+    @include mobile {
+        padding: 0 3rem 0 0;
+    }
+
+    @include miniMobile {
+        padding: 0 2rem 0 0;
+    }
+}
+
+.filtro__categorias,
+.filtro__precios,
+.filtro__loMasVendido {
+    background: $colorTerciario;
+    padding: 1rem;
+
+    @include tablet {
+        background: transparent;
+    }
+}
+
+.filtro__categorias {
+
+    div {
+        margin: 1rem 0;
+    }
+
+    input {
+        @include medidas(1rem, 1rem);
+        margin: 0 .5rem;
+    }
+
+    label {
+        font-size: 1rem;
+        width: 90%;
+        height: 2.5rem;
+        background: $colorSecundario;
+        border-radius: 1.5rem;
+        display: flex;
+        align-items: center;
+        transition: $transicion;
+    }
+
+    label:hover {
+        @include shadowTranslate(-4px, 4px, 4px, $colorPrimario, 5px, 0);
+    }
+}
+
+.filtro__precios {
+    @extend .filtro__categorias;
+}
+
+.filtro__productos {
+    @include medidas(100%, 100%);
+}
+
+.miniProducto {
+    @include medidas(100%, 100%);
+    margin-top: 1rem;
+
+
+    &__aSelector {
+        @include medidas(100%, 7rem);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        text-decoration: none;
+        color: $colorTerciario;
+        background: $colorSecundario;
+        transition: $transicion;
+        border-radius: .3rem;
+        overflow: hidden;
+        text-align: left;
+    }
+
+    &__aSelector:hover {
+        color: $negro;
+        @include shadowTranslate(2px, 2px, 4px, $colorPrimario, 0, -3px);
+    }
+
+    &__imcContainer {
+        @include medidas(40%, 100%);
+        display: flex;
+    }
+
+    &__img {
+        width: 100%;
+        object-fit: cover;
+        border-radius: .3rem;
+    }
+
+    &__info {
+        @include medidas(50%, 100%);
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        align-items: flex-start;
+
+        @include miniMobile {
+            font-size: 1rem;
+        }
+
+        h5 {
+            font-size: 1.3rem;
+        }
+
+        span {
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+    }
+}
+
+.indumentariaMain__productos {
+    height: 100%;
+
+    .row {
+        height: 100%;
+        padding-bottom: 1rem;
+    }
+}
+
+.miniProducto__button {
+    width: 100%;
+}

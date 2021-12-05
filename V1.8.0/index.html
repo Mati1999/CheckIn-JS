@@ -5,12 +5,1223 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <meta name="description"
+        content="Indumentaria, equipaje, tecnología para viajar y mucho más. Comprá en CheckIn y disfruta de tus aventuras.">
+    <meta name="keywords"
+        content="CheckIn, viaje, indumentaria-para-viajar, equipaje, tecnología-para-viajar, comodidad, turismo, bolso-de-mano">
+    <link href="https://fonts.googleapis.com/css2?family=Bellota+Text:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bellota+Text:wght@700&family=Montserrat&display=swap"
+        rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+    <link href="images/favicon.png" rel="shortcut icon">
+    <link rel="stylesheet" href="style.css">
+    <title>CheckIn</title>
 </head>
 
+
 <body>
+    <header class="header container-fluid">
+        <div class="row justify-content-between justify-content-sm-between align-items-start p-0 m-0">
+            <!-- Imagen del logo -->
+            <div class="header__menu col-lg-12 col-9">
+                <a href="index.html">
+                    <h1>
+                        <img src="images/checkinSF.png" alt="">
+                    </h1>
+                </a>
+
+                <input class="header__buscador d-sm-block d-none" type="text">
+
+                <div class="header__inicioSesion">
+                    <!-- Button trigger modal -->
+                    <button type="button" class="btn p-0 header__botonModal" data-bs-toggle="modal"
+                        data-bs-target="#inicioSesionModal">
+                        <div class="header__botonSesion d-none d-lg-flex">
+                            <ion-icon name="person-outline"></ion-icon>
+                            <input type="button" value="Inicia Sesión">
+                        </div>
+                    </button>
+
+                    <!-- Modal -->
+                    <div class="modal fade header__modal" id="inicioSesionModal" tabindex="-1"
+                        aria-labelledby="inicioSesionModalLabel" aria-hidden="true">
+                        <div class="modal-dialog header__modal">
+                            <div class="modal-content p-3">
+
+                                <form>
+                                    <h2>BIENVENIDO A CheckIn</h2>
+                                    <div class="mb-3">
+                                        <input type="email" class="form-control" id="email" aria-describedby="emailHelp"
+                                            placeholder="Correo electrónico">
+                                        <div id="emailHelp" class="form-text">Nosotros jamás compartiremos tu mail
+                                            con
+                                            nadie.</div>
+                                    </div>
+                                    <div class="mb-3">
+                                        <input type="password" class="form-control" id="password"
+                                            placeholder="Contraseña">
+                                    </div>
+                                    <button type="submit" class="btn">Iniciar Sesión</button>
+                                </form>
+
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+                <div class="header__carrito" id="carrito">
+                    <a data-bs-toggle="offcanvas" href="#carritoDesplegable" role="button"
+                        aria-controls="carritoDesplegable">
+                        <ion-icon name="cart-outline"></ion-icon>
+                    </a>
+                </div>
+                <div class="offcanvas offcanvas-end" tabindex="-1" id="carritoDesplegable"
+                    aria-labelledby="carritoDesplegableLabel">
+                    <div class="offcanvas-header">
+                        <h5 class="offcanvas-title" id="carritoDesplegableLabel">MI CARRITO</h5>
+                        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"
+                            aria-label="Close"></button>
+                    </div>
+                    <div class="offcanvas-body">
+                        <div>
+                            Creación de productos agregados en proceso...
+                        </div>
+
+                    </div>
+                </div>
+
+
+            </div>
+            <!-- Acá empieza el menú de navegación -->
+
+            <nav class="header__navbar navbar navbar-expand-lg p-0 col-lg-12 col-2">
+                <div class="container-fluid p-0">
+                    <button class="header__toggler navbar-toggler p-0" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false"
+                        aria-label="Toggle navigation">
+                        <ion-icon name="menu-outline"></ion-icon>
+                    </button>
+                    <div class="header__collapse collapse navbar-collapse" id="navbarNavDropdown">
+                        <ul class="navbar-nav header__ul">
+
+
+                            <div>
+                                <!-- Button trigger modal -->
+                                <button type="button" class="btn p-0 header__botonModal" data-bs-toggle="modal"
+                                    data-bs-target="#inicioSesionModal">
+                                    <div class="header__botonSesion p-0 d-lg-none">
+                                        <ion-icon name="person-outline"></ion-icon>
+                                        <input type="button" value="Inicia Sesión">
+                                    </div>
+                                </button>
+
+                                <!-- Modal -->
+                                <div class="modal fade" id="inicioSesionModal" tabindex="-1"
+                                    aria-labelledby="inicioSesionModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content p-3">
+
+                                            <form>
+                                                <div class="mb-3">
+                                                    <input type="email" class="form-control" id="email"
+                                                        aria-describedby="emailHelp" placeholder="Correo electrónico">
+                                                    <div id="emailHelp" class="form-text">Nosotros jamás
+                                                        compartiremos
+                                                        tu mail con
+                                                        nadie.</div>
+                                                </div>
+                                                <div class="mb-3">
+                                                    <input type="password" class="form-control" id="password"
+                                                        placeholder="Contraseña">
+                                                </div>
+                                                <button type="submit" class="btn">Iniciar Sesión</button>
+                                            </form>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                            </div>
+
+
+
+                            <li class="nav-item">
+                                <a class="nav-link active p-0" aria-current="page" href="#">Inicio</a>
+                            </li>
+                            <li class="nav-item dropdown-hover header__liCategoria">
+                                <a class="nav-link d-block d-lg-none dropdown-toggler" href="#" id="navbarDropdown-1"
+                                    data-bs-toggle="dropdown" aria-expanded="false">
+                                    Categorias
+                                </a>
+                                <a class="nav-link d-none d-lg-block" href="#">
+                                    Categorias
+                                </a>
+                                <ul class="p-0 m-0 header__submenu ">
+                                    <li>
+                                        <a href="Secciones/Indumentaria.html">
+                                            <div class="header__imgCategoria">
+                                                <img src="images/indumentaria.jpg" alt="">
+                                            </div>
+                                            <span>
+                                                Indumentaria
+                                            </span>
+                                        </a>
+                                    </li>
+                                    <li><a href="Secciones/equipaje.html">
+                                            <div class="header__imgCategoria">
+                                                <img src="images/equipaje.jpg" alt="">
+                                            </div>
+                                            <span>
+                                                Equipaje
+                                            </span>
+                                        </a>
+                                    </li>
+                                    <li><a href="Secciones/comodidad.html">
+                                            <div class="header__imgCategoria">
+                                                <img src="images/comodidad.jpg" alt="">
+                                            </div>
+                                            <span>
+                                                Comodidad
+                                            </span>
+                                        </a>
+                                    </li>
+                                    <li><a href="Secciones/tecnologia.html">
+                                            <div class="header__imgCategoria">
+                                                <img src="images/teconologia.jpg" alt="">
+                                            </div>
+                                            <span>
+                                                Tecnología
+                                            </span>
+                                        </a>
+                                    </li>
+                                </ul>
+                                <ul class="pt-0 pb-0 m-0 dropdown-menu d-lg-none" aria-labelledby=" navbarDropdown-1">
+                                    <li><a href="Secciones/Indumentaria.html">Indumentaria</a></li>
+                                    <li><a href="Secciones/equipaje.html">Equipaje</a></li>
+                                    <li><a href="Secciones/comodidad.html">Comodidad</a></li>
+                                    <li><a href="Secciones/tecnologia.html">Tecnología</a></li>
+                                </ul>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link p-0" href="Secciones/Novedades.html">Novedades</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link p-0" href="Secciones/LoMasVendido.html">Lo mas vendido</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link p-0" href="Secciones/Ofertas.html">Ofertas</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link p-0" href="Secciones/Contacto.html">Contacto</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+            <input class="header__buscadorMobile d-sm-none col-12 my-2" type="text">
+        </div>
+    </header>
+
+    <main class="indexMain container-fluid overflow-hidden">
+        <div class="row">
+            <section class="indexMain__carrusel p-0">
+
+                <div id="carrusel" class="carousel slide indexMain__carruselContainer" data-bs-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <a href="Secciones/Indumentaria.html">
+                                <img src="images/galeria1.jpg" class="d-block" alt="...">
+                                <h3 class="carousel-item__h3">Temporada otoño - invierno</h3>
+                                <h4 class="carousel-item__h4">Disfruta de lo mejor de esta temporada.</h4>
+                                <a class="carousel-item__a" href="Secciones/Indumentaria.html">
+                                    <h4>Ir a la colección</h4>
+                                </a>
+                            </a>
+                        </div>
+                        <div class="carousel-item">
+                            <a href="Secciones/equipaje.html">
+                                <img src="images/galeria2.jpg" class="d-block" alt="...">
+                                <h3 class="carousel-item__h3">Descubrí lo nuevo en EQUIPAJE</h3>
+                                <h4 class="carousel-item__h4">No te limites a la hora de empacar, llevá todo lo que
+                                    necesites.</h4>
+                                <a class="carousel-item__a" href="Secciones/equipaje.html">
+                                    <h4>Ir a equipaje</h4>
+                                </a>
+
+                            </a>
+                        </div>
+                        <div class="carousel-item">
+                            <a href="Secciones/tecnologia.html">
+                                <img src="images/galeria10.jpg" class="d-block" alt="...">
+                                <h3 class="carousel-item__h3">NUEVOS DESCUENTOS en TECNOLOGÍA</h3>
+                                <h4 class="carousel-item__h4">Sumale más comodidad a tu viaje.</h4>
+                                <a class="carousel-item__a" href="Secciones/tecnologia.html">
+                                    <h4>Ir a tecnología</h4>
+                                </a>
+                            </a>
+                        </div>
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carrusel" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carrusel" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                </div>
+
+            </section>
+
+            <section class="indexMain__ofertas col-12 mt-4">
+
+                <div class="indexMain__ofertasTitulo">
+                    <h2>Ofertas</h2>
+                    <a href="Secciones/Ofertas.html">
+                        <h4>Ver todas las ofertas</h4>
+                    </a>
+                </div>
+                <div class="indexMain__ofertasProductos container-fluid p-0">
+                    <div class="row m-0 justify-content-around">
+
+
+                        <!-- PRIMER PRODUCTO -->
+                        <button type="button"
+                            class="btn p-0 indexMain__modalProducto mt-3 col-lg-2 col-md-3 col-sm-5 col-5"
+                            data-bs-toggle="modal" data-bs-target="#productoIndexOferta1">
+                            <div class="producto producto--oferta">
+                                <div class="producto__numeroTop">
+                                    <span>-15%</span>
+                                </div>
+                                <img src="images/indumentaria/indumentaria12.jpg" alt="producto3">
+                                <div class="producto__info producto__info--oferta">
+                                    <h5>Campera Caterpillar</h5>
+                                    <span>
+                                        <span class="precio">
+                                            $14.99
+                                        </span>
+                                        <span class="badge bg-success">
+                                            $12.75
+                                        </span>
+                                    </span>
+                                </div>
+                            </div>
+                        </button>
+                        <!-- Modal -->
+                        <div class="modal fade modalProducto" id="productoIndexOferta1" tabindex="-1"
+                            aria-labelledby="productoIndexOferta1Label" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="card tarjetaModal">
+                                        <img src="images/indumentaria/indumentaria12.jpg"
+                                            class="card-img-top tarjetaModal__img" alt="...">
+                                        <div class="card-body tarjetaModal__info">
+                                            <h5 class="card-title tarjetaModal__nombre">Campera Caterpillar</h5>
+                                            <p class="card-text tarjetaModal__description">Campera comoda, abrigada,
+                                                perfecta para viajar.
+                                            </p>
+                                            <div class="tarjetaModal__talles">
+                                                <h5>Talle</h5>
+                                                <div class="tarjetaModal__talle">
+                                                    <div>
+                                                        <input type="radio" name="talle" id="small" checked="checked">
+                                                        <label for="small">S</label>
+                                                    </div>
+                                                    <div>
+                                                        <input type="radio" name="talle" id="medium">
+                                                        <label for="medium">M</label>
+                                                    </div>
+                                                    <div>
+                                                        <input type="radio" name="talle" id="large">
+                                                        <label for="large">L</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <a href="#" class="btn tarjetaModal__boton">Agregar al carrito</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- SEGUNDO PRODUCTO -->
+                        <button type="button"
+                            class="btn p-0 indexMain__modalProducto mt-3 col-lg-2 offset-lg-0 col-md-3 offset-md-1 col-sm-5 offset-sm-1 col-5"
+                            data-bs-toggle="modal" data-bs-target="#productoIndexOferta2">
+                            <div class="producto producto--oferta">
+                                <div class="producto__numeroTop">
+                                    <span>-20%</span>
+                                </div>
+                                <img src="images/tecnologia/tecnologia3.jpg" alt="producto3" class="pepito ">
+                                <div class="producto__info producto__info--oferta">
+                                    <h5>Bateria portatil</h5>
+                                    <span>
+                                        <span class="precio">
+                                            $14.99
+                                        </span>
+                                        <span class="badge bg-success">
+                                            $11.99
+                                        </span>
+                                    </span>
+                                </div>
+                            </div>
+                        </button>
+                        <!-- Modal -->
+                        <div class="modal fade modalProducto" id="productoIndexOferta2" tabindex="-1"
+                            aria-labelledby="productoIndexOferta2Label" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="card tarjetaModal">
+                                        <img src="images/tecnologia/tecnologia3.jpg"" class=" card-img-top
+                                            tarjetaModal__img" alt="...">
+                                        <div class="card-body tarjetaModal__info">
+                                            <h5 class="card-title tarjetaModal__nombre">Bateria portatil</h5>
+                                            <p class="card-text tarjetaModal__description">Bateria portatil para
+                                                cargar todos tus dispositivos.
+                                            </p>
+                                            <a href="#" class="btn tarjetaModal__boton">Agregar al carrito</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- TERCER PRODUCTO -->
+                        <button type="button"
+                            class="btn p-0 indexMain__modalProducto mt-3 col-lg-2 offset-lg-0 col-md-3 offset-md-1 col-sm-5 col-5"
+                            data-bs-toggle="modal" data-bs-target="#productoIndexOferta3">
+                            <div class="producto producto--oferta">
+                                <div class="producto__numeroTop">
+                                    <span>-10%</span>
+                                </div>
+                                <img src="images/equipaje/equipaje1.jpg" alt="producto3">
+                                <div class="producto__info producto__info--oferta">
+                                    <h5>Mochila</h5>
+                                    <span>
+                                        <span class="precio">
+                                            $14.99
+                                        </span>
+                                        <span class="badge bg-success">
+                                            $13.50
+                                        </span>
+                                    </span>
+                                </div>
+                            </div>
+                        </button>
+                        <!-- Modal -->
+                        <div class="modal fade modalProducto" id="productoIndexOferta3" tabindex="-1"
+                            aria-labelledby="productoIndexOferta3Label" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="card tarjetaModal">
+                                        <img src="images/equipaje/equipaje1.jpg" class="card-img-top tarjetaModal__img"
+                                            alt="...">
+                                        <div class="card-body tarjetaModal__info">
+                                            <h5 class="card-title tarjetaModal__nombre">Mochila</h5>
+                                            <p class="card-text tarjetaModal__description">Mochila super liviana,
+                                                perfecta para guardar todas tus pertenencias.
+                                            </p>
+                                            <a href="#" class="btn tarjetaModal__boton">Agregar al carrito</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- CUARTO PRODUCTO -->
+                        <button type="button"
+                            class="btn p-0 indexMain__modalProducto  mt-3 col-lg-2 offset-lg-0 col-md-3 offset-md-0 col-sm-5 offset-sm-1 col-5 "
+                            data-bs-toggle="modal" data-bs-target="#productoIndexOferta4">
+                            <div class="producto producto--oferta">
+                                <div class="producto__numeroTop">
+                                    <span>-25%</span>
+                                </div>
+                                <img src="images/comodidad/comodidad2.jpg" alt="producto3">
+                                <div class="producto__info producto__info--oferta">
+                                    <h5>Porta accesorios</h5>
+                                    <span>
+                                        <span class="precio">
+                                            $14.99
+                                        </span>
+                                        <span class="badge bg-success">
+                                            $11.25
+                                        </span>
+                                    </span>
+                                </div>
+                            </div>
+                        </button>
+                        <!-- Modal -->
+                        <div class="modal fade modalProducto" id="productoIndexOferta4" tabindex="-1"
+                            aria-labelledby="productoIndexOferta4Label" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="card tarjetaModal">
+                                        <img src="images/comodidad/comodidad2.jpg"
+                                            class="card-img-top tarjetaModal__img" alt="...">
+                                        <div class="card-body tarjetaModal__info">
+                                            <h5 class="card-title tarjetaModal__nombre">Porta accesorios</h5>
+                                            <p class="card-text tarjetaModal__description">Porta accesorios
+                                                excelente para guardar tus documentos y pequeñas pertenencias.
+                                            </p>
+                                            <a href="#" class="btn tarjetaModal__boton">Agregar al carrito</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- QUINTO PRODUCTO -->
+                        <button type="button"
+                            class="btn p-0 indexMain__modalProducto mt-3 col-lg-2 offset-lg-0 col-md-3 offset-md-1 col-sm-5 col-5"
+                            data-bs-toggle="modal" data-bs-target="#productoIndexOferta5">
+                            <div class="producto producto--oferta">
+                                <div class="producto__numeroTop">
+                                    <span>-25%</span>
+                                </div>
+                                <img src="images/indumentaria/indumentaria6.jpg" alt="producto3">
+                                <div class="producto__info producto__info--oferta">
+                                    <h5>Camisa</h5>
+                                    <span>
+                                        <span class="precio">
+                                            $14.99
+                                        </span>
+                                        <span class="badge bg-success">
+                                            $11.25
+                                        </span>
+                                    </span>
+                                </div>
+                            </div>
+                        </button>
+                        <!-- Modal -->
+                        <div class="modal fade modalProducto" id="productoIndexOferta5" tabindex="-1"
+                            aria-labelledby="productoIndexOferta5Label" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="card tarjetaModal">
+                                        <img src="images/indumentaria/indumentaria6.jpg"
+                                            class="card-img-top tarjetaModal__img" alt="...">
+                                        <div class="card-body tarjetaModal__info">
+                                            <h5 class="card-title tarjetaModal__nombre">Camisa</h5>
+                                            <p class="card-text tarjetaModal__description">Camisa comoda y fresca
+                                                para viajar mas cómodo.
+                                            </p>
+                                            <div class="tarjetaModal__talles">
+                                                <h5>Talle</h5>
+                                                <div class="tarjetaModal__talle">
+                                                    <div>
+                                                        <input type="radio" name="talle" id="small2" checked="checked">
+                                                        <label for="small2">S</label>
+                                                    </div>
+                                                    <div>
+                                                        <input type="radio" name="talle" id="medium2">
+                                                        <label for="medium2">M</label>
+                                                    </div>
+                                                    <div>
+                                                        <input type="radio" name="talle" id="large2">
+                                                        <label for="large2">L</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <a href="#" class="btn tarjetaModal__boton">Agregar al carrito</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- SEXTO PRODUCTO -->
+                        <button type="button"
+                            class="btn p-0 indexMain__modalProducto d-lg-none mt-3 col-md-3 offset-md-1 col-sm-5 offset-sm-1 col-5 "
+                            data-bs-toggle="modal" data-bs-target="#productoIndexOferta6">
+                            <div class="producto producto--oferta">
+                                <div class="producto__numeroTop">
+                                    <span>-25%</span>
+                                </div>
+                                <img src="images/tecnologia/tecnologia9.jpg" alt="producto3">
+                                <div class="producto__info producto__info--oferta">
+                                    <h5>Cámara</h5>
+                                    <span>
+                                        <span class="precio">
+                                            $14.99
+                                        </span>
+                                        <span class="badge bg-success">
+                                            $9.99
+                                        </span>
+                                    </span>
+                                </div>
+                            </div>
+                        </button>
+                        <!-- Modal -->
+                        <div class="modal fade modalProducto" id="productoIndexOferta6" tabindex="-1"
+                            aria-labelledby="productoIndexOferta6Label" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="card tarjetaModal">
+                                        <img src="images/tecnologia/tecnologia9.jpg"
+                                            class="card-img-top tarjetaModal__img" alt="...">
+                                        <div class="card-body tarjetaModal__info">
+                                            <h5 class="card-title tarjetaModal__nombre">Cámara</h5>
+                                            <p class="card-text tarjetaModal__description">Cámara de última
+                                                generación para capturar tus mejores momentos.
+                                            </p>
+                                            <a href="#" class="btn tarjetaModal__boton">Agregar al carrito</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+
+            <section class="indexMain__categorias col-12">
+                <div class="indexMain__categoriasTitulo">
+                    <h2>Indumentaria</h2>
+                    <a href="Secciones/Indumentaria.html">
+                        <h4>Ver indumentaria</h4>
+                    </a>
+                </div>
+                <div class="indexMain__categoriasProductos container-fluid p-0">
+                    <div class="row m-0 justify-content-around">
+
+                        <!-- PRIMER PRODUCTO -->
+                        <button type="button"
+                            class="btn p-0 indexMain__modalProducto mt-3 col-lg-2 col-md-3 col-sm-5 col-5"
+                            data-bs-toggle="modal" data-bs-target="#productoIndex1">
+                            <div class="producto">
+                                <img src="images/indumentaria/indumentaria1.jpg" alt="producto1">
+                                <div class="producto__info">
+                                    <h5>Campera Caterpillar</h5>
+                                    <span>$40</span>
+                                </div>
+                            </div>
+                        </button>
+                        <!-- Modal -->
+                        <div class="modal fade modalProducto" id="productoIndex1" tabindex="-1"
+                            aria-labelledby="productoIndex1Label" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-body p-0">
+                                        <div class="card tarjetaModal">
+                                            <img src="images/indumentaria/indumentaria1.jpg"
+                                                class="card-img-top tarjetaModal__img" alt="...">
+                                            <div class="card-body tarjetaModal__info">
+                                                <h5 class="card-title tarjetaModal__nombre">Campera Caterpillar</h5>
+                                                <p class="card-text tarjetaModal__description">Campera comoda,
+                                                    abrigada,
+                                                    perfecta para viajar.
+                                                </p>
+                                                <div class="tarjetaModal__talles">
+                                                    <h5>Talle</h5>
+                                                    <div class="tarjetaModal__talle">
+                                                        <div>
+                                                            <input type="radio" name="talle" id="small3"
+                                                                checked="checked">
+                                                            <label for="small3">S</label>
+                                                        </div>
+                                                        <div>
+                                                            <input type="radio" name="talle" id="medium3">
+                                                            <label for="medium3">M</label>
+                                                        </div>
+                                                        <div>
+                                                            <input type="radio" name="talle" id="large3">
+                                                            <label for="large3">L</label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <a href="#" class="btn tarjetaModal__boton">Agregar al carrito</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- SEGUNDO PRODUCTO -->
+                        <button type="button"
+                            class="btn p-0 indexMain__modalProducto mt-3 col-lg-2 offset-lg-0 col-md-3 offset-md-1 col-sm-5 offset-sm-1 col-5 "
+                            data-bs-toggle="modal" data-bs-target="#productoIndex2">
+                            <div class="producto ">
+                                <img src="images/indumentaria/indumentaria2.jpg" alt="producto1">
+                                <div class="producto__info">
+                                    <h5>Campera Caterpillar</h5>
+                                    <span>$40</span>
+                                </div>
+                            </div>
+                        </button>
+                        <!-- Modal -->
+                        <div class="modal fade modalProducto" id="productoIndex2" tabindex="-1"
+                            aria-labelledby="productoIndex2Label" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="card tarjetaModal">
+                                        <img src="images/indumentaria/indumentaria2.jpg"
+                                            class="card-img-top tarjetaModal__img" alt="...">
+                                        <div class="card-body tarjetaModal__info">
+                                            <h5 class="card-title tarjetaModal__nombre">Campera Caterpillar</h5>
+                                            <p class="card-text tarjetaModal__description">Campera comoda, abrigada,
+                                                perfecta para viajar.
+                                            </p>
+                                            <div class="tarjetaModal__talles">
+                                                <h5>Talle</h5>
+                                                <div class="tarjetaModal__talle">
+                                                    <div>
+                                                        <input type="radio" name="talle" id="small4" checked="checked">
+                                                        <label for="small4">S</label>
+                                                    </div>
+                                                    <div>
+                                                        <input type="radio" name="talle" id="medium4">
+                                                        <label for="medium4">M</label>
+                                                    </div>
+                                                    <div>
+                                                        <input type="radio" name="talle" id="large4">
+                                                        <label for="large4">L</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <a href="#" class="btn tarjetaModal__boton">Agregar al carrito</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- TERCER PRODUCTO -->
+                        <button type="button"
+                            class="btn p-0 indexMain__modalProducto mt-3 col-lg-2 offset-lg-0 col-md-3 offset-md-1 col-sm-5 col-5"
+                            data-bs-toggle="modal" data-bs-target="#productoIndex3">
+                            <div class="producto ">
+                                <img src="images/indumentaria/indumentaria3.jpg" alt="producto1">
+                                <div class="producto__info">
+                                    <h5>Remera Caterpillar</h5>
+                                    <span>$25</span>
+                                </div>
+                            </div>
+                        </button>
+                        <!-- Modal -->
+                        <div class="modal fade modalProducto" id="productoIndex3" tabindex="-1"
+                            aria-labelledby="productoIndex3Label" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="card tarjetaModal">
+                                        <img src="images/indumentaria/indumentaria3.jpg"
+                                            class="card-img-top tarjetaModal__img" alt="...">
+                                        <div class="card-body tarjetaModal__info">
+                                            <h5 class="card-title tarjetaModal__nombre">Remera Caterpillar</h5>
+                                            <p class="card-text tarjetaModal__description">Remera de excelente
+                                                calidad y material.
+                                            </p>
+                                            <div class="tarjetaModal__talles">
+                                                <h5>Talle</h5>
+                                                <div class="tarjetaModal__talle">
+                                                    <div>
+                                                        <input type="radio" name="talle" id="small5" checked="checked">
+                                                        <label for="small5">S</label>
+                                                    </div>
+                                                    <div>
+                                                        <input type="radio" name="talle" id="medium5">
+                                                        <label for="medium5">M</label>
+                                                    </div>
+                                                    <div>
+                                                        <input type="radio" name="talle" id="large5">
+                                                        <label for="large5">L</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <a href="#" class="btn tarjetaModal__boton">Agregar al carrito</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- CUARTO PRODUCTO -->
+                        <button type="button"
+                            class="btn p-0 indexMain__modalProducto  mt-3 col-lg-2 offset-lg-0 col-md-3 offset-md-0 col-sm-5 offset-sm-1 col-5 "
+                            data-bs-toggle="modal" data-bs-target="#productoIndex4">
+                            <div class="producto">
+                                <img src="images/indumentaria/indumentaria4.jpg" alt="producto1">
+                                <div class="producto__info">
+                                    <h5>Campera Caterpillar</h5>
+                                    <span>$40</span>
+                                </div>
+                            </div>
+                        </button>
+                        <!-- Modal -->
+                        <div class="modal fade modalProducto" id="productoIndex4" tabindex="-1"
+                            aria-labelledby="productoIndex4Label" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="card tarjetaModal">
+                                        <img src="images/indumentaria/indumentaria4.jpg"
+                                            class="card-img-top tarjetaModal__img" alt="...">
+                                        <div class="card-body tarjetaModal__info">
+                                            <h5 class="card-title tarjetaModal__nombre">Campera Caterpillar</h5>
+                                            <p class="card-text tarjetaModal__description">Campera comoda, abrigada,
+                                                perfecta para viajar.
+                                            </p>
+                                            <div class="tarjetaModal__talles">
+                                                <h5>Talle</h5>
+                                                <div class="tarjetaModal__talle">
+                                                    <div>
+                                                        <input type="radio" name="talle" id="small6" checked="checked">
+                                                        <label for="small6">S</label>
+                                                    </div>
+                                                    <div>
+                                                        <input type="radio" name="talle" id="medium6">
+                                                        <label for="medium6">M</label>
+                                                    </div>
+                                                    <div>
+                                                        <input type="radio" name="talle" id="large6">
+                                                        <label for="large6">L</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <a href="#" class="btn tarjetaModal__boton">Agregar al carrito</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- QUINTO PRODUCTO -->
+                        <button type="button"
+                            class="btn p-0 indexMain__modalProducto mt-3 col-lg-2 offset-lg-0 col-md-3 offset-md-1 col-sm-5 col-5"
+                            data-bs-toggle="modal" data-bs-target="#productoIndex5">
+                            <div class="producto ">
+                                <img src="images/indumentaria/indumentaria5.jpg" alt="producto1">
+                                <div class="producto__info">
+                                    <h5>Camisa</h5>
+                                    <span>$15</span>
+                                </div>
+                            </div>
+                        </button>
+                        <!-- Modal -->
+                        <div class="modal fade modalProducto" id="productoIndex5" tabindex="-1"
+                            aria-labelledby="productoIndex2Label" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="card tarjetaModal">
+                                        <img src="images/indumentaria/indumentaria5.jpg"
+                                            class="card-img-top tarjetaModal__img" alt="...">
+                                        <div class="card-body tarjetaModal__info">
+                                            <h5 class="card-title tarjetaModal__nombre">Camisa</h5>
+                                            <p class="card-text tarjetaModal__description">Camisa comoda y fresca
+                                                para viajar mas cómodo.
+                                            </p>
+                                            <div class="tarjetaModal__talles">
+                                                <h5>Talle</h5>
+                                                <div class="tarjetaModal__talle">
+                                                    <div>
+                                                        <input type="radio" name="talle" id="small7" checked="checked">
+                                                        <label for="small7">S</label>
+                                                    </div>
+                                                    <div>
+                                                        <input type="radio" name="talle" id="medium7">
+                                                        <label for="medium7">M</label>
+                                                    </div>
+                                                    <div>
+                                                        <input type="radio" name="talle" id="large7">
+                                                        <label for="large7">L</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <a href="#" class="btn tarjetaModal__boton">Agregar al carrito</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- SEXTO PRODUCTO -->
+                        <button type="button"
+                            class="btn p-0 indexMain__modalProducto d-lg-none mt-3 col-md-3 offset-md-1 col-sm-5 offset-sm-1 col-5 "
+                            data-bs-toggle="modal" data-bs-target="#productoIndex6">
+                            <div class="producto">
+                                <img src="images/indumentaria/indumentaria6.jpg" alt="producto1">
+                                <div class="producto__info">
+                                    <h5>Camisa</h5>
+                                    <span>$15</span>
+                                </div>
+                            </div>
+                        </button>
+                        <!-- Modal -->
+                        <div class="modal fade modalProducto" id="productoIndex6" tabindex="-1"
+                            aria-labelledby="productoIndex6Label" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="card tarjetaModal">
+                                        <img src="images/indumentaria/indumentaria6.jpg"
+                                            class="card-img-top tarjetaModal__img" alt="...">
+                                        <div class="card-body tarjetaModal__info">
+                                            <h5 class="card-title tarjetaModal__nombre">Camisa</h5>
+                                            <p class="card-text tarjetaModal__description">Camisa comoda y fresca
+                                                para viajar mas cómodo.
+                                            </p>
+                                            <div class="tarjetaModal__talles">
+                                                <h5>Talle</h5>
+                                                <div class="tarjetaModal__talle">
+                                                    <div>
+                                                        <input type="radio" name="talle" id="small8" checked="checked">
+                                                        <label for="small8">S</label>
+                                                    </div>
+                                                    <div>
+                                                        <input type="radio" name="talle" id="medium8">
+                                                        <label for="medium8">M</label>
+                                                    </div>
+                                                    <div>
+                                                        <input type="radio" name="talle" id="large8">
+                                                        <label for="large8">L</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <a href="#" class="btn tarjetaModal__boton">Agregar al carrito</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+
+            <section class="indexMain__destacados col-12 mt-4">
+
+                <div class="indexMain__destacadosTitulo">
+                    <h2>Lo mas vendido</h2>
+                    <a href="Secciones/LoMasVendido.html">
+                        <h4>Ver el top</h4>
+                    </a>
+                </div>
+                <div class="indexMain__destacadosProductos container-fluid p-0">
+                    <div class="row m-0 justify-content-around">
+
+
+                        <!-- PRIMER PRODUCTO -->
+                        <button type="button"
+                            class="btn p-0 indexMain__modalProducto mt-3 col-lg-2 col-md-3 col-sm-5 col-5"
+                            data-bs-toggle="modal" data-bs-target="#productoIndexDestacado1">
+                            <div class="producto producto--destacado ">
+                                <div class="producto__numeroTop">
+                                    <span>#1</span>
+                                </div>
+                                <img src="images/indumentaria/indumentaria6.jpg" alt="producto2">
+                                <div class="producto__info">
+                                    <h5>Camisa</h5>
+                                    <span>$15</span>
+                                </div>
+                            </div>
+                        </button>
+                        <!-- Modal -->
+                        <div class="modal fade modalProducto" id="productoIndexDestacado1" tabindex="-1"
+                            aria-labelledby="productoIndexDestacado1Label" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="card tarjetaModal">
+                                        <img src="images/indumentaria/indumentaria6.jpg"
+                                            class="card-img-top tarjetaModal__img" alt="...">
+                                        <div class="card-body tarjetaModal__info">
+                                            <h5 class="card-title tarjetaModal__nombre">Camisa</h5>
+                                            <p class="card-text tarjetaModal__description">Camisa comoda y fresca
+                                                para viajar mas cómodo.
+                                            </p>
+                                            <div class="tarjetaModal__talles">
+                                                <h5>Talle</h5>
+                                                <div class="tarjetaModal__talle">
+                                                    <div>
+                                                        <input type="radio" name="talle" id="small9" checked="checked">
+                                                        <label for="small9">S</label>
+                                                    </div>
+                                                    <div>
+                                                        <input type="radio" name="talle" id="medium9">
+                                                        <label for="medium9">M</label>
+                                                    </div>
+                                                    <div>
+                                                        <input type="radio" name="talle" id="large9">
+                                                        <label for="large9">L</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <a href="#" class="btn tarjetaModal__boton">Agregar al carrito</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <!-- SEGUNDO PRODUCTO -->
+                        <button type="button"
+                            class="btn p-0 indexMain__modalProducto mt-3 col-lg-2 offset-lg-0 col-md-3 offset-md-1 col-sm-5 offset-sm-1 col-5 "
+                            data-bs-toggle="modal" data-bs-target="#productoIndexDestacado2">
+                            <div class="producto producto--destacado">
+                                <div class="producto__numeroTop">
+                                    <span>#2</span>
+                                </div>
+                                <img src="images/tecnologia/tecnologia4.jpg" alt="producto2">
+                                <div class="producto__info">
+                                    <h5>Adaptador para cables</h5>
+                                    <span>$10</span>
+                                </div>
+                            </div>
+                        </button>
+                        <!-- Modal -->
+                        <div class="modal fade modalProducto" id="productoIndexDestacado2" tabindex="-1"
+                            aria-labelledby="productoIndexDestacado2Label" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="card tarjetaModal">
+                                        <img src="images/tecnologia/tecnologia4.jpg"
+                                            class="card-img-top tarjetaModal__img" alt="...">
+                                        <div class="card-body tarjetaModal__info">
+                                            <h5 class="card-title tarjetaModal__nombre">Adaptador para cables</h5>
+                                            <p class="card-text tarjetaModal__description">Adaptador para que tus
+                                                dispositivos jamás se queden sin batería.
+                                            </p>
+                                            <a href="#" class="btn tarjetaModal__boton">Agregar al carrito</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                        <!-- TERCER PRODUCTO -->
+                        <button type="button"
+                            class="btn p-0 indexMain__modalProducto mt-3 col-lg-2 offset-lg-0 col-md-3 offset-md-1 col-sm-5 col-5"
+                            data-bs-toggle="modal" data-bs-target="#productoIndexDestacado3">
+                            <div class="producto producto--destacado">
+                                <div class="producto__numeroTop">
+                                    <span>#3</span>
+                                </div>
+                                <img src="images/comodidad/comodidad8.jpg" alt="producto2">
+                                <div class="producto__info">
+                                    <h5>Almohada para cuello</h5>
+                                    <span>$20</span>
+                                </div>
+                            </div>
+                        </button>
+                        <!-- Modal -->
+                        <div class="modal fade modalProducto" id="productoIndexDestacado3" tabindex="-1"
+                            aria-labelledby="productoIndexDestacado3Label" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="card tarjetaModal">
+                                        <img src="images/comodidad/comodidad8.jpg"
+                                            class="card-img-top tarjetaModal__img" alt="...">
+                                        <div class="card-body tarjetaModal__info">
+                                            <h5 class="card-title tarjetaModal__nombre">Almohada para cuello</h5>
+                                            <p class="card-text tarjetaModal__description">Almohada para viajar
+                                                cómodo a cualquier lugar del mundo.
+                                            </p>
+                                            <a href="#" class="btn tarjetaModal__boton">Agregar al carrito</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- CUARTO PRODUCTO -->
+                        <button type="button"
+                            class="btn p-0 indexMain__modalProducto  mt-3 col-lg-2 offset-lg-0 col-md-3 offset-md-0 col-sm-5 offset-sm-1 col-5 "
+                            data-bs-toggle="modal" data-bs-target="#productoIndexDestacado4">
+                            <div class="producto producto--destacado">
+                                <div class="producto__numeroTop">
+                                    <span>#4</span>
+                                </div>
+                                <img src="images/equipaje/equipaje12.jpg" alt="producto2">
+                                <div class="producto__info">
+                                    <h5>Maleta</h5>
+                                    <span>$100</span>
+                                </div>
+                            </div>
+                        </button>
+                        <!-- Modal -->
+                        <div class="modal fade modalProducto" id="productoIndexDestacado4" tabindex="-1"
+                            aria-labelledby="productoIndexDestacado4Label" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="card tarjetaModal">
+                                        <img src="images/equipaje/equipaje12.jpg" class="card-img-top tarjetaModal__img"
+                                            alt="...">
+                                        <div class="card-body tarjetaModal__info">
+                                            <h5 class="card-title tarjetaModal__nombre">Maleta</h5>
+                                            <p class="card-text tarjetaModal__description">Maleta de gran tamaño
+                                                para toda tu ropa.
+                                            </p>
+                                            <a href="#" class="btn tarjetaModal__boton">Agregar al carrito</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <!-- QUINTO PRODUCTO -->
+                        <button type="button"
+                            class="btn p-0 indexMain__modalProducto mt-3 col-lg-2 offset-lg-0 col-md-3 offset-md-1 col-sm-5 col-5"
+                            data-bs-toggle="modal" data-bs-target="#productoIndexDestacado5">
+                            <div class="producto producto--destacado">
+                                <div class="producto__numeroTop">
+                                    <span>#4</span>
+                                </div>
+                                <img src="images/indumentaria/indumentaria7.jpg" alt="producto2">
+                                <div class="producto__info">
+                                    <h5>Remeras</h5>
+                                    <span>$15</span>
+                                </div>
+                            </div>
+                        </button>
+                        <!-- Modal -->
+                        <div class="modal fade modalProducto" id="productoIndexDestacado5" tabindex="-1"
+                            aria-labelledby="productoIndexDestacado5Label" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="card tarjetaModal">
+                                        <img src="images/indumentaria/indumentaria7.jpg"
+                                            class="card-img-top tarjetaModal__img" alt="...">
+                                        <div class="card-body tarjetaModal__info">
+                                            <h5 class="card-title tarjetaModal__nombre">Remeras</h5>
+                                            <p class="card-text tarjetaModal__description">Remera de excelente
+                                                calidad y material.
+                                            </p>
+                                            <div class="tarjetaModal__talles">
+                                                <h5>Talle</h5>
+                                                <div class="tarjetaModal__talle">
+                                                    <div>
+                                                        <input type="radio" name="talle" id="small10" checked="checked">
+                                                        <label for="small10">S</label>
+                                                    </div>
+                                                    <div>
+                                                        <input type="radio" name="talle" id="medium10">
+                                                        <label for="medium10">M</label>
+                                                    </div>
+                                                    <div>
+                                                        <input type="radio" name="talle" id="large10">
+                                                        <label for="large10">L</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <a href="#" class="btn tarjetaModal__boton">Agregar al carrito</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <!-- SEXTO PRODUCTO -->
+                        <button type="button"
+                            class="btn p-0 indexMain__modalProducto d-lg-none mt-3 col-md-3 offset-md-1 col-sm-5 offset-sm-1 col-5 "
+                            data-bs-toggle="modal" data-bs-target="#productoIndexDestacado6">
+                            <div class="producto producto--destacado">
+                                <div class="producto__numeroTop">
+                                    <span>#4</span>
+                                </div>
+                                <img src="images/tecnologia/tecnologia11.jpg" alt="producto2">
+                                <div class="producto__info">
+                                    <h5>Auriculares</h5>
+                                    <span>$25</span>
+                                </div>
+                            </div>
+                        </button>
+                        <!-- Modal -->
+                        <div class="modal fade modalProducto" id="productoIndexDestacado6" tabindex="-1"
+                            aria-labelledby="productoIndexDestacado6Label" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="card tarjetaModal">
+                                        <img src="images/tecnologia/tecnologia11.jpg"
+                                            class="card-img-top tarjetaModal__img" alt="...">
+                                        <div class="card-body tarjetaModal__info">
+                                            <h5 class="card-title tarjetaModal__nombre">Auriculares</h5>
+                                            <p class="card-text tarjetaModal__description">Auriculares para escuchar
+                                                la mejor música.
+                                            </p>
+                                            <a href="#" class="btn tarjetaModal__boton">Agregar al carrito</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container-fluid">
+            <div class="row footer__row justify-content-around">
+                <div class="footer__menus col-lg-2 col-md-3 col-sm-6 col-12">
+                    <a href="#">
+                        <h5>Inicio</h5>
+                    </a></h5>
+                    <a href="Secciones/Novedades.html">
+                        <h5>Novedades</h5>
+                    </a>
+                    <a href="Secciones/LoMasVendido.html">
+                        <h5>Lo más vendido</h5>
+                    </a>
+                    <a href="Secciones/Ofertas.html">
+                        <h5>Ofertas</h5>
+                    </a>
+                    <a href="Secciones/Contacto.html">
+                        <h5>Contacto</h5>
+                    </a>
+                </div>
+                <div class="footer__datos col-lg-2 col-md-3 col-sm-6 col-12">
+                    <p>Tel:1-800-000-000</p>
+                    <p>Email:checkin@gmail.com</p>
+                </div>
+                <div class="footer__enviosYPreguntas col-lg-2 col-md-3 col-sm-4 col-12">
+                    <a href="">
+                        <h5>Envíos y Devoluciones</h5>
+                    </a>
+                    <a href="">
+                        <h5>Preguntas Frecuentes</h5>
+                    </a>
+                </div>
+                <div class="footer__newsLetter col-lg-2 col-md-3 col-sm-4 col-12">
+                    <form action="">
+                        <h5>Subscríbete al Newsletter</h5>
+                        <input class="footer__inputMail" type="email" name="correo" id="correo"
+                            placeholder="Correo electrónico">
+                        <input class="footer__inputSub" type="submit" value="Subscribirme">
+                    </form>
+                </div>
+                <div class="footer__redes col-lg-1 col-md-3 col-sm-4 col-12">
+                    <div>
+                        <a href="">
+                            <ion-icon name="logo-facebook"></ion-icon>
+                        </a>
+                    </div>
+                    <div>
+                        <a href="">
+                            <ion-icon name="logo-instagram"></ion-icon>
+                        </a>
+                    </div>
+                    <div>
+                        <a href="">
+                            <ion-icon name="logo-twitter"></ion-icon>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
 
     <script src="main.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous">
+    </script>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 </body>
 
 </html>

@@ -1,0 +1,22 @@
+@import '../utilidades/variables';
+@import 'mediaQueries';
+
+
+
+/*   MAIN   */
+.ofertasMain {
+    padding: 2rem 4rem;
+    background: linear-gradient(to bottom, $colorSecundario, $colorTerciario);
+
+    @include mobile {
+        padding: 2rem 1rem
+    }
+}
+
+.ofertasMain__modalProducto {
+
+    &:focus {
+        box-shadow: none;
+    }
+
+}

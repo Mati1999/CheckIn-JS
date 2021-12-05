@@ -1,0 +1,40 @@
+@import 'mediaQueries';
+@import '../utilidades/variables';
+
+.error404 {
+    background-color: $colorPrimario;
+    @include medidas(100vw, 100vh);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+
+    &__a {
+        img {
+            width: 10rem;
+        }
+    }
+
+    &__404 {
+        font-size: 15rem;
+    }
+
+    &__info {
+        font-size: 1.3rem;
+        color: $colorTerciario;
+    }
+
+    &__home input {
+        border: $borderTerciario;
+        color: $colorTerciario;
+        background: transparent;
+        border-radius: 1.5rem;
+        padding: .5rem;
+        transition: $transicion;
+
+        &:hover {
+            background: $colorTerciario;
+            color: $colorPrimario;
+        }
+    }
+}
