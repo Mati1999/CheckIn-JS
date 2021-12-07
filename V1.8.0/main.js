@@ -9,6 +9,7 @@ class Producto {
         this.nombre = nombre;
         this.precio = precio;
         this.oferta = oferta;
+        this.precioDefinitivo = 0;
     }
 }
 
@@ -126,10 +127,12 @@ const esDeOferta = () => {
         calcularDescuento(elProducto.precio);
         calcularIVA(precioConDescuento);
         precioFinal = precioConDescuento + IVA;
+        elProducto.precioDefinitivo = precioFinal;
         mostrarDetalle(elProducto.nombre,elProducto.precio,IVA,descuento,precioFinal);
     } else {
         calcularIVA(elProducto.precio);
         precioFinal = elProducto.precio + IVA;
+        elProducto.precioDefinitivo = precioFinal;
         mostrarDetalle(elProducto.nombre,elProducto.precio,IVA,descuento,precioFinal);
     }
 }
@@ -141,7 +144,7 @@ const esDeOferta = () => {
 let precioCarrito = 0;
 const calcularTotal = () => {
     productosElegidos.forEach(productito => {
-        precioCarrito += productito.precio;
+        precioCarrito += productito.precioDefinitivo;
         return precioCarrito;
     })
 }
@@ -155,7 +158,7 @@ const mostrarCompras = () => {
     calcularTotal();
     for (let i = 1; i <= productosElegidos.length; i++) {
         infoCarrito += `
-        Producto ${i}: ${productosElegidos[i - 1].nombre}. Precio: $${productosElegidos[i - 1].precio}`
+        Producto ${i}: ${productosElegidos[i - 1].nombre}. Precio: $${productosElegidos[i - 1].precioDefinitivo}`
     }
     infoCarrito += `
     Precio Final: $${precioCarrito}.`
