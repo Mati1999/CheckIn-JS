@@ -1,0 +1,18 @@
+main {
+    padding: 2rem;
+}
+
+.producto {
+    border: 1px solid rgb(0, 0, 0);
+    border-radius: 1rem;
+    padding: 1rem;
+    margin: .5rem 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+
+    img {
+        width: 50%;
+        align-self: center;
+    }
+}
