@@ -1,0 +1,33 @@
+main {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 5rem 0;
+}
+
+.divContenedor {
+    height: 100%;
+    width: 100%;
+}
+
+.divContenedor h1 {
+    color: rgb(50, 212, 50);
+}
+
+.divContenedor div {
+    border: 1px solid black;
+    border-radius: 1rem;
+}
+
+.divContenedor img {
+    width: 50%;
+}
+
+.info,
+.inputs {
+    display: flex;
+    justify-content: space-around;
+    width: 30rem;
+}
