@@ -1,3 +1,7 @@
+
+/**
+ * Descripción: Creo la clase Producto donde me permite crear todos los productos necesarios para mi web.
+ */
 class Producto {
     constructor(id,categoria,img,nombre,descipcion,talles,precio,oferta) {
         this.id = id;
@@ -11,6 +15,9 @@ class Producto {
     }
 }
 
+/**
+ * Descripción: Creo los productos para indumentaria, equipaje, comodidad y tecnología.
+ */
 let indumentaria1 = new Producto(1,"indumentaria","indumentaria1.jpg","Campera Caterpillar","Campera comoda, abrigada, perfecta para viajar.",["S","M","L"],40,false);
 let indumentaria2 = new Producto(2,"indumentaria","indumentaria2.jpg","Campera Caterpillar","Campera comoda, abrigada, perfecta para viajar.",["S","M","L"],40,false);
 let indumentaria3 = new Producto(3,"indumentaria","indumentaria3.jpg","Remera Caterpillar","Remera de excelente calidad y material.",["S","M","L"],25,false);
@@ -63,15 +70,25 @@ let tecnologia10 = new Producto(46,"tecnologia","tecnologia10.jpg","Auriculares"
 let tecnologia11 = new Producto(47,"tecnologia","tecnologia11.jpg","Auriculares","Auriculares para escuchar la mejor música.",[],30,true);
 let tecnologia12 = new Producto(48,"tecnologia","tecnologia12.jpg","Auriculares","Auriculares para escuchar la mejor música.",[],25,false);
 
-
+/**
+ * Descripción: Creo un array donde guardo todos los productos
+ * @param {array} productosLocal : array donde guardo todos los productos
+ */
 let productosLocal = [indumentaria1,indumentaria2,indumentaria3,indumentaria4,indumentaria5,indumentaria6,indumentaria7,indumentaria8,indumentaria9,indumentaria10,indumentaria11,indumentaria12,equipaje1,equipaje2,equipaje3,equipaje4,equipaje5,equipaje6,equipaje7,equipaje8,equipaje9,equipaje10,equipaje11,equipaje12,comodidad1,comodidad2,comodidad3,comodidad4,comodidad5,comodidad6,comodidad7,comodidad8,comodidad9,comodidad10,comodidad11,comodidad12,tecnologia1,tecnologia2,tecnologia3,tecnologia4,tecnologia5,tecnologia6,tecnologia7,tecnologia8,tecnologia9,tecnologia10,tecnologia11,tecnologia12];
 
+/**
+ * Descipción: Guardo en el localStorage todos los productos
+ */
 localStorage.setItem("Productos",JSON.stringify(productosLocal));
 
-// Traigo del localStorage los productos, y guardo el array en una variable.
+/**
+ * Descripción: Traigo del localStorage los productos, y guardo el array en una variable.
+ */
 let productos = JSON.parse(localStorage.getItem("Productos"));
 
-// Del array de productos, hago un filtrado de los productos por categoría y los guardo en variables.
+/**
+ * Descripción: Del array de productos, hago un filtrado de los productos por categoría y los guardo en variables.
+ */
 let productosInd = productos.filter(prod => prod.categoria === "indumentaria");
 let productosEquip = productos.filter(prod => prod.categoria === "equipaje");
 let productosComod = productos.filter(prod => prod.categoria === "comodidad");
@@ -80,7 +97,11 @@ let productosTec = productos.filter(prod => prod.categoria === "tecnologia");
 
 // INDUMENTARIA
 
-
+/**
+ * Descripción: En este for creo los productos que se van a incertar dentro del main de indumentaria, consumiendo del localStorage los productos y mostrándolos
+ * @param {elementNode} buttonProdInd: creo un boton donde luego voy a ingresar el contenido del producto. Está creado todo a partir de bootstrap components.
+ * @param {elementNode} modalProdInd: creo un div donde voy a ingresar el modal que se muestra luego de hacer click en el boton buttonProdInd.
+ */
 for (let i = 0; i < productosInd.length; i++) {
     // Creo un boton para ingresar los datos del producto en el html
     let buttonProdInd = document.createElement("button");
@@ -169,12 +190,21 @@ for (let i = 0; i < productosInd.length; i++) {
 
 // lo mas vendido en indumentaria
 
+/**
+ * Descripción: Ahora creo otro for para poder ingresar en el main de indumentaria en la parte izquierda-inferior, lo productos mas vendidos tambien consumiendolos desde el localStorage
+ * @param {array} prodMasVendidoInd: array donde ingreso los productos mas vendidos.
+ */
 let prodMasVendidoInd = [];
 
 for (let i = 0; i < 4; i++) {
     prodMasVendidoInd.push(productosInd[i]);
 }
 
+/**
+ * Descripción: En este for itero sobre los prodMasVendidoInd para poder ingresarlos en el html.
+ * @param {elementNode} divProdMasVendidoInd: creo un div donde voy a ingresar el contenido de los productos
+ * @param {elementNode} divProdMasVendidoIndResponsive: creo un div donde ingreso el contenido de los productos mas vendidos pero para el responsive.
+ */
 for (let i = 0; i < prodMasVendidoInd.length; i++) {
     const divProdMasVendidoInd = document.createElement("div");
     divProdMasVendidoInd.setAttribute("class","miniProducto");
@@ -215,18 +245,38 @@ for (let i = 0; i < prodMasVendidoInd.length; i++) {
     filtroProdIndResponsive.appendChild(divProdMasVendidoIndResponsive);
 }
 
+// CARRITO DE COMPRA
+
+/**
+ * Descipción: A contProdInd le coloco el evento click para que cuando se haga click en el boton "Agregar producto", se agregue el producto en el carrito.
+ * @param {object} carrito: Creo un objeto donde voy a agregar los productos en el carrito.
+ */
 let carrito = {};
 contProdInd.addEventListener('click',e => {
     agregarAlCarrito(e);
 })
 
+/**
+ * Descripción: En esta funcion obtengo el evento "e" del click pero con un if selecciono solo cuando hago click en el elemento que tenga la clase "agregarCarrito", luego le paso a la función setCarrito(el padre del padre del boton "Agregar al carrito") ya que luego voy a poder obtener la imagen, y toda la info del producto.
+ */
 const agregarAlCarrito = e => {
     if (e.target.classList.contains('agregarCarrito')) {
         setCarrito(e.target.parentElement.parentElement)
     }
+    //uso el e.stopPropagation() para evitar que mas elementos del main usen el evento "click".
     e.stopPropagation()
 }
 
+/**
+ * Descripción: Ahora en la función setCarrito, creo un objeto tipo producto donde creo cada producto que voy a agregar el carrito. A través del querySelector selecciono cada parte del objeto para ingresarlo como valor en cada atributo (El dataset me permite ingresar en el atributo data-id del boton agregar al carrito que ingresé en el html anteriormente). 
+ Luego ejecuto la función eliminarProducto que nos sirve para saber si se eliminó algún producto del carrito y que nos pase el nuevo carrito. 
+ Despues con un if verifico si el producto que voy a agregar está ya creado, si está creado aumento su cantidad en 1, sino se creo nuevo. 
+ Al crear un nuevo objeto ingreso ese objeto en el carrito con un indice que es su id y luego como valor el producto.
+ Luego llamo la funcipon pintarCarrito() y le paso como parámetro el carritoNuevo
+ * @param {object} carritoNuevo: Creo un oobjeto donde se van a ingresar los productos luego de haber comprobado si se eliminaron antes algunos o no.
+ IMPORTANTE:
+ Si en el caso de que no se haya ejecutado el click de eliminar un producto. Cuando yo agreguego un producto nuevo, llamo la función eliminarProducto, y esta función me va a traer el carritoNuevo siempre con los elementos eliminados.
+ */
 let carritoNuevo = {};
 const setCarrito = objeto => {
     const producto = {
@@ -246,8 +296,12 @@ const setCarrito = objeto => {
     pintarCarrito(carritoNuevo);
 }
 
+/**
+ * Descripción: En esta función recibo el carrito y luego itero sobre él para poder ingresar por html los productos dentro de él.
+ * @param {elementNode} productoCarrito: Creo un div donde se van a ingresar los datos de los productos del carrito. Y luego los ingreso en el cuerpo del carrito conncarritoBody.appendChild(productoCarrito);
+ * @param {elementNode} botonEliminar: obtengo de los productos del carrito el boton para eliminar el producto. Y luego ejecuto la función eliminarProducto() y le paso como parámetro el boton para eliminar y el carrito.
+ */
 const pintarCarrito = (carrito) => {
-    // console.log(carrito);
     carritoBody.innerHTML = '';
     Object.values(carrito).forEach(producto => {
         const productoCarrito = document.createElement("div");
@@ -260,7 +314,7 @@ const pintarCarrito = (carrito) => {
          </div>
          <div class="productoCarrito__info">
              <h4 id="prodCarritoNombre" class="productoCarrito__nombre">${producto.nombre}</h4>
-             <span id="prodCarritoPrecio" class="productoCarrito__precio">Precio:${producto.precio}</span>
+             <span id="prodCarritoPrecio" class="productoCarrito__precio">Precio:$${producto.precio}</span>
              <p>Cantidad: ${producto.cantidad}</p>
              <h5>Total: $${producto.precio * producto.cantidad} </h5>
          </div>
@@ -272,16 +326,16 @@ const pintarCarrito = (carrito) => {
     eliminarProducto(botonEliminar,carrito);
 }
 
-
+/**
+ * Descripción: En esta función obtengo el boton para eliminar un producto y tambien el carrito. Dentro de la misma ejecuto un for donde itero sobre el array de todos los botones para pasarles el evento "Click" que hace posible la eliminación del producto. Luego filtro el carrito con los producto que tengan el id distinto al que yo quiero eliminar y luego ejecuto la función pintarCarrito() y le paso el carrito nuevo para que se pinte en el html el carrito sin el producto eliminado.
+ La función me va a retornar el carrito nuevo aunque no elimine un producto, ya que me permite verificar si se ha eliminado o no un producto y le mando el carritoNuevo a la función setProducto() para que este pueda agregar un producto nuevo.
+ */
 const eliminarProducto = (botonEliminar,carrito) => {
     for (const cont of botonEliminar) {
         cont.addEventListener("click",(e) => {
-            let sacarProducto = document.getElementById(`producto${e.target.dataset.id}`);
-            let idSacarProducto = sacarProducto.querySelector('.botonEliminar').dataset.id;
-            carritoNuevo = Object.values(carrito).filter(i => i.id !== idSacarProducto)
+            carritoNuevo = Object.values(carrito).filter(i => i.id !== cont.dataset.id)
             pintarCarrito(carritoNuevo);
         })
     }
     return carritoNuevo;
-
 }
