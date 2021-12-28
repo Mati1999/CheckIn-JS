@@ -1,19 +1,2 @@
-main {
-  padding: 2rem;
-}
-
-.producto {
-  border: 1px solid black;
-  border-radius: 1rem;
-  padding: 1rem;
-  margin: 0.5rem 1rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-}
-.producto img {
-  width: 50%;
-  align-self: center;
-}
-
+@use 'index.scss';
 /*# sourceMappingURL=style.css.map */

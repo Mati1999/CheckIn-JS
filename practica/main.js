@@ -17,12 +17,21 @@
 // }
 
 
-let elDiv = document.getElementById("elDiv");
+// let elDiv = document.getElementById("elDiv");
 
-console.log(elDiv);
-let parrafo = document.createElement("p");
-parrafo.innerHTML = "Parrafo ingresado con JS";
-elDiv.appendChild(parrafo);
+// console.log(elDiv);
+// let parrafo = document.createElement("p");
+// parrafo.innerHTML = "Parrafo ingresado con JS";
+// elDiv.appendChild(parrafo);
 
-let parrafos = document.getElementsByTagName("p");
-elDiv.removeChild(parrafos[3]);
+// let parrafos = document.getElementsByTagName("p");
+// elDiv.removeChild(parrafos[3]);
+
+let form = document.getElementById("form");
+let salida = document.getElementById("salida");
+let mensaje = document.getElementById("mensaje");
+
+form.addEventListener("submit",(e) => {
+    e.preventDefault();
+    salida.innerHTML += ` ${mensaje.value} <br>`
+})

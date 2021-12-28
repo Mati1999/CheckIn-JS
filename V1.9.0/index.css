@@ -1,0 +1,27 @@
+main {
+  padding: 2rem;
+}
+
+.producto {
+  border: 1px solid black;
+  border-radius: 1rem;
+  padding: 1rem;
+  margin: .5rem 1rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+
+.producto img {
+  width: 50%;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+}
+/*# sourceMappingURL=index.css.map */
