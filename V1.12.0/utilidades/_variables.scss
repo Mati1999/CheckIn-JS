@@ -1,0 +1,54 @@
+$fontSize-general: 14px;
+$fontFamily-general: 'Montserrat',
+sans-serif;
+
+// COLORES Y VARIABLES
+$blanco: rgb(255, 255, 255);
+$blancoTransparent: rgba(255, 255, 255, 0.350);
+$negro: rgb(0, 0, 0);
+$grisClaro: rgb(167, 167, 167);
+$grisOscuro: rgba(94, 94, 94, 0);
+$grisOscuroTransparent: rgba(94, 94, 94, 0.49);
+$borderBlanco: 1px solid $blanco;
+$borderNegro: 1px solid $negro;
+
+$transicion: all .3s ease;
+
+
+//PROBANDO COLORES
+$colorPrimario: #4a707a;
+$borderPrimario: 1px solid $colorPrimario;
+$colorPrimarioTransparent: #4a707a7c;
+$colorSecundario: #94B0B7;
+$borderSecundario: 1px solid $colorSecundario;
+$colorSecundarioTransparent: #94b0b77c;
+$colorTerciario: #DDDDDA;
+$borderTerciario: 1px solid $colorTerciario;
+$colorTerciarioTransparent: #DDDDDA7c;
+
+
+
+
+
+// ESTILOS GENERALES
+html {
+    font-size: $fontSize-general;
+    font-family: $fontFamily-general;
+}
+
+// MIXINS
+@mixin medidas ($width, $height) {
+    width: $width;
+    height: $height;
+}
+
+@mixin backgrounds ($position, $size, $repeat) {
+    background-position: $position;
+    background-size: $size;
+    background-repeat: $repeat;
+}
+
+@mixin shadowTranslate ($shadowX, $shadowY, $blur, $color, $trasladoX, $trasladoY) {
+    box-shadow: $shadowX $shadowY $blur $color;
+    transform: translate($trasladoX, $trasladoY);
+}

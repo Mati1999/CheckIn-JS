@@ -1,3 +1,46 @@
-.azul {
-    color: blue;
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.card img {
+    width: 70%;
+    height: 100%;
+}
+
+.card-body {
+    height: 6rem;
+}
+
+.card-body a {
+    background: rgb(55, 204, 55);
+    color: white;
+    border-radius: .5rem;
+}
+
+.carrito {
+    margin-top: .5rem;
+}
+
+.prodAgregado {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: flex-start;
+    border: 1px solid black;
+    border-radius: 1rem;
+    padding: .5rem;
+}
+
+.prodAgregado img {
+    width: 100%;
+}
+
+.eliminarProd {
+    border: none;
+    background: rgb(228, 47, 47);
+    color: white;
+    border-radius: .5rem;
+    width: 50%;
 }

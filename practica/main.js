@@ -1,37 +1,38 @@
-// const cursos = ["PHP","JavaScript","Python","JAVA"];
-// const cursos1 = [
-//     { id: 1,curso: "PHP" },
-//     { id: 2,curso: "JavaScript" },
-//     { id: 3,curso: "Python" },
-//     { id: 4,curso: "JAVA" }
-// ]
+$(function () {
 
-// const guardarLocal = (clave,valor) => { localStorage.setItem(clave,valor) };
+    class Producto {
+        constructor(img,nombre,precio) {
+            this.img = img;
+            this.nombre = nombre;
+            this.precio = precio;
+        }
+    }
 
-// for (const curso of cursos1) {
-//     guardarLocal(curso.id,JSON.stringify(curso))
-// }
+    let producto1 = new Producto("alcohol.jpg",'alcohol',1500);
+    let producto2 = new Producto("carne.jpg",'carne',2000);
+    let producto3 = new Producto("frutas.jpg",'frutas',500);
+    let producto4 = new Producto("jugos.jpg",'jugos',700);
+    let producto5 = new Producto("postres.jpg",'postres',600);
+    let producto6 = new Producto("verduras.jpg",'verduras',400);
 
-// for (let i = 1; i <= cursos1.length; i++) {
-//     console.log(JSON.parse(localStorage.getItem(i.toString())));
-// }
+    let productosLocal = [producto1,producto2,producto3,producto4,producto5,producto6];
+    localStorage.setItem('productos',JSON.stringify(productosLocal));
+
+    let prodContainer = $('#productos');
 
 
-// let elDiv = document.getElementById("elDiv");
 
-// console.log(elDiv);
-// let parrafo = document.createElement("p");
-// parrafo.innerHTML = "Parrafo ingresado con JS";
-// elDiv.appendChild(parrafo);
 
-// let parrafos = document.getElementsByTagName("p");
-// elDiv.removeChild(parrafos[3]);
 
-let form = document.getElementById("form");
-let salida = document.getElementById("salida");
-let mensaje = document.getElementById("mensaje");
 
-form.addEventListener("submit",(e) => {
-    e.preventDefault();
-    salida.innerHTML += ` ${mensaje.value} <br>`
+
+
+
+
+
+
+
+
+
+
 })

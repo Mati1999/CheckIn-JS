@@ -1,33 +1,85 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="style.css">
-    <title>Document</title>
+    <title>Hello, world!</title>
 </head>
 
 <body>
 
-    <!-- <div id="elDiv">
-        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sapiente iure minus, similique sunt non, nostrum
-            accusantium ducimus nisi <a href="">Hola mi amor</a> laboriosam esse ut vitae, laudantium velit voluptate
-            corrupti nobis vel sit aliquam?</p>
-        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sapiente iure minus, similique sunt non, nostrum
-            accusantium <a href="">Te amo</a> ducimus nisi laboriosam esse ut vitae, laudantium velit voluptate corrupti
-            nobis vel sit aliquam?</p>
-        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sapiente iure minus, similique sunt non, nostrum
-            accusantium <input type="button" value="Poto"> ducimus nisi laboriosam esse ut vitae, laudantium velit
-            voluptate corrupti nobis vel sit aliquam?</p>
-    </div> -->
-    <h1>Lista de compra</h1>
-    <form action="" id="form">
-        <input type="text" name="" id="mensaje">
-    </form>
-    <div id="salida"></div>
 
+    <main class="container-fluid">
+        <div id="productos" class="row justify-content-around px-3 pt-3">
+
+            <div class="card col-2">
+                <img src="images/verduras.jpg" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Verduras</h5>
+                    <a href="#" class="btn ">Agregar al carrito</a>
+                </div>
+            </div>
+            <div class="card col-2">
+                <img src="images/carne.jpg" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Card title</h5>
+
+                    <a href="#" class="btn ">Go somewhere</a>
+                </div>
+            </div>
+            <div class="card col-2">
+                <img src="images/frutas.jpg" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Card title</h5>
+
+                    <a href="#" class="btn ">Go somewhere</a>
+                </div>
+            </div>
+            <div class="card col-2">
+                <img src="images/jugos.jpeg" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Card title</h5>
+
+                    <a href="#" class="btn ">Go somewhere</a>
+                </div>
+            </div>
+            <div class="card col-2">
+                <img src="images/alcohol.jpg" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Card title</h5>
+
+                    <a href="#" class="btn ">Go somewhere</a>
+                </div>
+            </div>
+            <div class="card col-2">
+                <img src="images/postres.jpg" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Card title</h5>
+
+                    <a href="#" class="btn ">Go somewhere</a>
+                </div>
+            </div>
+        </div>
+        <div class="row carrito px-3" id="carrito">
+            <div class="prodAgregado col-2">
+                <img src="images/postres.jpg" alt="">
+                <h4>Nombre</h4>
+                <p>Cantidad</p>
+                <span>Precio</span>
+                <input class="eliminarProd" type="button" value="Eliminar">
+            </div>
+        </div>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
+    </script>
     <script src="main.js"></script>
 </body>
 
