@@ -1,0 +1,111 @@
+@import '../utilidades/variables';
+@import 'mediaQueries';
+
+/*   MAIN   */
+.novedadesMain {
+    @include medidas(100%, 100%);
+    background: url(images/bgNovedades.jpg);
+    @include backgrounds(center, cover, no-repeat);
+    display: flex;
+    align-items: center
+}
+
+.novedadesMain__contenedor {
+    @include medidas(100%, 100%);
+    text-align: center;
+    color: $colorPrimario;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    padding: 5rem 0;
+}
+
+
+
+.novedad {
+    height: 20rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+
+    @include miniMobile {
+        height: 15rem;
+    }
+
+
+    &:hover {
+        @include shadowTranslate(5px, 5px, 5px, $colorPrimario, 0, -3px);
+    }
+
+    & a {
+        @include medidas(80%, 2rem);
+        margin-top: 5rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-decoration: none;
+        border: $borderPrimario;
+        border-radius: 1rem;
+        background: $colorTerciario;
+        color: $colorPrimario;
+        font-weight: 700;
+        transition: $transicion;
+
+        @include miniMobile {
+            @include medidas(85%, 1.5rem);
+            margin-top: 2rem;
+        }
+    }
+
+    & a:hover {
+        background: $colorPrimario;
+        color: $colorTerciario;
+    }
+
+    .novedad__titulo {
+        font-weight: 700;
+        font-size: 1.8rem;
+    }
+
+    .novedad__info {
+        font-weight: 500;
+        font-size: 1.3rem;
+    }
+
+    & h3 {
+        margin: 1rem 0;
+        color: $colorTerciario;
+
+        @include miniMobile {
+            font-size: 1rem;
+        }
+    }
+
+    & h4 {
+        font-size: 1.2rem;
+        margin: 0;
+
+        @include miniMobile {
+            font-size: .9rem;
+        }
+    }
+}
+
+@each $novedad in novedad1,
+novedad2,
+novedad3 {
+    .novedad--#{$novedad} {
+        background: url('../../V1.8.0/images/#{$novedad}.jpg');
+        @include backgrounds(center, 100%, no-repeat);
+        transition: $transicion;
+    }
+}
+
+.novedad--novedad1 {
+    background-position: bottom;
+}
+
+.novedad--novedad2 {
+    background-size: cover;
+}

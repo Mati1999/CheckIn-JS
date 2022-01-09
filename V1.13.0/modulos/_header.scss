@@ -1,0 +1,515 @@
+@import '../utilidades/variables';
+@import 'mediaQueries';
+
+
+.header {
+    padding: .5rem 0;
+    position: sticky;
+    top: 0rem;
+    z-index: 1000;
+    background-color: $colorPrimario;
+    box-shadow: 0 5px .5rem $grisOscuroTransparent;
+    height: 100%;
+
+    @include miniMobile {
+        padding: 1rem 0 0 0;
+    }
+
+    a {
+        text-decoration: none;
+        color: $colorTerciario;
+    }
+
+    & .row {
+        width: 100%;
+
+        @include tablet {
+            flex-direction: row-reverse;
+            justify-content: center;
+            align-items: flex-start;
+        }
+    }
+
+}
+
+.header__menu {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 100%;
+    padding-right: 0;
+
+    @include tablet {
+        justify-content: space-around;
+    }
+
+    .header__img {
+        width: 8rem;
+
+        @include miniMobile {
+            margin-left: 1rem;
+        }
+    }
+}
+
+.header__buscador {
+    @include medidas(40%, 2rem);
+    padding: .5rem;
+    border: 1px solid $colorTerciario;
+    border-radius: 1rem;
+    outline: none;
+    transition: $transicion;
+    background: $colorSecundario;
+
+    &:hover,
+    &:focus {
+        border: $borderPrimario;
+        background: $colorTerciario;
+        @include shadowTranslate(5px, 5px, 0, $colorSecundario, 0, -3px);
+    }
+}
+
+.header__buscadorMobile {
+    @extend .header__buscador;
+    @include medidas(80%, 2rem);
+    margin: 0 auto;
+}
+
+.header__botonModal {
+    border: none;
+
+    &:focus {
+        box-shadow: none;
+    }
+
+}
+
+.header__botonSesion {
+    @include medidas(8.5rem, 2rem);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 1.5rem;
+    transition: $transicion;
+    background: $colorPrimario;
+    box-shadow: -23 -23 45 #ffffff, 28 28 50 #0d27502f;
+
+    &:hover {
+        background: $colorTerciario;
+        @include shadowTranslate(5px, 5px, 0, $colorSecundario, 0, -3px);
+    }
+
+    &:hover>input,
+    &:hover>ion-icon {
+        color: $colorPrimario;
+    }
+
+    & ion-icon {
+        @include medidas(1.5rem, 1.5rem);
+        color: $colorTerciario;
+    }
+
+    & input {
+        border: none;
+        outline: none;
+        margin-left: .5rem;
+        background: none;
+        color: $colorTerciario
+    }
+}
+
+.modal-backdrop {
+    @include medidas(100vw, 100vh);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 200;
+    background-color: $colorTerciario;
+}
+
+.header__modal {
+    .modal-dialog {
+        @include medidas(40%, 50%);
+        position: relative;
+        max-width: 100%;
+        margin: 12rem auto;
+        pointer-events: none;
+
+        @include tablet {
+            @include medidas(50%, 30%);
+            max-width: 50%;
+            margin: 15rem auto;
+        }
+
+        @include mobile {
+            @include medidas(80%, 45%);
+        }
+
+        @include miniMobile {
+            max-width: 80%;
+        }
+
+        .modal-content {
+            height: 100%;
+            background: $colorPrimario;
+
+            & form {
+                height: 100%;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                align-items: flex-start;
+
+            }
+
+            & form div {
+                width: 100%;
+                color: $colorTerciario;
+            }
+
+            & form h2 {
+                font-size: 1.5rem;
+                color: $colorTerciario;
+            }
+
+            & form div input {
+                background: $colorPrimario;
+                border: $borderPrimario;
+                color: $colorTerciario;
+                border-radius: 0;
+                padding: 0 0 0 .2rem;
+                height: 2.5rem;
+                width: 100%;
+                border-bottom: $borderTerciario;
+                transition: $transicion;
+
+            }
+
+            & form div input:hover,
+            & form div input:focus {
+                background: $colorTerciario;
+                color: $colorPrimario;
+                box-shadow: none;
+                border: $borderTerciario;
+                border-radius: .2rem;
+
+                &::placeholder {
+                    color: $colorPrimario;
+                }
+            }
+
+            & form div input::placeholder {
+                color: $colorTerciario;
+            }
+
+            & form button {
+                color: $colorTerciario;
+                width: 50%;
+                border: $borderTerciario;
+                border-radius: 1rem;
+                transition: $transicion;
+            }
+
+            & form button:hover {
+                border: $borderTerciario;
+                background: $colorTerciario;
+                color: $colorPrimario;
+            }
+        }
+    }
+}
+
+.header__carrito {
+    @include medidas(2rem, 2rem);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: .2rem;
+    transition: $transicion;
+
+    & a {
+        color: $colorTerciario;
+        transition: $transicion;
+        display: flex;
+        align-items: center;
+    }
+
+    &:hover {
+        background: $colorTerciario;
+        border-radius: .2rem;
+        @include shadowTranslate(5px, 5px, 0, $colorSecundario, 0, -3px);
+    }
+
+    &:hover a {
+        color: $colorPrimario;
+    }
+
+    & ion-icon {
+        @include medidas(1.8rem, 1.8rem);
+    }
+}
+
+.productoCarrito {
+    display: flex;
+    justify-content: center;
+    height: 8rem;
+    background-color: $colorPrimario;
+    border-radius: .5rem;
+    transition: $transicion;
+    margin-bottom: .5rem;
+
+    &:hover {
+        @include shadowTranslate(2px, 2px, 4px, $colorPrimario, 0, -3px);
+    }
+
+    &__imgContainer {
+        @include medidas(30%, 100%);
+        overflow: hidden;
+        padding: .5rem;
+    }
+
+    &__img {
+        @include medidas(100%, 100%);
+        border-radius: .5rem;
+    }
+
+    &__info {
+        @include medidas(70%, 100%);
+        color: $blanco;
+    }
+}
+
+.header__navbar {
+    display: flex;
+    align-items: center;
+
+
+    @include tablet {
+        position: relative;
+        top: 0;
+        margin-top: 1rem
+    }
+
+    & .container-fluid {
+        position: relative;
+    }
+}
+
+.header__toggler {
+    @include medidas(3rem, 100%);
+
+    @include tablet {
+        margin-left: 1rem;
+        background: transparent;
+    }
+
+    @include mobile {
+        margin-left: 1.5rem;
+    }
+
+    &:focus {
+        box-shadow: none;
+    }
+
+    & ion-icon {
+        @include medidas(3rem, 3rem);
+        color: $colorTerciario;
+    }
+}
+
+
+
+.header__collapse {
+    display: flex;
+    justify-content: center;
+    padding-left: 0rem;
+
+    @include tablet {
+        justify-content: flex-start;
+        margin-top: 1rem;
+        background: $colorPrimario;
+        position: absolute;
+        top: 85%;
+        width: 100vw;
+    }
+}
+
+.header__ul {
+    display: flex;
+    justify-content: space-evenly;
+    width: 90%;
+
+    @include tablet {
+        width: 100%;
+
+        & div {
+            padding-left: 1rem;
+        }
+    }
+
+    & .active {
+        font-weight: 700;
+    }
+
+    .nav-item {
+        height: 100%;
+        padding: 0 .8rem;
+        list-style-type: none;
+        position: relative;
+        border: 1px solid transparent;
+        border-radius: 1rem;
+        transition: $transicion;
+
+        @include tablet {
+            border-bottom: none;
+            margin: .5rem 0;
+            padding-left: 1rem;
+        }
+    }
+
+    .nav-item:hover {
+        @include shadowTranslate(5px, 5px, 0, $colorSecundario, 0, -3px);
+        border: $borderSecundario;
+    }
+
+    .nav-item:focus {
+        box-shadow: none;
+        outline: none;
+    }
+
+    .nav-item:nth-child(3):hover {
+        @include shadowTranslate(5px, 5px, 0, $colorSecundario, 0, -3px);
+        border: $borderSecundario;
+        border-bottom: $borderPrimario;
+
+        @include tablet {
+            @include shadowTranslate(0, 0, 0, $colorSecundario, 0, 0);
+            border: none;
+            border-bottom: $borderPrimario;
+        }
+    }
+
+    .nav-link {
+        font-size: 1.3rem;
+        padding: 0;
+        color: $colorTerciario;
+
+
+        .nav-link:hover {
+            color: $colorTerciario;
+        }
+
+        .nav-link:focus {
+            color: $colorTerciario;
+        }
+    }
+
+}
+
+
+
+.header__liCategoria {
+    padding: 0;
+    box-shadow: none;
+    outline: none;
+
+    &:hover>.header__submenu {
+        transform: translate(0, 0);
+        visibility: visible;
+        opacity: 1;
+    }
+}
+
+.header__submenu {
+    display: flex;
+    position: absolute;
+    margin-top: 0rem;
+    top: 2rem;
+    left: -10rem;
+    border: $borderSecundario;
+    background: $colorPrimario;
+    border-radius: .2rem;
+    overflow: hidden;
+    z-index: 20;
+    visibility: hidden;
+    opacity: 0;
+    transform: translate(0, 20%);
+    transition: $transicion;
+
+    @include tablet {
+        display: none;
+    }
+
+    & li {
+        display: flex;
+        align-items: center;
+        background: $colorTerciario;
+        color: $colorPrimario;
+        @include medidas (15rem, 15rem);
+        padding: 1rem .5rem;
+        transition: $transicion;
+    }
+
+    & li:first-child {
+        padding: 1rem .5rem;
+    }
+
+    & li:hover {
+        background: $colorPrimario;
+    }
+
+    .header__imgCategoria {
+        @include medidas(100%, 85%);
+        overflow: hidden;
+
+        & img {
+            @include medidas(100%, 100%);
+            object-fit: cover;
+            border-radius: .3rem;
+        }
+    }
+
+    & li a {
+        @include medidas (100%, 100%);
+        color: $colorPrimario;
+        font-size: 1.3rem;
+        transition: $transicion;
+    }
+
+    & li:hover a {
+        color: $colorTerciario;
+    }
+}
+
+@include tablet {
+    .dropdown-menu {
+        border: none;
+        background: transparent;
+
+        & li {
+            display: flex;
+            align-items: center;
+            background: $colorPrimario;
+            color: $colorTerciario;
+            height: 2.2rem;
+            margin-left: .5rem;
+            border-left: $borderTerciario;
+            padding: 0 .2rem;
+            transition: $transicion;
+        }
+
+        & li a {
+            color: $colorTerciario;
+            transition: $transicion;
+        }
+
+        & li:hover {
+            background: $colorTerciario;
+        }
+
+        & li:hover a {
+            @include shadowTranslate(0, 0, 0, $colorSecundario, 5px, 0);
+            color: $colorPrimario;
+        }
+    }
+}
