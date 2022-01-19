@@ -1,0 +1,481 @@
+[{
+        "id": 1,
+        "categoria": "indumentaria",
+        "imagen": "indumentaria1.jpg",
+        "nombre": "Campera Caterpillar",
+        "descripcion": "Campera comoda, abrigada, perfecta para viajar.",
+        "talles": ["S", "M", "L"],
+        "precio": 40,
+        "oferta": false
+    },
+    {
+        "id": 2,
+        "categoria": "indumentaria",
+        "imagen": "indumentaria2.jpg",
+        "nombre": "Campera Caterpillar",
+        "descripcion": "Campera comoda, abrigada, perfecta para viajar.",
+        "talles": ["S", "M", "L"],
+        "precio": 40,
+        "oferta": false
+    },
+    {
+        "id": 3,
+        "categoria": "indumentaria",
+        "imagen": "indumentaria3.jpg",
+        "nombre": "Remera Caterpillar",
+        "descripcion": "Remera de excelente calidad y material.",
+        "talles": ["S", "M", "L"],
+        "precio": 25,
+        "oferta": false
+    },
+    {
+        "id": 4,
+        "categoria": "indumentaria",
+        "imagen": "indumentaria4.jpg",
+        "nombre": "Campera Caterpillar",
+        "descripcion": "Campera comoda, abrigada, perfecta para viajar.",
+        "talles": ["S", "M", "L"],
+        "precio": 40,
+        "oferta": false
+    },
+    {
+        "id": 5,
+        "categoria": "indumentaria",
+        "imagen": "indumentaria5.jpg",
+        "nombre": "Camisa",
+        "descripcion": "Camisa comoda y fresca para viajar mas cómodo.",
+        "talles": ["S", "M", "L"],
+        "precio": 15,
+        "oferta": true
+    },
+    {
+        "id": 6,
+        "categoria": "indumentaria",
+        "imagen": "indumentaria6.jpg",
+        "nombre": "Camisa",
+        "descripcion": "Camisa comoda y fresca para viajar mas cómodo.",
+        "talles": ["S", "M", "L"],
+        "precio": 15,
+        "oferta": false
+    },
+    {
+        "id": 7,
+        "categoria": "indumentaria",
+        "imagen": "indumentaria7.jpg",
+        "nombre": "Remera",
+        "descripcion": "Remera de excelente calidad y material.",
+        "talles": ["S", "M", "L"],
+        "precio": 10,
+        "oferta": false
+    },
+    {
+        "id": 8,
+        "categoria": "indumentaria",
+        "imagen": "indumentaria8.jpg",
+        "nombre": "Botas",
+        "descripcion": "Botas excelentes para trecking.",
+        "talles": [38, 39, 40, 41],
+        "precio": 20,
+        "oferta": false
+    },
+    {
+        "id": 9,
+        "categoria": "indumentaria",
+        "imagen": "indumentaria9.jpg",
+        "nombre": "Conjunto",
+        "descripcion": "Conjunto perfecto para viajar con el mejor estilo.",
+        "talles": ["S", "M", "L"],
+        "precio": 35,
+        "oferta": true
+    },
+    {
+        "id": 10,
+        "categoria": "indumentaria",
+        "imagen": "indumentaria10.jpg",
+        "nombre": "Campera Caterpillar",
+        "descripcion": "Campera comoda, abrigada, perfecta para viajar.",
+        "talles": ["S", "M", "L"],
+        "precio": 40,
+        "oferta": false
+    },
+    {
+        "id": 11,
+        "categoria": "indumentaria",
+        "imagen": "indumentaria11.jpg",
+        "nombre": "Buzo Caterpillar",
+        "descripcion": "Buzo de exlente calidad, ergonómico y perfecto para viajar.",
+        "talles": ["S", "M", "L"],
+        "precio": 40,
+        "oferta": false
+    },
+    {
+        "id": 12,
+        "categoria": "indumentaria",
+        "imagen": "indumentaria12.jpg",
+        "nombre": "Campera Caterpillar",
+        "descripcion": "Campera comoda, abrigada, perfecta para viajar.",
+        "talles": ["S", "M", "L"],
+        "precio": 40,
+        "oferta": false
+    },
+    {
+        "id": 13,
+        "categoria": "equipaje",
+        "imagen": "equipaje1.jpg",
+        "nombre": "Mochila",
+        "descripcion": "Mochila super liviana, perfecta para guardar todas tus pertenencias.",
+        "talles": [],
+        "precio": 15,
+        "oferta": false
+    },
+    {
+        "id": 14,
+        "categoria": "equipaje",
+        "imagen": "equipaje2.jpg",
+        "nombre": "Maleta",
+        "descripcion": "Maleta de gran tamaño para toda tu ropa.",
+        "talles": [],
+        "precio": 50,
+        "oferta": true
+    },
+    {
+        "id": 15,
+        "categoria": "equipaje",
+        "imagen": "equipaje3.jpg",
+        "nombre": "Maleta",
+        "descripcion": "Maleta de gran tamaño para toda tu ropa.",
+        "talles": [],
+        "precio": 30,
+        "oferta": false
+    },
+    {
+        "id": 16,
+        "categoria": "equipaje",
+        "imagen": "equipaje4.jpg",
+        "nombre": "Mochila",
+        "descripcion": "Mochila super liviana, perfecta para guardar todas tus pertenencias.",
+        "talles": [],
+        "precio": 30,
+        "oferta": true
+    },
+    {
+        "id": 17,
+        "categoria": "equipaje",
+        "imagen": "equipaje5.jpg",
+        "nombre": "Maleta",
+        "descripcion": "Maleta de gran tamaño para toda tu ropa.",
+        "talles": [],
+        "precio": 65,
+        "oferta": false
+    },
+    {
+        "id": 18,
+        "categoria": "equipaje",
+        "imagen": "equipaje6.jpg",
+        "nombre": "Mochila",
+        "descripcion": "Mochila super liviana, perfecta para guardar todas tus pertenencias.",
+        "talles": [],
+        "precio": 35,
+        "oferta": false
+    },
+    {
+        "id": 19,
+        "categoria": "equipaje",
+        "imagen": "equipaje7.jpg",
+        "nombre": "Maleta",
+        "descripcion": "Maleta de gran tamaño para toda tu ropa.",
+        "talles": [],
+        "precio": 45,
+        "oferta": false
+    },
+    {
+        "id": 20,
+        "categoria": "equipaje",
+        "imagen": "equipaje8.jpg",
+        "nombre": "Maleta",
+        "descripcion": "Maleta de gran tamaño para toda tu ropa.",
+        "talles": [],
+        "precio": 90,
+        "oferta": true
+    },
+    {
+        "id": 21,
+        "categoria": "equipaje",
+        "imagen": "equipaje9.jpg",
+        "nombre": "Maleta",
+        "descripcion": "Maleta de gran tamaño para toda tu ropa.",
+        "talles": [],
+        "precio": 50,
+        "oferta": false
+    },
+    {
+        "id": 22,
+        "categoria": "equipaje",
+        "imagen": "equipaje10.jpg",
+        "nombre": "Mochila",
+        "descripcion": "Mochila super liviana, perfecta para guardar todas tus pertenencias.",
+        "talles": [],
+        "precio": 30,
+        "oferta": false
+    },
+    {
+        "id": 23,
+        "categoria": "equipaje",
+        "imagen": "equipaje11.jpg",
+        "nombre": "Maleta",
+        "descripcion": "Maleta de gran tamaño para toda tu ropa.",
+        "talles": [],
+        "precio": 80,
+        "oferta": false
+    },
+    {
+        "id": 24,
+        "categoria": "equipaje",
+        "imagen": "equipaje12.jpg",
+        "nombre": "Maleta",
+        "descripcion": "Maleta de gran tamaño para toda tu ropa.",
+        "talles": [],
+        "precio": 70,
+        "oferta": false
+    },
+    {
+        "id": 25,
+        "categoria": "comodidad",
+        "imagen": "comodidad1.jpg",
+        "nombre": "Almohada para cuello",
+        "descripcion": "Almohada para viajar cómodo a cualquier lugar del mundo.",
+        "talles": [],
+        "precio": 20,
+        "oferta": false
+    },
+    {
+        "id": 26,
+        "categoria": "comodidad",
+        "imagen": "comodidad2.jpg",
+        "nombre": "Porta accesorios",
+        "descripcion": "Porta accesorios excelente para guardar tus documentos y pequeñas pertenencias.",
+        "talles": [],
+        "precio": 70,
+        "oferta": true
+    },
+    {
+        "id": 27,
+        "categoria": "comodidad",
+        "imagen": "comodidad3.jpg",
+        "nombre": "Almohada para cuello",
+        "descripcion": "Almohada para viajar cómodo a cualquier lugar del mundo.",
+        "talles": [],
+        "precio": 20,
+        "oferta": false
+    },
+    {
+        "id": 28,
+        "categoria": "comodidad",
+        "imagen": "comodidad4.jpg",
+        "nombre": "Almohada para cuello",
+        "descripcion": "Almohada para viajar cómodo a cualquier lugar del mundo.",
+        "talles": [],
+        "precio": 20,
+        "oferta": false
+    },
+    {
+        "id": 29,
+        "categoria": "comodidad",
+        "imagen": "comodidad5.jpg",
+        "nombre": "Almohada para cuello",
+        "descripcion": "Almohada para viajar cómodo a cualquier lugar del mundo.",
+        "talles": [],
+        "precio": 20,
+        "oferta": false
+    },
+    {
+        "id": 30,
+        "categoria": "comodidad",
+        "imagen": "comodidad6.jpg",
+        "nombre": "Toalla de alta absorción",
+        "descripcion": "Toalla perfecta para cuando hace calor.",
+        "talles": [],
+        "precio": 10,
+        "oferta": true
+    },
+    {
+        "id": 31,
+        "categoria": "comodidad",
+        "imagen": "comodidad7.jpg",
+        "nombre": "Porta accesorios",
+        "descripcion": "Porta accesorios excelente para guardar tus documentos y pequeñas pertenencias.",
+        "talles": [],
+        "precio": 15,
+        "oferta": false
+    },
+    {
+        "id": 32,
+        "categoria": "comodidad",
+        "imagen": "comodidad8.jpg",
+        "nombre": "Almohada para cuello",
+        "descripcion": "Almohada para viajar cómodo a cualquier lugar del mundo.",
+        "talles": [],
+        "precio": 22,
+        "oferta": false
+    },
+    {
+        "id": 33,
+        "categoria": "comodidad",
+        "imagen": "comodidad9.jpg",
+        "nombre": "Antifaz para dormir",
+        "descripcion": "Antifaz para eliminar la luz molesta y que te permita dormir.",
+        "talles": [],
+        "precio": 3,
+        "oferta": false
+    },
+    {
+        "id": 34,
+        "categoria": "comodidad",
+        "imagen": "comodidad10.jpg",
+        "nombre": "Antifaz para dormir",
+        "descripcion": "Antifaz para eliminar la luz molesta y que te permita dormir.",
+        "talles": [],
+        "precio": 3,
+        "oferta": false
+    },
+    {
+        "id": 35,
+        "categoria": "comodidad",
+        "imagen": "comodidad11.jpg",
+        "nombre": "Almohada para cuello",
+        "descripcion": "Almohada para viajar cómodo a cualquier lugar del mundo.",
+        "talles": [],
+        "precio": 5,
+        "oferta": false
+    },
+    {
+        "id": 36,
+        "categoria": "comodidad",
+        "imagen": "comodidad12.jpg",
+        "nombre": "Almohada para cuello",
+        "descripcion": "Almohada para viajar cómodo a cualquier lugar del mundo.",
+        "talles": [],
+        "precio": 10,
+        "oferta": false
+    },
+    {
+        "id": 37,
+        "categoria": "tecnologia",
+        "imagen": "tecnologia1.jpg",
+        "nombre": "Parlante",
+        "descripcion": "Increíble parlante para escuchar la mejor música con tus seres queridos.",
+        "talles": [],
+        "precio": 60,
+        "oferta": true
+    },
+    {
+        "id": 38,
+        "categoria": "tecnologia",
+        "imagen": "tecnologia2.jpg",
+        "nombre": "Batería portatil",
+        "descripcion": "Bateria portatil para cargar todos tus dispositivos.",
+        "talles": [],
+        "precio": 30,
+        "oferta": true
+    },
+    {
+        "id": 39,
+        "categoria": "tecnologia",
+        "imagen": "tecnologia3.jpg",
+        "nombre": "Batería portatil",
+        "descripcion": "Bateria portatil para cargar todos tus dispositivos.",
+        "talles": [],
+        "precio": 25,
+        "oferta": false
+    },
+    {
+        "id": 40,
+        "categoria": "tecnologia",
+        "imagen": "tecnologia4.jpg",
+        "nombre": "Adaptador para cables",
+        "descripcion": "Adaptador para que tus dispositivos jamás se queden sin batería.",
+        "talles": [],
+        "precio": 10,
+        "oferta": false
+    },
+    {
+        "id": 41,
+        "categoria": "tecnologia",
+        "imagen": "tecnologia5.jpg",
+        "nombre": "Batería portatil",
+        "descripcion": "Bateria portatil para cargar todos tus dispositivos.",
+        "talles": [],
+        "precio": 20,
+        "oferta": false
+    },
+    {
+        "id": 42,
+        "categoria": "tecnologia",
+        "imagen": "tecnologia6.jpg",
+        "nombre": "Adaptador para enchufes",
+        "descripcion": "Adaptador para conectar todos tus aparatos electricos.",
+        "talles": [],
+        "precio": 15,
+        "oferta": false
+    },
+    {
+        "id": 43,
+        "categoria": "tecnologia",
+        "imagen": "tecnologia7.jpg",
+        "nombre": "Adaptador para enchufes",
+        "descripcion": "Adaptador para conectar todos tus aparatos electricos.",
+        "talles": [],
+        "precio": 15,
+        "oferta": false
+    },
+    {
+        "id": 44,
+        "categoria": "tecnologia",
+        "imagen": "tecnologia8.jpg",
+        "nombre": "Bolso porta cables",
+        "descripcion": "Perfecto bolso para guardar todos tus cables y tenerlos ordenados.",
+        "talles": [],
+        "precio": 50,
+        "oferta": true
+    },
+    {
+        "id": 45,
+        "categoria": "tecnologia",
+        "imagen": "tecnologia9.jpg",
+        "nombre": "Cámara",
+        "descripcion": "Cámara de última generación para capturar tus mejores momentos.",
+        "talles": [],
+        "precio": 15,
+        "oferta": false
+    },
+    {
+        "id": 46,
+        "categoria": "tecnologia",
+        "imagen": "tecnologia10.jpg",
+        "nombre": "Auriculares",
+        "descripcion": "Auriculares para escuchar la mejor música.",
+        "talles": [],
+        "precio": 20,
+        "oferta": false
+    },
+    {
+        "id": 47,
+        "categoria": "tecnologia",
+        "imagen": "tecnologia11.jpg",
+        "nombre": "Auriculares",
+        "descripcion": "Auriculares para escuchar la mejor música.",
+        "talles": [],
+        "precio": 30,
+        "oferta": true
+    },
+    {
+        "id": 48,
+        "categoria": "tecnologia",
+        "imagen": "tecnologia12.jpg",
+        "nombre": "Auriculares",
+        "descripcion": "Auriculares para escuchar la mejor música.",
+        "talles": [],
+        "precio": 25,
+        "oferta": false
+    }
+]

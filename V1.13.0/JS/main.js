@@ -86,7 +86,7 @@ $(() => {
      * Descripción: Traigo del localStorage los productos, y guardo el array en una variable.
      */
     let productos = JSON.parse(localStorage.getItem("Productos"));
-
+    console.log(productos);
     /**
      * Descripción: Del array de productos, hago un filtrado de los productos por categoría y los guardo en variables.
      */
