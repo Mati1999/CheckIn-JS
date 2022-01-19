@@ -21,6 +21,10 @@ $(() => {
 
     let productos = [];
 
+    /**
+     * Descripción: Uso del metodo GET para traer los productos de un .json estático (productos.json), para poder usarlos en mi HTML.
+     */
+
     $.get(productosURL,(respuesta,estado) => {
         if (estado === "success") {
             productos = respuesta;
@@ -312,6 +316,11 @@ $(() => {
 
 
     //////////////////////  CONSULTAS CONTACTO  //////////////////////
+
+    /**
+     * Descripción: Uso del método POST para enviar los datos de un formulario para luego mostrar un mensaje de confirmación cuando se envíen los datos.
+     * @param {Object} nuevoMensaje: Objeto donde guardo los datos que el usuario ingresó en el formulario.
+     */
 
     const postContactURL = "https://jsonplaceholder.typicode.com/posts"
 
