@@ -14,6 +14,7 @@
         rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <link href="images/favicon.png" rel="shortcut icon">
     <link rel="stylesheet" href="../style.css">
     <title>Novedades | CheckIn</title>
@@ -30,7 +31,10 @@
                     </h1>
                 </a>
 
-                <input class="header__buscador d-sm-block d-none" type="text">
+                <div class="input-field header__buscadorContainer d-sm-block d-none">
+                    <input type="text" id="autocomplete-input" class="header__buscador autocomplete ">
+                </div>
+
 
                 <div class="header__inicioSesion">
                     <!-- Button trigger modal -->
@@ -320,7 +324,9 @@
         </div>
     </footer>
 
+    <script src="../JS/jquery-3.6.0.min.js"></script>
     <script src="../JS/elements.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script src="../JS/main.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous">

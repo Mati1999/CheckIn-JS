@@ -65,21 +65,44 @@ html {
   }
 }
 
-.header__buscador, .header__buscadorMobile {
+.header__buscadorContainer {
   width: 40%;
   height: 2rem;
-  padding: 0.5rem;
+}
+.header__buscadorContainer .header__buscador, .header__buscadorContainer .header__buscadorMobile {
+  width: 100%;
+  height: 2rem;
   border: 1px solid #DDDDDA;
   border-radius: 1rem;
+  padding: 0.5rem;
   outline: none;
   transition: all 0.3s ease;
   background: #94B0B7;
+  color: white;
 }
-.header__buscador:hover, .header__buscadorMobile:hover, .header__buscador:focus, .header__buscadorMobile:focus {
+.header__buscadorContainer .header__buscador:hover, .header__buscadorContainer .header__buscadorMobile:hover, .header__buscadorContainer .header__buscador:focus, .header__buscadorContainer .header__buscadorMobile:focus {
   border: 1px solid #4a707a;
   background: #DDDDDA;
+  color: black;
   box-shadow: 5px 5px 0 #94B0B7;
   transform: translate(0, -3px);
+}
+.header__buscadorContainer ul {
+  padding: 0;
+  position: relative;
+  z-index: 1000;
+  border-radius: 0.5rem;
+  list-style-type: none;
+  background: #DDDDDA;
+}
+.header__buscadorContainer ul li {
+  padding-left: 1rem;
+  border-radius: 0.5rem;
+  background: transparent;
+  transition: all 0.3s ease;
+}
+.header__buscadorContainer ul li:hover {
+  background: #94B0B7;
 }
 
 .header__buscadorMobile {
@@ -458,7 +481,7 @@ html {
   visibility: hidden;
   opacity: 0;
   transform: translate(0, 20%);
-  transition: all 0.3s ease;
+  transition: all 0.2s ease;
 }
 @media only screen and (max-width: 991px) {
   .header__submenu {

@@ -2,24 +2,23 @@ $(function () {
 
 
 
-    const URLJSON = "data/data.json";
+    const URLJSON = "https://jsonplaceholder.typicode.com/posts";
 
-    const boton = $('#buttonApi');
 
-    let nuevoUsuario = { nombre: "Michi",apellido: "Pichi" };
+    $.ajax({
+        type: 'GET',
+        url: URLJSON,
+        success: function (respuesta) {
 
-    boton.click(() => {
-        $.ajax({
-            url: URLJSON,
-            success: (respuesta) => {
-                for (const item of respuesta) {
-                    $('main').append(`<h2>${item.texto}</h2>
-                        <p>${item.correo}</p>
-                    `)
-                }
+            $('input.autocomplete').autocomplete({
+                data: {
+                    "Apple": null,
+                    "Microsoft": null,
+                    "Google": null
+                },
+            });
 
-            }
-        })
+        }
     })
 
     // const URLJSON = "https://jsonplaceholder.typicode.com/posts";

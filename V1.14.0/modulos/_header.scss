@@ -52,20 +52,48 @@
     }
 }
 
-.header__buscador {
+.header__buscadorContainer {
     @include medidas(40%, 2rem);
-    padding: .5rem;
-    border: 1px solid $colorTerciario;
-    border-radius: 1rem;
-    outline: none;
-    transition: $transicion;
-    background: $colorSecundario;
 
-    &:hover,
-    &:focus {
-        border: $borderPrimario;
+    .header__buscador {
+        @include medidas(100%, 2rem);
+        border: 1px solid $colorTerciario;
+        border-radius: 1rem;
+        padding: .5rem;
+        outline: none;
+        transition: $transicion;
+        background: $colorSecundario;
+
+        color: $blanco;
+
+        &:hover,
+        &:focus {
+            border: $borderPrimario;
+            background: $colorTerciario;
+            color: rgb(0, 0, 0);
+            @include shadowTranslate(5px, 5px, 0, $colorSecundario, 0, -3px);
+        }
+
+    }
+
+    ul {
+        padding: 0;
+        position: relative;
+        z-index: 1000;
+        border-radius: .5rem;
+        list-style-type: none;
         background: $colorTerciario;
-        @include shadowTranslate(5px, 5px, 0, $colorSecundario, 0, -3px);
+
+        li {
+            padding-left: 1rem;
+            border-radius: .5rem;
+            background: transparent;
+            transition: $transicion;
+        }
+
+        li:hover {
+            background: $colorSecundario;
+        }
     }
 }
 
@@ -466,7 +494,7 @@
     visibility: hidden;
     opacity: 0;
     transform: translate(0, 20%);
-    transition: $transicion;
+    transition: all .2s ease;
 
     @include tablet {
         display: none;

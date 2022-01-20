@@ -16,18 +16,42 @@ $(() => {
         }
     }
 
-    const productosURL = "../data/productos.json"
-
-
+    const productosURL = "../data/productos.json";
+    const productosURLIndex = "data/productos.json";
     let productos = [];
 
     /**
      * Descripción: Uso del metodo GET para traer los productos de un .json estático (productos.json), para poder usarlos en mi HTML.
      */
 
+    let formatData = (data) => {
+        let dataFormated = {}
+        data.forEach(item => {
+            dataFormated[item.nombre] = null;
+        })
+        return dataFormated;
+    }
+
     $.get(productosURL,(respuesta,estado) => {
         if (estado === "success") {
             productos = respuesta;
+
+            //////////////////////  BUSCADOR DE PRODUCTOS  //////////////////////
+
+            $.ajax({
+                method: 'GET',
+                url: productosURL,
+                success: function (respuesta) {
+                    let dataFormated = formatData(respuesta);
+                    $('input.autocomplete').autocomplete({
+                        data: dataFormated
+                    });
+                }
+            })
+
+
+
+
 
             /**
              * Descripción: Traigo del localStorage los productos, y guardo el array en una variable.
@@ -289,6 +313,22 @@ $(() => {
         }
     })
 
+    //////////////////////  BUSCADOR DE PRODUCTOS  //////////////////////
+
+    /**
+     * Descripción: En este Ajax uso el método GET para usar los datos de los productos y podes hacer uso del autocomplete de Materializa para hacer una busqueda por nombre de los productos
+     */
+
+    $.ajax({
+        method: 'GET',
+        url: productosURLIndex,
+        success: function (respuesta) {
+            let dataFormated = formatData(respuesta);
+            $('input.autocomplete').autocomplete({
+                data: dataFormated
+            });
+        }
+    })
 
 
     //////////////////////  MENÚ DE NAVEGACIÓN  //////////////////////
