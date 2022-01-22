@@ -403,9 +403,7 @@ $(() => {
              La función me va a retornar el carrito nuevo aunque no elimine un producto, ya que me permite verificar si se ha eliminado o no un producto y le mando el carritoNuevo a la función setProducto() para que este pueda agregar un producto nuevo.
              */
             const eliminarProducto = (botonEliminar,carrito) => {
-                console.log(carrito);
                 $(botonEliminar).click(e => {
-                    Object.values(carrito).forEach(item => console.log(item))
                     carritoNuevo = Object.values(carrito).filter(i => (i.talleID) !== $(botonEliminar).data('id'))
                     pintarCarrito(carritoNuevo);
                 })
