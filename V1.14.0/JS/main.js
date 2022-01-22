@@ -50,7 +50,7 @@ $(() => {
             })
 
 
-
+            //////////////////////  AGREGAR PRODUCTOS AL HTML DE FORMA DINÁMICA A TRAVEZ DE UN JSON ESTÁTICO  //////////////////////
 
 
             /**
@@ -74,86 +74,138 @@ $(() => {
              * @param {elementNode} buttonProdInd: creo un boton donde luego voy a ingresar el contenido del producto. Está creado todo a partir de bootstrap components.
              * @param {elementNode} modalProdInd: creo un div donde voy a ingresar el modal que se muestra luego de hacer click en el boton buttonProdInd.
              */
-            for (let i = 0; i < productosInd.length; i++) {
-                // Creo un boton para ingresar los datos del producto en el html
 
-                contProdInd.append(`
-    <button type='button' class='btn p-0 indexMain__modalProducto mt-3 col-lg-2 mx-lg-4 col-md-3 ms-md-3 col-sm-5 col-5' data-bs-toggle='modal' data-bs-target='#productoIndumentaria${i + 1}'>
-        <div id="${productosInd[i].id}" class="producto">
-            <img src="../images/indumentaria/${productosInd[i].imagen}" alt="producto${i + 1}">
-            <div class="producto__info">
-                <h5>${productosInd[i].nombre}</h5>
-                <span>$${productosInd[i].precio}</span>
-            </div>
-        </div>
-    </button>
-    `);
+            const crearProductos = (contenedorProd,productos) => {
 
+                for (let i = 0; i < productos.length; i++) {
 
-                // A travez del un if ternario me fijo si el producto tiene talle o no, si tiene, muestro el modal con las opciones de talles y sino no lo muestro
-                if (productosInd[i].talles.length > 0) {
+                    // Creo un boton para ingresar los datos del producto en el html
+                    contenedorProd.append(`
+                    <button type='button' class='btn p-0 indexMain__modalProducto mt-3 col-lg-2 mx-lg-4 col-md-3 ms-md-3 col-sm-5 col-5' data-bs-toggle='modal' data-bs-target='#producto_${productos[i].categoria}${i + 1}'>
+                        <div id="${productos[i].id}" class="producto">
+                            <img src="../images/${productos[i].categoria}/${productos[i].imagen}" alt="producto${i + 1}">
+                            <div class="producto__info">
+                                <h5>${productos[i].nombre}</h5>
+                                <span>$${productos[i].precio}</span>
+                            </div>
+                        </div>
+                    </button>
+                    `);
 
-                    contProdInd.append(`
-    <div class='modal fade modalProducto' tabindex='-1' aria-hidden='true' id='productoIndumentaria${i + 1}' aria-labelledby='productoIndumentaria${i + 1}Label'>
-<div class="modal-dialog">
-<div class="modal-content">
-    <div class="card tarjetaModal">
-        <img src="../images/indumentaria/${productosInd[i].imagen}"
-            class="card-img-top tarjetaModal__img" alt="...">
-        <div class="card-body tarjetaModal__info">
-            <h5 class="card-title tarjetaModal__nombre">${productosInd[i].nombre}</h5>
-            <p class="card-text tarjetaModal__description">${productosInd[i].descripcion}
-            </p>
-            <div class="tarjetaModal__talles">
-                <h5>Talle</h5>
-                <div class="tarjetaModal__talle">
-                    <div>
-                        <input type="radio" name="talle" id="small${i + 1}" checked="checked">
-                        <label for="small${i + 1}">${productosInd[i].talles[0]}</label>
-                    </div>
-                    <div>
-                        <input type="radio" name="talle" id="medium${i + 1}">
-                        <label for="medium${i + 1}">${productosInd[i].talles[1]}</label>
-                    </div>
-                    <div>
-                        <input type="radio" name="talle" id="large${i + 1}">
-                        <label for="large${i + 1}">${productosInd[i].talles[2]}</label>
-                    </div>
-                </div>
-            </div>
-            <span class="tarjetaModal__precio">$${productosInd[i].precio}</span>
-            <a id="${i + 1}" class="btn tarjetaModal__boton agregarCarrito" data-id="${i + 1}">Agregar al carrito</a>
-        </div>
-    </div>
-</div>
-</div>
-</div>
-`);
-                } else {
+                    // A travez del un if ternario me fijo si el producto tiene talle o no, si tiene, muestro el modal con las opciones de talles y sino no lo muestro
 
-                    contProdInd.append(`
-    <div class='modal fade modalProducto' tabindex='-1' aria-hidden='true' id='productoIndumentaria${i + 1}' aria-labelledby='productoIndumentaria${i + 1}Label'>
-<div class="modal-dialog">
-    <div class="modal-content">
-        <div class="card tarjetaModal">
-            <img src="../images/indumentaria/${productosInd[i].imagen}"
-                class="card-img-top tarjetaModal__img" alt="...">
-            <div class="card-body tarjetaModal__info">
-                <h5 class="card-title tarjetaModal__nombre">${productosInd[i].nombre}</h5>
-                <p class="card-text tarjetaModal__description">${productosInd[i].descripcion}</p>
-                <span>$${productosInd[i].precio}</span>
-                <a id="${i + 1}" class="btn tarjetaModal__boton agregarCarrito" data-id="${i + 1}>Agregar al carrito</a>
-            </div>
-        </div>
-    </div>
-</div>
-</div>
-`);
+                    if (productos[i].talles.length > 3) {
+
+                        contenedorProd.append(`
+                            <div class='modal fade modalProducto' tabindex='-1' aria-hidden='true' id='producto_${productos[i].categoria}${i + 1}' aria-labelledby='producto_${productos[i].categoria}${i + 1}Label'>
+                        <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="card tarjetaModal">
+                                <img src="../images/${productos[i].categoria}/${productos[i].imagen}"
+                                    class="card-img-top tarjetaModal__img" alt="...">
+                                <div class="card-body tarjetaModal__info">
+                                    <h5 class="card-title tarjetaModal__nombre">${productos[i].nombre}</h5>
+                                    <p class="card-text tarjetaModal__description">${productos[i].descripcion}
+                                    </p>
+                                    <div class="tarjetaModal__talles">
+                                        <h5>Talle</h5>
+                                        <div class="tarjetaModal__talle talleSelectedContainer">
+                                            <div>
+                                                <input class="" type="radio" name="talle" id="small${i + 1}">
+                                                <label for="small${i + 1}">${productos[i].talles[0]}</label>
+                                            </div>
+                                            <div>
+                                                <input class="" type="radio" name="talle" id="medium${i + 1}">
+                                                <label for="medium${i + 1}">${productos[i].talles[1]}</label>
+                                            </div>
+                                            <div>
+                                                <input class="" type="radio" name="talle" id="large${i + 1}">
+                                                <label for="large${i + 1}">${productos[i].talles[2]}</label>
+                                            </div>
+                                            <div>
+                                                <input class="" type="radio" name="talle" id="Xlarge${i + 1}">
+                                                <label for="Xlarge${i + 1}">${productos[i].talles[3]}</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <span class="tarjetaModal__precio">$${productos[i].precio}</span>
+                                    <a id="${i + 1}" class="btn tarjetaModal__boton agregarCarrito" data-id="${i + 1}">Agregar al carrito</a>
+                                </div>
+                            </div>
+                        </div>
+                        </div>
+                        </div>
+                        `);
+
+                    } else if (productos[i].talles.length > 2) {
+
+                        contenedorProd.append(`
+                            <div class='modal fade modalProducto' tabindex='-1' aria-hidden='true' id='producto_${productos[i].categoria}${i + 1}' aria-labelledby='producto_${productos[i].categoria}${i + 1}Label'>
+                        <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="card tarjetaModal">
+                                <img src="../images/${productos[i].categoria}/${productos[i].imagen}"
+                                    class="card-img-top tarjetaModal__img" alt="...">
+                                <div class="card-body tarjetaModal__info">
+                                    <h5 class="card-title tarjetaModal__nombre">${productos[i].nombre}</h5>
+                                    <p class="card-text tarjetaModal__description">${productos[i].descripcion}
+                                    </p>
+                                    <div class="tarjetaModal__talles">
+                                        <h5>Talle</h5>
+                                        <div class="tarjetaModal__talle talleSelectedContainer">
+                                            <div>
+                                                <input class="" type="radio" name="talle" id="small${i + 1}">
+                                                <label for="small${i + 1}">${productos[i].talles[0]}</label>
+                                            </div>
+                                            <div>
+                                                <input class="" type="radio" name="talle" id="medium${i + 1}">
+                                                <label for="medium${i + 1}">${productos[i].talles[1]}</label>
+                                            </div>
+                                            <div>
+                                                <input class="" type="radio" name="talle" id="large${i + 1}">
+                                                <label for="large${i + 1}">${productos[i].talles[2]}</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <span class="tarjetaModal__precio">$${productos[i].precio}</span>
+                                    <a id="${i + 1}" class="btn tarjetaModal__boton agregarCarrito" data-id="${i + 1}">Agregar al carrito</a>
+                                </div>
+                            </div>
+                        </div>
+                        </div>
+                        </div>
+                        `);
+
+                    } else {
+
+                        contenedorProd.append(`
+                            <div class='modal fade modalProducto' tabindex='-1' aria-hidden='true' id='producto_${productos[i].categoria}${i + 1}'                    aria-labelledby='producto_${productos[i].categoria}${i + 1}Label'>
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="card tarjetaModal">
+                                    <img src="../images/${productos[i].categoria}/${productos[i].imagen}"
+                                        class="card-img-top tarjetaModal__img" alt="...">
+                                    <div class="card-body tarjetaModal__info">
+                                        <h5 class="card-title tarjetaModal__nombre">${productos[i].nombre}</h5>
+                                        <p class="card-text tarjetaModal__description">${productos[i].descripcion}</p>
+                                        <span class="tarjetaModal__precio">$${productos[i].precio}</span>
+                                    <a id="${i + 1}" class="btn tarjetaModal__boton agregarCarrito" data-id="${i + 1}">Agregar al carrito</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        </div>
+                        `);
+
+                    }
 
                 }
 
-
             }
+            crearProductos(contProdInd,productosInd)
+            crearProductos(contProdEquip,productosEquip)
+            crearProductos(contProdComod,productosComod)
+            crearProductos(contProdTec,productosTec)
 
             // lo mas vendido en indumentaria
 
@@ -162,9 +214,14 @@ $(() => {
              * @param {array} prodMasVendidoInd: array donde ingreso los productos mas vendidos.
              */
             let prodMasVendidoInd = [];
-
+            let prodMasVendidoEquip = [];
+            let prodMasVendidoComod = [];
+            let prodMasVendidoTec = [];
             for (let i = 0; i < 4; i++) {
                 prodMasVendidoInd.push(productosInd[i]);
+                prodMasVendidoEquip.push(productosEquip[i]);
+                prodMasVendidoComod.push(productosComod[i]);
+                prodMasVendidoTec.push(productosTec[i]);
             }
 
             /**
@@ -172,56 +229,88 @@ $(() => {
              * @param {elementNode} divProdMasVendidoInd: creo un div donde voy a ingresar el contenido de los productos
              * @param {elementNode} divProdMasVendidoIndResponsive: creo un div donde ingreso el contenido de los productos mas vendidos pero para el responsive.
              */
-            for (let i = 0; i < prodMasVendidoInd.length; i++) {
 
+            const crearProdFiltrosYResponsive = (contenedorFiltros,contenedorResponsive,losMasVendidos) => {
 
-                filtroProdInd.append(`
-    <div class='miniProducto'>
-    <button type="button" class="btn p-0 indexMain__modalProducto miniProducto__button"
-    data-bs-toggle="modal" data-bs-target="#productoIndumentaria${i + 1}">
-        <div class="miniProducto__aSelector" href="">
-            <div class="miniProducto__imcContainer">
-                <img class="miniProducto__img" src="../images/indumentaria/${prodMasVendidoInd[i].imagen}"
-                alt="">
-            </div>
-            <div class="miniProducto__info">
-                <h5 class="miniProducto__nombre">${prodMasVendidoInd[i].nombre}</h5>
-                <span class="miniProducto__precio">$${prodMasVendidoInd[i].precio}</span>
-            </div>
-        </div>
-    </button>
-    </div>
-    `);
+                for (let i = 0; i < losMasVendidos.length; i++) {
 
-                filtroProdIndResponsive.append(`
-    <div class='miniProducto'>
-    <button type="button" class="btn p-0 indexMain__modalProducto miniProducto__button"
-    data-bs-toggle="modal" data-bs-target="#productoIndumentaria${i + 1}">
-    <div class="miniProducto__aSelector" href="">
-        <div class="miniProducto__imcContainer">
-            <img class="miniProducto__img" src="../images/indumentaria/${prodMasVendidoInd[i].imagen}"
-                alt="">
-        </div>
-        <div class="miniProducto__info">
-            <h5 class="miniProducto__nombre">${prodMasVendidoInd[i].nombre}</h5>
-            <span class="miniProducto__precio">$${prodMasVendidoInd[i].precio}</span>
-        </div>
-    </div>
-</button>
-</div>
-    `);
+                    contenedorFiltros.append(`
+                        <div class='miniProducto'>
+                        <button type="button" class="btn p-0 indexMain__modalProducto miniProducto__button"
+                        data-bs-toggle="modal" data-bs-target="#producto_${losMasVendidos[i].categoria}${i + 1}">
+                        <div class="miniProducto__aSelector" href="">
+                        <div class="miniProducto__imcContainer">
+                            <img class="miniProducto__img" src="../images/${losMasVendidos[i].categoria}/${losMasVendidos[i].imagen}"
+                            alt="">
+                        </div>
+                        <div class="miniProducto__info">
+                            <h5 class="miniProducto__nombre">${losMasVendidos[i].nombre}</h5>
+                            <span class="miniProducto__precio">$${losMasVendidos[i].precio}</span>
+                        </div>
+                        </div>
+                        </button>
+                        </div>
+                        `);
+
+                    contenedorResponsive.append(`
+                        <div class='miniProducto'>
+                        <button type="button" class="btn p-0 indexMain__modalProducto miniProducto__button"
+                        data-bs-toggle="modal" data-bs-target="#producto_${losMasVendidos[i].categoria}${i + 1}">
+                        <div class="miniProducto__aSelector" href="">
+                        <div class="miniProducto__imcContainer">
+                        <img class="miniProducto__img" src="../images/${losMasVendidos[i].categoria}/${losMasVendidos[i].imagen}"
+                            alt="">
+                        </div>
+                        <div class="miniProducto__info">
+                        <h5 class="miniProducto__nombre">${losMasVendidos[i].nombre}</h5>
+                        <span class="miniProducto__precio">$${losMasVendidos[i].precio}</span>
+                        </div>
+                        </div>
+                        </button>
+                        </div>
+                        `);
+                }
+
             }
+            crearProdFiltrosYResponsive(filtroProdInd,filtroProdIndResponsive,prodMasVendidoInd);
+            crearProdFiltrosYResponsive(filtroProdEquip,filtroProdEquipResponsive,prodMasVendidoEquip);
+            crearProdFiltrosYResponsive(filtroProdComod,filtroProdComodResponsive,prodMasVendidoComod);
+            crearProdFiltrosYResponsive(filtroProdTec,filtroProdTecResponsive,prodMasVendidoTec);
+
+
 
             // CARRITO DE COMPRA
+            const talleSelectedContainer = $('.talleSelectedContainer');
+            let talleElegido;
+            talleSelectedContainer.each((ind,element) => {
+                $(element).find('div').each((indice,item) => {
+                    $(item).find('input').click(e => {
+                        $(element).find('div').each((indice,item) => {
+                            $(item).find('input').removeClass('elegido')
+                        })
+                        if ($(e.target).attr('class') === '') {
+                            talleElegido = $(e.target).siblings().text();
+                            $(e.target).addClass('elegido');
+                        }
+                    })
+                });
+            })
 
             /**
              * Descipción: A contProdInd le coloco el evento click para que cuando se haga click en el boton "Agregar producto", se agregue el producto en el carrito.
              * @param {object} carrito: Creo un objeto donde voy a agregar los productos en el carrito.
              */
             let carrito = {};
-            contProdInd.click(e => {
-                agregarAlCarrito(e);
-            })
+            const clicAgregarCarrito = (contenedor) => {
+                contenedor.click(e => {
+                    agregarAlCarrito(e);
+                })
+            }
+            clicAgregarCarrito(contProdInd);
+            clicAgregarCarrito(contProdEquip);
+            clicAgregarCarrito(contProdComod);
+            clicAgregarCarrito(contProdTec);
+
 
             /**
              * Descripción: En esta funcion obtengo el evento "e" del click pero con un if selecciono solo cuando hago click en el elemento que tenga la clase "agregarCarrito", luego le paso a la función setCarrito(el padre del padre del boton "Agregar al carrito") ya que luego voy a poder obtener la imagen, y toda la info del producto.
@@ -240,7 +329,7 @@ $(() => {
              Despues con un if verifico si el producto que voy a agregar está ya creado, si está creado aumento su cantidad en 1, sino se creo nuevo. 
              Al crear un nuevo objeto ingreso ese objeto en el carrito con un indice que es su id y luego como valor el producto.
              Luego llamo la funcipon pintarCarrito() y le paso como parámetro el carritoNuevo
-             * @param {object} carritoNuevo: Creo un oobjeto donde se van a ingresar los productos luego de haber comprobado si se eliminaron antes algunos o no.
+             * @param {object} carritoNuevo: Creo un objeto donde se van a ingresar los productos luego de haber comprobado si se eliminaron antes algunos o no.
              IMPORTANTE:
              Si en el caso de que no se haya ejecutado el click de eliminar un producto. Cuando yo agreguego un producto nuevo, llamo la función eliminarProducto, y esta función me va a traer el carritoNuevo siempre con los elementos eliminados.
              */
@@ -250,16 +339,18 @@ $(() => {
                     id: $(objeto).find('div').find('a').data('id'),
                     imagen: $(objeto).find('img').attr("src"),
                     nombre: $(objeto).find('div').find('.tarjetaModal__nombre').text(),
+                    talle: $(objeto).find('div').find('div').find('div').find('div>input.elegido').siblings().text(),
+                    talleID: $(objeto).find('div').find('div').find('div').find('div>input.elegido').attr('id'),
                     precio: $(objeto).find('div').find('span').text().slice(1),
                     cantidad: 1
                 }
 
                 eliminarProducto([],carrito);
-                if (carritoNuevo.hasOwnProperty(producto.id)) {
-                    producto.cantidad = carritoNuevo[producto.id].cantidad + 1;
+                if (carritoNuevo.hasOwnProperty(producto.id + producto.talleID)) {
+                    producto.cantidad = carritoNuevo[producto.id + producto.talleID].cantidad + 1;
                 }
 
-                carritoNuevo[producto.id] = { ...producto }
+                carritoNuevo[producto.id + producto.talleID] = { ...producto }
                 pintarCarrito(carritoNuevo);
             }
 
@@ -281,14 +372,25 @@ $(() => {
                 <div class="productoCarrito__info">
                     <h4 id="prodCarritoNombre" class="productoCarrito__nombre">${producto.nombre}</h4>
                     <span id="prodCarritoPrecio" class="productoCarrito__precio">Precio:$${producto.precio}</span>
+                    <span id="prodCarritoTalle" class="productoCarrito__talle">Talle: ${producto.talle}</span>
                     <p>Cantidad: ${producto.cantidad}</p>
                     <h5>Total: $${producto.precio * producto.cantidad} </h5>
                 </div>
-                <input type="button" class="botonEliminar" id="eliminarProducto" value="X" data-id="${producto.id}">
+                <input type="button" class="botonEliminar" id="eliminarProducto" value="X" data-id="${producto.talleID}">
          </div>
         `);
 
                 })
+
+                let total = 0;
+                Object.values(carritoNuevo).forEach(item => {
+                    total += parseInt(item.precio * item.cantidad);
+                })
+                totalCarrito.html(`
+                    $${total}
+                `)
+
+
                 const botonEliminar = $(".botonEliminar");
 
                 botonEliminar.each(function (ind,element) {
@@ -301,9 +403,10 @@ $(() => {
              La función me va a retornar el carrito nuevo aunque no elimine un producto, ya que me permite verificar si se ha eliminado o no un producto y le mando el carritoNuevo a la función setProducto() para que este pueda agregar un producto nuevo.
              */
             const eliminarProducto = (botonEliminar,carrito) => {
-
+                console.log(carrito);
                 $(botonEliminar).click(e => {
-                    carritoNuevo = Object.values(carrito).filter(i => i.id !== $(botonEliminar).data('id'))
+                    Object.values(carrito).forEach(item => console.log(item))
+                    carritoNuevo = Object.values(carrito).filter(i => (i.talleID) !== $(botonEliminar).data('id'))
                     pintarCarrito(carritoNuevo);
                 })
 
