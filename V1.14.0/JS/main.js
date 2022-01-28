@@ -1,5 +1,6 @@
 $(() => {
 
+
     /**
      * Descripción: Creo la clase Producto donde me permite crear todos los productos necesarios para mi web.
      */
@@ -16,7 +17,7 @@ $(() => {
         }
     }
 
-    const productosURL = "../data/productos.json";
+    const productosURL = "data/productos.json";
     const productosURLIndex = "data/productos.json";
     let productos = [];
 
@@ -36,6 +37,7 @@ $(() => {
         if (estado === "success") {
             productos = respuesta;
 
+
             //////////////////////  BUSCADOR DE PRODUCTOS  //////////////////////
 
             $.ajax({
@@ -46,7 +48,42 @@ $(() => {
                     $('input.autocomplete').autocomplete({
                         data: dataFormated
                     });
+
                 }
+            })
+            let nombreProductoBuscador;
+            let cantidadProdBuscados;
+            $('#autocomplete-input').keypress((e) => {
+                if (e.which === 13) {
+                    nombreProductoBuscador = e.target.value;
+                    cantidadProdBuscados = productos.filter(prod => prod.nombre === nombreProductoBuscador);
+                    let categoriaProdBuscador = cantidadProdBuscados[0].categoria;
+                    if (cantidadProdBuscados.length >= 1) {
+                        console.log(categoriaProdBuscador);
+                        switch (categoriaProdBuscador) {
+                            case "indumentaria":
+                                linkIndumentaria[0].click();
+                                break;
+                            case "equipaje":
+                                linkEquipaje[0].click();
+                                break;
+                            case "comodidad":
+                                linkComodidad[0].click();
+                                break;
+                            case "tecnologia":
+                                linkTecnologia[0].click();
+                                break;
+                            default:
+                                break;
+                        }
+                    }
+                }
+                $("document").ready(() => {
+                    setTimeout(() => {
+                        $(`${nombreProductoBuscador}`)[0].click();
+                        console.log($(`${nombreProductoBuscador}`));
+                    },1000);
+                })
             })
 
 
@@ -65,15 +102,10 @@ $(() => {
             let productosEquip = productos.filter(prod => prod.categoria === "equipaje");
             let productosComod = productos.filter(prod => prod.categoria === "comodidad");
             let productosTec = productos.filter(prod => prod.categoria === "tecnologia");
-
+            let productosOferta = productos.filter(prod => prod.oferta === true);
+            let productosMasVendidos = productos.filter(prod => prod.masVendido === true);
 
             // INDUMENTARIA
-
-            /**
-             * Descripción: En este for creo los productos que se van a incertar dentro del main de indumentaria, consumiendo del localStorage los productos y mostrándolos
-             * @param {elementNode} buttonProdInd: creo un boton donde luego voy a ingresar el contenido del producto. Está creado todo a partir de bootstrap components.
-             * @param {elementNode} modalProdInd: creo un div donde voy a ingresar el modal que se muestra luego de hacer click en el boton buttonProdInd.
-             */
 
             const crearProductos = (contenedorProd,productos) => {
 
@@ -81,9 +113,9 @@ $(() => {
 
                     // Creo un boton para ingresar los datos del producto en el html
                     contenedorProd.append(`
-                    <button type='button' class='btn p-0 indexMain__modalProducto mt-3 col-lg-2 mx-lg-4 col-md-3 ms-md-3 col-sm-5 col-5' data-bs-toggle='modal' data-bs-target='#producto_${productos[i].categoria}${i + 1}'>
+                    <button type='button' id="${productos[i].nombre}" class='btn p-0 indexMain__modalProducto my-3 mx-1 col-lg-2 col-md-3 col-sm-5 col-5' data-bs-toggle='modal' data-bs-target='#producto_${productos[i].categoria}${i + 1}'>
                         <div id="${productos[i].id}" class="producto">
-                            <img src="../images/${productos[i].categoria}/${productos[i].imagen}" alt="producto${i + 1}">
+                            <img src="images/${productos[i].categoria}/${productos[i].imagen}.jpg" alt="producto${i + 1}">
                             <div class="producto__info">
                                 <h5>${productos[i].nombre}</h5>
                                 <span>$${productos[i].precio}</span>
@@ -101,7 +133,7 @@ $(() => {
                         <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="card tarjetaModal">
-                                <img src="../images/${productos[i].categoria}/${productos[i].imagen}"
+                                <img src="images/${productos[i].categoria}/${productos[i].imagen}.jpg"
                                     class="card-img-top tarjetaModal__img" alt="...">
                                 <div class="card-body tarjetaModal__info">
                                     <h5 class="card-title tarjetaModal__nombre">${productos[i].nombre}</h5>
@@ -144,7 +176,7 @@ $(() => {
                         <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="card tarjetaModal">
-                                <img src="../images/${productos[i].categoria}/${productos[i].imagen}"
+                                <img src="images/${productos[i].categoria}/${productos[i].imagen}.jpg"
                                     class="card-img-top tarjetaModal__img" alt="...">
                                 <div class="card-body tarjetaModal__info">
                                     <h5 class="card-title tarjetaModal__nombre">${productos[i].nombre}</h5>
@@ -183,7 +215,7 @@ $(() => {
                         <div class="modal-dialog">
                             <div class="modal-content">
                                 <div class="card tarjetaModal">
-                                    <img src="../images/${productos[i].categoria}/${productos[i].imagen}"
+                                    <img src="images/${productos[i].categoria}/${productos[i].imagen}.jpg"
                                         class="card-img-top tarjetaModal__img" alt="...">
                                     <div class="card-body tarjetaModal__info">
                                         <h5 class="card-title tarjetaModal__nombre">${productos[i].nombre}</h5>
@@ -207,76 +239,147 @@ $(() => {
             crearProductos(contProdComod,productosComod)
             crearProductos(contProdTec,productosTec)
 
-            // lo mas vendido en indumentaria
+            // CREACIÓN DE PRODUCTOS DE LA SECCIÓN DE LO MAS VENDIDO Y OFERTAS
 
-            /**
-             * Descripción: Ahora creo otro for para poder ingresar en el main de indumentaria en la parte izquierda-inferior, lo productos mas vendidos tambien consumiendolos desde el localStorage
-             * @param {array} prodMasVendidoInd: array donde ingreso los productos mas vendidos.
-             */
-            let prodMasVendidoInd = [];
-            let prodMasVendidoEquip = [];
-            let prodMasVendidoComod = [];
-            let prodMasVendidoTec = [];
-            for (let i = 0; i < 4; i++) {
-                prodMasVendidoInd.push(productosInd[i]);
-                prodMasVendidoEquip.push(productosEquip[i]);
-                prodMasVendidoComod.push(productosComod[i]);
-                prodMasVendidoTec.push(productosTec[i]);
-            }
+            const crearProductosMasVendYOfert = (contenedorProd,productos) => {
 
-            /**
-             * Descripción: En este for itero sobre los prodMasVendidoInd para poder ingresarlos en el html.
-             * @param {elementNode} divProdMasVendidoInd: creo un div donde voy a ingresar el contenido de los productos
-             * @param {elementNode} divProdMasVendidoIndResponsive: creo un div donde ingreso el contenido de los productos mas vendidos pero para el responsive.
-             */
+                if (productos == productosOferta) {
+                    productos.map(prod => prod.precio -= (prod.precio * 0.2));
+                }
 
-            const crearProdFiltrosYResponsive = (contenedorFiltros,contenedorResponsive,losMasVendidos) => {
+                for (let i = 0; i < productos.length; i++) {
+                    // Creo un boton para ingresar los datos del producto en el html
 
-                for (let i = 0; i < losMasVendidos.length; i++) {
-
-                    contenedorFiltros.append(`
-                        <div class='miniProducto'>
-                        <button type="button" class="btn p-0 indexMain__modalProducto miniProducto__button"
-                        data-bs-toggle="modal" data-bs-target="#producto_${losMasVendidos[i].categoria}${i + 1}">
-                        <div class="miniProducto__aSelector" href="">
-                        <div class="miniProducto__imcContainer">
-                            <img class="miniProducto__img" src="../images/${losMasVendidos[i].categoria}/${losMasVendidos[i].imagen}"
-                            alt="">
+                    contenedorProd.append(`
+                    <button type="button"
+                    class="btn p-0 loMasVendidoMain__modalProducto my-3 mx-1 col-lg-2 col-md-3 col-sm-5 col-5"
+                    data-bs-toggle="modal" data-bs-target="#producto_${productos[i].categoria}${i + 1}">
+                    <div id="${productos[i].id}" class="producto producto--destacado">
+                        <div class="producto__numeroTop">
+                            <span>#${i + 1}</span>
                         </div>
-                        <div class="miniProducto__info">
-                            <h5 class="miniProducto__nombre">${losMasVendidos[i].nombre}</h5>
-                            <span class="miniProducto__precio">$${losMasVendidos[i].precio}</span>
+                        <img src="images/${productos[i].categoria}/${productos[i].imagen}.jpg" alt="Indumentaria">
+                        <div class="producto__info">
+                            <h5>${productos[i].nombre}</h5>
+                            <span>$${productos[i].precio}</span>
+                        </div>
+                    </div>
+                </button>
+                    `);
+
+                    // A travez del un if ternario me fijo si el producto tiene talle o no, si tiene, muestro el modal con las opciones de talles y sino no lo muestro
+
+                    if (productos[i].talles.length > 3) {
+
+                        contenedorProd.append(`
+                                <div class='modal fade modalProducto' tabindex='-1' aria-hidden='true' id='producto_${productos[i].categoria}${i + 1}' aria-labelledby='producto_${productos[i].categoria}${i + 1}Label'>
+                            <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="card tarjetaModal">
+                                    <img src="images/${productos[i].categoria}/${productos[i].imagen}.jpg"
+                                        class="card-img-top tarjetaModal__img" alt="...">
+                                    <div class="card-body tarjetaModal__info">
+                                        <h5 class="card-title tarjetaModal__nombre">${productos[i].nombre}</h5>
+                                        <p class="card-text tarjetaModal__description">${productos[i].descripcion}
+                                        </p>
+                                        <div class="tarjetaModal__talles">
+                                            <h5>Talle</h5>
+                                            <div class="tarjetaModal__talle talleSelectedContainer">
+                                                <div>
+                                                    <input class="" type="radio" name="talle" id="small${i + 1}">
+                                                    <label for="small${i + 1}">${productos[i].talles[0]}</label>
+                                                </div>
+                                                <div>
+                                                    <input class="" type="radio" name="talle" id="medium${i + 1}">
+                                                    <label for="medium${i + 1}">${productos[i].talles[1]}</label>
+                                                </div>
+                                                <div>
+                                                    <input class="" type="radio" name="talle" id="large${i + 1}">
+                                                    <label for="large${i + 1}">${productos[i].talles[2]}</label>
+                                                </div>
+                                                <div>
+                                                    <input class="" type="radio" name="talle" id="Xlarge${i + 1}">
+                                                    <label for="Xlarge${i + 1}">${productos[i].talles[3]}</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <span class="tarjetaModal__precio">$${productos[i].precio}</span>
+                                        <a id="${i + 1}" class="btn tarjetaModal__boton agregarCarrito" data-id="${i + 1}">Agregar al carrito</a>
+                                    </div>
+                                </div>
+                            </div>
+                            </div>
+                            </div>
+                        `);
+
+                    } else if (productos[i].talles.length > 2) {
+
+                        contenedorProd.append(`
+                            <div class='modal fade modalProducto' tabindex='-1' aria-hidden='true' id='producto_${productos[i].categoria}${i + 1}' aria-labelledby='producto_${productos[i].categoria}${i + 1}Label'>
+                        <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="card tarjetaModal">
+                                <img src="images/${productos[i].categoria}/${productos[i].imagen}.jpg"
+                                    class="card-img-top tarjetaModal__img" alt="...">
+                                <div class="card-body tarjetaModal__info">
+                                    <h5 class="card-title tarjetaModal__nombre">${productos[i].nombre}</h5>
+                                    <p class="card-text tarjetaModal__description">${productos[i].descripcion}
+                                    </p>
+                                    <div class="tarjetaModal__talles">
+                                        <h5>Talle</h5>
+                                        <div class="tarjetaModal__talle talleSelectedContainer">
+                                            <div>
+                                                <input class="" type="radio" name="talle" id="small${i + 1}">
+                                                <label for="small${i + 1}">${productos[i].talles[0]}</label>
+                                            </div>
+                                            <div>
+                                                <input class="" type="radio" name="talle" id="medium${i + 1}">
+                                                <label for="medium${i + 1}">${productos[i].talles[1]}</label>
+                                            </div>
+                                            <div>
+                                                <input class="" type="radio" name="talle" id="large${i + 1}">
+                                                <label for="large${i + 1}">${productos[i].talles[2]}</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <span class="tarjetaModal__precio">$${productos[i].precio}</span>
+                                    <a id="${i + 1}" class="btn tarjetaModal__boton agregarCarrito" data-id="${i + 1}">Agregar al carrito</a>
+                                </div>
+                            </div>
                         </div>
                         </div>
-                        </button>
                         </div>
                         `);
 
-                    contenedorResponsive.append(`
-                        <div class='miniProducto'>
-                        <button type="button" class="btn p-0 indexMain__modalProducto miniProducto__button"
-                        data-bs-toggle="modal" data-bs-target="#producto_${losMasVendidos[i].categoria}${i + 1}">
-                        <div class="miniProducto__aSelector" href="">
-                        <div class="miniProducto__imcContainer">
-                        <img class="miniProducto__img" src="../images/${losMasVendidos[i].categoria}/${losMasVendidos[i].imagen}"
-                            alt="">
+                    } else {
+
+                        contenedorProd.append(`
+                            <div class='modal fade modalProducto' tabindex='-1' aria-hidden='true' id='producto_${productos[i].categoria}${i + 1}' aria-labelledby='producto_${productos[i].categoria}${i + 1}Label'>
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="card tarjetaModal">
+                                    <img src="images/${productos[i].categoria}/${productos[i].imagen}.jpg"
+                                        class="card-img-top tarjetaModal__img" alt="...">
+                                    <div class="card-body tarjetaModal__info">
+                                        <h5 class="card-title tarjetaModal__nombre">${productos[i].nombre}</h5>
+                                        <p class="card-text tarjetaModal__description">${productos[i].descripcion}</p>
+                                        <span class="tarjetaModal__precio">$${productos[i].precio}</span>
+                                    <a id="${i + 1}" class="btn tarjetaModal__boton agregarCarrito" data-id="${i + 1}">Agregar al carrito</a>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <div class="miniProducto__info">
-                        <h5 class="miniProducto__nombre">${losMasVendidos[i].nombre}</h5>
-                        <span class="miniProducto__precio">$${losMasVendidos[i].precio}</span>
-                        </div>
-                        </div>
-                        </button>
                         </div>
                         `);
+
+                    }
+
                 }
 
             }
-            crearProdFiltrosYResponsive(filtroProdInd,filtroProdIndResponsive,prodMasVendidoInd);
-            crearProdFiltrosYResponsive(filtroProdEquip,filtroProdEquipResponsive,prodMasVendidoEquip);
-            crearProdFiltrosYResponsive(filtroProdComod,filtroProdComodResponsive,prodMasVendidoComod);
-            crearProdFiltrosYResponsive(filtroProdTec,filtroProdTecResponsive,prodMasVendidoTec);
 
+            crearProductosMasVendYOfert(contProdMasVendido,productosMasVendidos);
+            crearProductosMasVendYOfert(contProdOferta,productosOferta);
 
 
             // CARRITO DE COMPRA
@@ -296,22 +399,24 @@ $(() => {
                 });
             })
 
+
+
             /**
              * Descipción: A contProdInd le coloco el evento click para que cuando se haga click en el boton "Agregar producto", se agregue el producto en el carrito.
              * @param {object} carrito: Creo un objeto donde voy a agregar los productos en el carrito.
              */
             let carrito = {};
-            const clicAgregarCarrito = (contenedor) => {
+            const clickAgregarCarrito = (contenedor) => {
                 contenedor.click(e => {
                     agregarAlCarrito(e);
                 })
             }
-            clicAgregarCarrito(contProdInd);
-            clicAgregarCarrito(contProdEquip);
-            clicAgregarCarrito(contProdComod);
-            clicAgregarCarrito(contProdTec);
-
-
+            clickAgregarCarrito(contProdInd);
+            clickAgregarCarrito(contProdEquip);
+            clickAgregarCarrito(contProdComod);
+            clickAgregarCarrito(contProdTec);
+            clickAgregarCarrito(contProdMasVendido);
+            clickAgregarCarrito(contProdOferta);
             /**
              * Descripción: En esta funcion obtengo el evento "e" del click pero con un if selecciono solo cuando hago click en el elemento que tenga la clase "agregarCarrito", luego le paso a la función setCarrito(el padre del padre del boton "Agregar al carrito") ya que luego voy a poder obtener la imagen, y toda la info del producto.
              */
@@ -333,8 +438,19 @@ $(() => {
              IMPORTANTE:
              Si en el caso de que no se haya ejecutado el click de eliminar un producto. Cuando yo agreguego un producto nuevo, llamo la función eliminarProducto, y esta función me va a traer el carritoNuevo siempre con los elementos eliminados.
              */
-            let carritoNuevo = {};
+            let carritoNuevo = JSON.parse(localStorage.getItem('carrito'));
             const setCarrito = objeto => {
+                localStorage.setItem('carrito',JSON.stringify(carritoNuevo));
+                if (localStorage.getItem('compra') == 'true') {
+                    let carritoDespuesDeComprar = {};
+                    localStorage.setItem('carrito',JSON.stringify(carritoDespuesDeComprar));
+                    carritoNuevo = JSON.parse(localStorage.getItem('carrito'));
+                    localStorage.setItem('compra',false);
+                } else {
+                    localStorage.setItem('carrito',JSON.stringify(carritoNuevo));
+                    carritoNuevo = JSON.parse(localStorage.getItem('carrito'));
+                }
+
                 const producto = {
                     id: $(objeto).find('div').find('a').data('id'),
                     imagen: $(objeto).find('img').attr("src"),
@@ -345,12 +461,18 @@ $(() => {
                     cantidad: 1
                 }
 
-                eliminarProducto([],carrito);
-                if (carritoNuevo.hasOwnProperty(producto.id + producto.talleID)) {
-                    producto.cantidad = carritoNuevo[producto.id + producto.talleID].cantidad + 1;
+                if (producto.talleID == undefined) {
+                    producto.talleID = producto.id
                 }
 
-                carritoNuevo[producto.id + producto.talleID] = { ...producto }
+                eliminarProducto(carritoNuevo,carrito);
+                if (carritoNuevo.hasOwnProperty(producto.id + producto.talleID + producto.imagen)) {
+                    producto.cantidad = carritoNuevo[producto.id + producto.talleID + producto.imagen].cantidad + 1;
+                }
+
+                carritoNuevo[producto.id + producto.talleID + producto.imagen] = { ...producto };
+
+                localStorage.setItem('carrito',JSON.stringify(carritoNuevo));
                 pintarCarrito(carritoNuevo);
             }
 
@@ -363,7 +485,8 @@ $(() => {
                 carritoBody.text(``);
                 Object.values(carrito).forEach(producto => {
 
-                    carritoBody.append(`
+                    if (producto.talle == "") {
+                        carritoBody.append(`
             <div class='productoCarrito' id='producto${producto.id}'>
                 <div class="productoCarrito__imgContainer">
                     <img id="prodCarritoImg" src="${producto.imagen}" alt=""
@@ -372,13 +495,32 @@ $(() => {
                 <div class="productoCarrito__info">
                     <h4 id="prodCarritoNombre" class="productoCarrito__nombre">${producto.nombre}</h4>
                     <span id="prodCarritoPrecio" class="productoCarrito__precio">Precio:$${producto.precio}</span>
-                    <span id="prodCarritoTalle" class="productoCarrito__talle">Talle: ${producto.talle}</span>
                     <p>Cantidad: ${producto.cantidad}</p>
                     <h5>Total: $${producto.precio * producto.cantidad} </h5>
                 </div>
-                <input type="button" class="botonEliminar" id="eliminarProducto" value="X" data-id="${producto.talleID}">
+                <input type="button" class="botonEliminar" id="eliminarProducto" value="X" data-id="${producto.talleID + producto.imagen}">
          </div>
         `);
+                    } else {
+                        carritoBody.append(`
+                <div class='productoCarrito' id='producto${producto.id}'>
+                    <div class="productoCarrito__imgContainer">
+                        <img id="prodCarritoImg" src="${producto.imagen}" alt=""
+                        class="productoCarrito__img">
+                    </div>
+                    <div class="productoCarrito__info">
+                        <h4 id="prodCarritoNombre" class="productoCarrito__nombre">${producto.nombre}</h4>
+                        <span id="prodCarritoPrecio" class="productoCarrito__precio">Precio:$${producto.precio}</span>
+                        <span id="prodCarritoTalle" class="productoCarrito__talle">Talle: ${producto.talle}</span>
+                        <p>Cantidad: ${producto.cantidad}</p>
+                        <h5>Total: $${producto.precio * producto.cantidad} </h5>
+                    </div>
+                    <input type="button" class="botonEliminar" id="eliminarProducto" value="X" data-id="${producto.talleID + producto.imagen}">
+             </div>
+            `);
+                    }
+
+
 
                 })
 
@@ -389,6 +531,9 @@ $(() => {
                 totalCarrito.html(`
                     $${total}
                 `)
+                const obtenerTotal = () => {
+                    return total;
+                }
 
 
                 const botonEliminar = $(".botonEliminar");
@@ -396,7 +541,9 @@ $(() => {
                 botonEliminar.each(function (ind,element) {
                     eliminarProducto(element,carrito);
                 })
+
             }
+
 
             /**
              * Descripción: En esta función obtengo el boton para eliminar un producto y tambien el carrito. Dentro de la misma ejecuto un for donde itero sobre el array de todos los botones para pasarles el evento "Click" que hace posible la eliminación del producto. Luego filtro el carrito con los producto que tengan el id distinto al que yo quiero eliminar y luego ejecuto la función pintarCarrito() y le paso el carrito nuevo para que se pinte en el html el carrito sin el producto eliminado.
@@ -404,17 +551,373 @@ $(() => {
              */
             const eliminarProducto = (botonEliminar,carrito) => {
                 $(botonEliminar).click(e => {
-                    carritoNuevo = Object.values(carrito).filter(i => (i.talleID) !== $(botonEliminar).data('id'))
-                    pintarCarrito(carritoNuevo);
+                    console.log(carritoNuevo);
+                    carritoNuevo = Object.values(carrito).filter(i => (i.talleID + i.imagen) !== ($(botonEliminar).data('id')));
+                    if (Object.keys(carritoNuevo).length == 0 || carritoNuevo.length == 0) {
+                        carritoNuevo = {};
+                        localStorage.setItem('carrito',JSON.stringify(carritoNuevo));
+                        pintarCarrito(carritoNuevo);
+                    } else {
+                        localStorage.setItem('carrito',JSON.stringify(carritoNuevo));
+                        pintarCarrito(carritoNuevo);
+                    }
                 })
 
                 return carritoNuevo;
             }
 
+            if (Object.keys(JSON.parse(localStorage.getItem('carrito'))).length != 0) {
+
+                pintarCarrito(JSON.parse(localStorage.getItem('carrito')));
+            }
+
         }
+
     })
 
-    //////////////////////  BUSCADOR DE PRODUCTOS  //////////////////////
+
+    //////////////////////  INDEX  //////////////////////
+
+
+
+
+
+    // CREACIÓN DE PRODUCTOS PARA EL INDEX
+
+    $.get(productosURLIndex,(respuesta,estado) => {
+        if (estado === "success") {
+            productos = respuesta;
+        }
+
+
+        let productosInd = productos.filter(prod => prod.categoria === "indumentaria");
+        let productosOferta = productos.filter(prod => prod.oferta === true);
+        let productosMasVendidos = productos.filter(prod => prod.masVendido === true);
+
+        const crearProductosIndex = (contenedorProd,productos) => {
+
+
+            if (productos == productosOferta) {
+                productos.map(prod => prod.precio -= (prod.precio * 0.2));
+            }
+
+            for (let i = 0; i < 5; i++) {
+                // Creo un boton para ingresar los datos del producto en el html
+                contenedorProd.append(`
+            <button type="button"
+            class="btn p-0 loMasVendidoMain__modalProducto my-3 mx-1 col-lg-2 col-md-3 col-sm-5 col-5"
+            data-bs-toggle="modal" data-bs-target="#producto_${productos[i].categoria}${productos[i].id}${i + 1}">
+            <div id="${productos[i].id}" class="producto producto--destacado">
+                <div class="producto__numeroTop">
+                    <span>#${i + 1}</span>
+                </div>
+                <img src="images/${productos[i].categoria}/${productos[i].imagen}.jpg" alt="Indumentaria">
+                <div class="producto__info">
+                    <h5>${productos[i].nombre}</h5>
+                    <span>$${productos[i].precio}</span>
+                </div>
+            </div>
+        </button>
+            `);
+
+                // A travez del un if ternario me fijo si el producto tiene talle o no, si tiene, muestro el modal con las opciones de talles y sino no lo muestro
+
+                if (productos[i].talles.length > 3) {
+
+                    contenedorProd.append(`
+                        <div class='modal fade modalProducto' tabindex='-1' aria-hidden='true' id='producto_${productos[i].categoria}${productos[i].id}${i + 1}' aria-labelledby='producto_${productos[i].categoria}${productos[i].id}${i + 1}Label'>
+                    <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="card tarjetaModal">
+                            <img src="images/${productos[i].categoria}/${productos[i].imagen}.jpg"
+                                class="card-img-top tarjetaModal__img" alt="...">
+                            <div class="card-body tarjetaModal__info">
+                                <h5 class="card-title tarjetaModal__nombre">${productos[i].nombre}</h5>
+                                <p class="card-text tarjetaModal__description">${productos[i].descripcion}
+                                </p>
+                                <div class="tarjetaModal__talles">
+                                    <h5>Talle</h5>
+                                    <div class="tarjetaModal__talle talleSelectedContainer">
+                                        <div>
+                                            <input class="" type="radio" name="talle" id="small${i + 1}">
+                                            <label for="small${i + 1}">${productos[i].talles[0]}</label>
+                                        </div>
+                                        <div>
+                                            <input class="" type="radio" name="talle" id="medium${i + 1}">
+                                            <label for="medium${i + 1}">${productos[i].talles[1]}</label>
+                                        </div>
+                                        <div>
+                                            <input class="" type="radio" name="talle" id="large${i + 1}">
+                                            <label for="large${i + 1}">${productos[i].talles[2]}</label>
+                                        </div>
+                                        <div>
+                                            <input class="" type="radio" name="talle" id="Xlarge${i + 1}">
+                                            <label for="Xlarge${i + 1}">${productos[i].talles[3]}</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <span class="tarjetaModal__precio">$${productos[i].precio}</span>
+                                <a id="${i + 1}" class="btn tarjetaModal__boton agregarCarrito" data-id="${i + 1}">Agregar al carrito</a>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+                    </div>
+                `);
+
+                } else if (productos[i].talles.length > 2) {
+
+                    contenedorProd.append(`
+                    <div class='modal fade modalProducto' tabindex='-1' aria-hidden='true' id='producto_${productos[i].categoria}${productos[i].id}${i + 1}' aria-labelledby='producto_${productos[i].categoria}${productos[i].id}${i + 1}Label'>
+                <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="card tarjetaModal">
+                        <img src="images/${productos[i].categoria}/${productos[i].imagen}.jpg"
+                            class="card-img-top tarjetaModal__img" alt="...">
+                        <div class="card-body tarjetaModal__info">
+                            <h5 class="card-title tarjetaModal__nombre">${productos[i].nombre}</h5>
+                            <p class="card-text tarjetaModal__description">${productos[i].descripcion}
+                            </p>
+                            <div class="tarjetaModal__talles">
+                                <h5>Talle</h5>
+                                <div class="tarjetaModal__talle talleSelectedContainer">
+                                    <div>
+                                        <input class="" type="radio" name="talle" id="small${i + 1}">
+                                        <label for="small${i + 1}">${productos[i].talles[0]}</label>
+                                    </div>
+                                    <div>
+                                        <input class="" type="radio" name="talle" id="medium${i + 1}">
+                                        <label for="medium${i + 1}">${productos[i].talles[1]}</label>
+                                    </div>
+                                    <div>
+                                        <input class="" type="radio" name="talle" id="large${i + 1}">
+                                        <label for="large${i + 1}">${productos[i].talles[2]}</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <span class="tarjetaModal__precio">$${productos[i].precio}</span>
+                            <a id="${i + 1}" class="btn tarjetaModal__boton agregarCarrito" data-id="${i + 1}">Agregar al carrito</a>
+                        </div>
+                    </div>
+                </div>
+                </div>
+                </div>
+                `);
+
+                } else {
+
+                    contenedorProd.append(`
+                    <div class='modal fade modalProducto' tabindex='-1' aria-hidden='true' id='producto_${productos[i].categoria}${productos[i].id}${i + 1}' aria-labelledby='producto_${productos[i].categoria}${productos[i].id}${i + 1}Label'>
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="card tarjetaModal">
+                            <img src="images/${productos[i].categoria}/${productos[i].imagen}.jpg"
+                                class="card-img-top tarjetaModal__img" alt="...">
+                            <div class="card-body tarjetaModal__info">
+                                <h5 class="card-title tarjetaModal__nombre">${productos[i].nombre}</h5>
+                                <p class="card-text tarjetaModal__description">${productos[i].descripcion}</p>
+                                <span class="tarjetaModal__precio">$${productos[i].precio}</span>
+                            <a id="${i + 1}" class="btn tarjetaModal__boton agregarCarrito" data-id="${i + 1}">Agregar al carrito</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </div>
+                `);
+
+                }
+
+            }
+
+        }
+        crearProductosIndex(contProdIndexOferta,productosOferta);
+        crearProductosIndex(contProdIndexInd,productosInd);
+        crearProductosIndex(contProdIndexMasVendido,productosMasVendidos);
+
+
+        //////////////////////  CARRITO DE COMPRA  //////////////////////
+
+        const talleSelectedContainer = $('.talleSelectedContainer');
+        let talleElegido;
+        talleSelectedContainer.each((ind,element) => {
+            $(element).find('div').each((indice,item) => {
+                $(item).find('input').click(e => {
+                    $(element).find('div').each((indice,item) => {
+                        $(item).find('input').removeClass('elegido')
+                    })
+                    if ($(e.target).attr('class') === '') {
+                        talleElegido = $(e.target).siblings().text();
+                        $(e.target).addClass('elegido');
+                    }
+                })
+            });
+        })
+
+        /**
+         * Descipción: A contProdInd le coloco el evento click para que cuando se haga click en el boton "Agregar producto", se agregue el producto en el carrito.
+         * @param {object} carrito: Creo un objeto donde voy a agregar los productos en el carrito.
+         */
+        let carrito = {};
+        const clickAgregarCarrito = (contenedor) => {
+            contenedor.click(e => {
+                agregarAlCarrito(e);
+            })
+        }
+        clickAgregarCarrito(contProdIndexOferta);
+        clickAgregarCarrito(contProdIndexInd);;
+        clickAgregarCarrito(contProdIndexMasVendido);
+        /**
+         * Descripción: En esta funcion obtengo el evento "e" del click pero con un if selecciono solo cuando hago click en el elemento que tenga la clase "agregarCarrito", luego le paso a la función setCarrito(el padre del padre del boton "Agregar al carrito") ya que luego voy a poder obtener la imagen, y toda la info del producto.
+         */
+        const agregarAlCarrito = e => {
+            if (e.target.classList.contains('agregarCarrito')) {
+                setCarrito(e.target.parentElement.parentElement)
+            }
+            //uso el e.stopPropagation() para evitar que mas elementos del main usen el evento "click".
+            e.stopPropagation()
+        }
+
+        /**
+         * Descripción: Ahora en la función setCarrito, creo un objeto tipo producto donde creo cada producto que voy a agregar el carrito. A través del querySelector selecciono cada parte del objeto para ingresarlo como valor en cada atributo (El dataset me permite ingresar en el atributo data-id del boton agregar al carrito que ingresé en el html anteriormente). 
+         Luego ejecuto la función eliminarProducto que nos sirve para saber si se eliminó algún producto del carrito y que nos pase el nuevo carrito. 
+         Despues con un if verifico si el producto que voy a agregar está ya creado, si está creado aumento su cantidad en 1, sino se creo nuevo. 
+         Al crear un nuevo objeto ingreso ese objeto en el carrito con un indice que es su id y luego como valor el producto.
+         Luego llamo la funcipon pintarCarrito() y le paso como parámetro el carritoNuevo
+         * @param {object} carritoNuevo: Creo un objeto donde se van a ingresar los productos luego de haber comprobado si se eliminaron antes algunos o no.
+         IMPORTANTE:
+         Si en el caso de que no se haya ejecutado el click de eliminar un producto. Cuando yo agreguego un producto nuevo, llamo la función eliminarProducto, y esta función me va a traer el carritoNuevo siempre con los elementos eliminados.
+         */
+        let carritoNuevo = JSON.parse(localStorage.getItem('carrito'));
+        const setCarrito = objeto => {
+            localStorage.setItem('carrito',JSON.stringify(carritoNuevo));
+            if (localStorage.getItem('compra') == 'true') {
+                let carritoDespuesDeComprar = {};
+                localStorage.setItem('carrito',JSON.stringify(carritoDespuesDeComprar));
+                carritoNuevo = JSON.parse(localStorage.getItem('carrito'));
+                localStorage.setItem('compra',false);
+            } else {
+                localStorage.setItem('carrito',JSON.stringify(carritoNuevo));
+                carritoNuevo = JSON.parse(localStorage.getItem('carrito'));
+            }
+
+            const producto = {
+                id: $(objeto).find('div').find('a').data('id'),
+                imagen: $(objeto).find('img').attr("src"),
+                nombre: $(objeto).find('div').find('.tarjetaModal__nombre').text(),
+                talle: $(objeto).find('div').find('div').find('div').find('div>input.elegido').siblings().text(),
+                talleID: $(objeto).find('div').find('div').find('div').find('div>input.elegido').attr('id'),
+                precio: $(objeto).find('div').find('span').text().slice(1),
+                cantidad: 1
+            }
+
+            if (producto.talleID == undefined) {
+                producto.talleID = producto.id
+            }
+
+            eliminarProducto(carritoNuevo,carrito);
+            if (carritoNuevo.hasOwnProperty(producto.id + producto.talleID + producto.imagen)) {
+                producto.cantidad = carritoNuevo[producto.id + producto.talleID + producto.imagen].cantidad + 1;
+            }
+
+            carritoNuevo[producto.id + producto.talleID + producto.imagen] = { ...producto };
+            localStorage.setItem('carrito',JSON.stringify(carritoNuevo));
+            pintarCarrito(carritoNuevo);
+        }
+
+        /**
+         * Descripción: En esta función recibo el carrito y luego itero sobre él para poder ingresar por html los productos dentro de él.
+         * @param {elementNode} productoCarrito: Creo un div donde se van a ingresar los datos de los productos del carrito. Y luego los ingreso en el cuerpo del carrito conncarritoBody.appendChild(productoCarrito);
+         * @param {elementNode} botonEliminar: obtengo de los productos del carrito el boton para eliminar el producto. Y luego ejecuto la función eliminarProducto() y le paso como parámetro el boton para eliminar y el carrito.
+         */
+        const pintarCarrito = (carrito) => {
+            carritoBody.text(``);
+            Object.values(carrito).forEach(producto => {
+
+                if (producto.talle == "") {
+                    carritoBody.append(`
+<div class='productoCarrito' id='producto${producto.id}'>
+    <div class="productoCarrito__imgContainer">
+        <img id="prodCarritoImg" src="${producto.imagen}" alt=""
+        class="productoCarrito__img">
+    </div>
+    <div class="productoCarrito__info">
+        <h4 id="prodCarritoNombre" class="productoCarrito__nombre">${producto.nombre}</h4>
+        <span id="prodCarritoPrecio" class="productoCarrito__precio">Precio:$${producto.precio}</span>
+        <p>Cantidad: ${producto.cantidad}</p>
+        <h5>Total: $${producto.precio * producto.cantidad} </h5>
+    </div>
+    <input type="button" class="botonEliminar" id="eliminarProducto" value="X" data-id="${producto.talleID + producto.imagen}">
+</div>
+`);
+                } else {
+                    carritoBody.append(`
+    <div class='productoCarrito' id='producto${producto.id}'>
+        <div class="productoCarrito__imgContainer">
+            <img id="prodCarritoImg" src="${producto.imagen}" alt=""
+            class="productoCarrito__img">
+        </div>
+        <div class="productoCarrito__info">
+            <h4 id="prodCarritoNombre" class="productoCarrito__nombre">${producto.nombre}</h4>
+            <span id="prodCarritoPrecio" class="productoCarrito__precio">Precio:$${producto.precio}</span>
+            <span id="prodCarritoTalle" class="productoCarrito__talle">Talle: ${producto.talle}</span>
+            <p>Cantidad: ${producto.cantidad}</p>
+            <h5>Total: $${producto.precio * producto.cantidad} </h5>
+        </div>
+        <input type="button" class="botonEliminar" id="eliminarProducto" value="X" data-id="${producto.talleID + producto.imagen}">
+ </div>
+`);
+                }
+
+
+
+            })
+
+            let total = 0;
+            Object.values(carritoNuevo).forEach(item => {
+                total += parseInt(item.precio * item.cantidad);
+            })
+            totalCarrito.html(`
+        $${total}
+    `)
+
+
+            const botonEliminar = $(".botonEliminar");
+
+            botonEliminar.each(function (ind,element) {
+                eliminarProducto(element,carrito);
+            })
+
+
+        }
+
+        /**
+         * Descripción: En esta función obtengo el boton para eliminar un producto y tambien el carrito. Dentro de la misma ejecuto un for donde itero sobre el array de todos los botones para pasarles el evento "Click" que hace posible la eliminación del producto. Luego filtro el carrito con los producto que tengan el id distinto al que yo quiero eliminar y luego ejecuto la función pintarCarrito() y le paso el carrito nuevo para que se pinte en el html el carrito sin el producto eliminado.
+         La función me va a retornar el carrito nuevo aunque no elimine un producto, ya que me permite verificar si se ha eliminado o no un producto y le mando el carritoNuevo a la función setProducto() para que este pueda agregar un producto nuevo.
+         */
+        const eliminarProducto = (botonEliminar,carrito) => {
+            $(botonEliminar).click(e => {
+                console.log(carritoNuevo);
+                carritoNuevo = Object.values(carrito).filter(i => (i.talleID + i.imagen) !== ($(botonEliminar).data('id')));
+                if (Object.keys(carritoNuevo).length == 0 || carritoNuevo.length == 0) {
+                    carritoNuevo = {};
+                    localStorage.setItem('carrito',JSON.stringify(carritoNuevo));
+                    pintarCarrito(carritoNuevo);
+                } else {
+                    localStorage.setItem('carrito',JSON.stringify(carritoNuevo));
+                    pintarCarrito(carritoNuevo);
+                }
+            })
+
+            return carritoNuevo;
+        }
+        if (Object.keys(JSON.parse(localStorage.getItem('carrito'))).length != 0) {
+            pintarCarrito(JSON.parse(localStorage.getItem('carrito')));
+        }
+
+    })
+
+
+    //////////////////////  BUSCADOR DE PRODUCTOS PARA EL INDEX  //////////////////////
 
     /**
      * Descripción: En este Ajax uso el método GET para usar los datos de los productos y podes hacer uso del autocomplete de Materializa para hacer una busqueda por nombre de los productos
@@ -430,73 +933,5 @@ $(() => {
             });
         }
     })
-
-
-    //////////////////////  MENÚ DE NAVEGACIÓN  //////////////////////
-
-    menuButton.click(() => {
-        if (menu.attr('class') === 'menu oculto') {
-            menu.removeClass('oculto')
-        } else {
-            menu.addClass('oculto')
-        }
-    })
-
-    liCategoria.click(() => {
-        let contenido = listCategoria.prop("scrollHeight");
-        liCategoria.toggleClass('open');
-        if (liCategoria.attr('class') === "menu__link open") {
-            listCategoria.css('max-height',contenido);
-            listCategoria.addClass('listCategoria--mostrar');
-        } else {
-            listCategoria.removeAttr('style');
-            listCategoria.removeClass('listCategoria--mostrar');
-        }
-    })
-
-
-
-    //////////////////////  CONSULTAS CONTACTO  //////////////////////
-
-    /**
-     * Descripción: Uso del método POST para enviar los datos de un formulario para luego mostrar un mensaje de confirmación cuando se envíen los datos.
-     * @param {Object} nuevoMensaje: Objeto donde guardo los datos que el usuario ingresó en el formulario.
-     */
-
-    const postContactURL = "https://jsonplaceholder.typicode.com/posts"
-
-
-    buttonSendContact.click((e) => {
-        e.preventDefault();
-        let nuevoMensaje = {
-            nombreUsuario: userName.val(),
-            apellidoUsuario: userLastName.val(),
-            emailUsuario: userEmail.val(),
-            mensajeUsuario: mensaje.val()
-        }
-        $.ajax({
-            method: "POST",
-            url: postContactURL,
-            data: nuevoMensaje,
-            success: function (respuesta) {
-                $('#contactoMain').append(`
-                <div id="msjSuccess" class="msjSuccess">
-                    <h4>¡Hemos recibido tu consulta!</h4>
-                    <p>Te responderemos a la brevedad</p>
-                </div>
-                `)
-                $('#msjSuccess').fadeIn(300).delay(3000).fadeOut(300);
-                setTimeout(() => {
-                    $('#msjSuccess').remove()
-                    userName.val(""),
-                        userLastName.val(""),
-                        userEmail.val(""),
-                        mensaje.val("")
-                },3600);
-            }
-        })
-    })
-
-
 
 });

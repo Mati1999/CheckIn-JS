@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Ponte en contacto con nosotros para obtener un mejor asesoramiento. Comprá en CheckIn y disfruta de tus aventuras.">
+    <meta name="keywords" content="CheckIn, viaje, contacto, información, atención-al-cliente, equipaje, tecnología">
+    <link href="https://fonts.googleapis.com/css2?family=Bellota+Text:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bellota+Text:wght@700&family=Montserrat&display=swap"
+        rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+    <link href="images/favicon.png" rel="shortcut icon">
+    <title>Contacto | CheckIn</title>
+</head>
+
+<body>
+
+    <header class="header container-fluid">
+        <div class="row justify-content-between justify-content-sm-between align-items-start p-0 m-0">
+            <!-- Imagen del logo -->
+            <div class="header__menu col-lg-12 col-9">
+                <a href="index.html">
+                    <h1>
+                        <img class="header__img" src="images/checkinSF.png" alt="">
+                    </h1>
+                </a>
+
+                <div class="input-field header__buscadorContainer d-sm-block d-none">
+                    <input type="text" id="autocomplete-input" class="header__buscador autocomplete ">
+                </div>
+
+
+                <div class="header__inicioSesion">
+                    <!-- Button trigger modal -->
+                    <button id="btnModalInicioSesion" type="button" class="btn p-0 header__botonModal">
+                        <div class="header__botonSesion d-none d-lg-flex">
+                            <ion-icon name="person-outline"></ion-icon>
+                            <input id="btnNombreInicioSesion" type="button" value="Inicia Sesión">
+                        </div>
+                    </button>
+                    <div class="btnCerrarSesion ocultarCerrarSesion" id="btnCerrarSesion">
+                        <button>Cerrar Sesión</button>
+                    </div>
+                </div>
+
+                <div class="header__carrito" id="carritoCompra">
+                    <a>
+                        <ion-icon name="cart-outline"></ion-icon>
+                    </a>
+                </div>
+
+                <button id="menuButton" type="button" class="nav-toggler">
+                    <span></span>
+                </button>
+            </div>
+            <!-- Acá empieza el menú de navegación -->
+
+            <input class="header__buscadorMobile d-sm-none col-12 my-2" type="text">
+        </div>
+    </header>
+
+    <!-- Modal -->
+    <form class="formInicioSesion ocultarTarjeta" id="formInicioSesion">
+        <h2>BIENVENIDO A CheckIn</h2>
+        <div class="">
+            <input type="text" id="usuarioInicioSesion" placeholder="Nombre de usuario">
+        </div>
+        <div class="">
+            <input type="email" id="emailInicioSesion" placeholder="Correo electrónico">
+            <div id="emailHelp">Nosotros jamás compartiremos tu mail con nadie.</div>
+        </div>
+        <div class="">
+            <input type="password" id="passwordInicioSesion" placeholder="Contraseña">
+        </div>
+        <button id="btnInicioSesion" type="submit" class="btn">Iniciar Sesión</button>
+    </form>
+
+
+    <div id="carritoGeneral" class="carritoGeneral oculto">
+        <div class="carritoGeneral__header">
+            <h5 class="offcanvas-title" id="carritoDesplegableLabel">MI CARRITO</h5>
+            <div class="totalCarrito">
+                <span>Total:</span><span id="totalCarrito" class="totalCarrito"></span>
+            </div>
+            <button id="cerrarCarrito" class="cerrarCarrito" type="button">
+                <ion-icon name="add-outline"></ion-icon>
+            </button>
+        </div>
+        <div id="carritoBody" class="header__cuerpoCarrito offcanvas-body">
+
+
+        </div>
+        <input class="btnComprar" type="button" value="COMPRAR">
+    </div>
+
+    <div id="menu" class="menu oculto">
+
+        <ul class="menu__list">
+            <li class="menu__link"><a href="index.html">Inicio</a></li>
+            <li id="linkCategoria" class="menu__link">Categorias</li>
+            <ul id="listaCategoria" class="menu__subLista">
+                <li class="menu__subListaLink"><a id="linkIndumentaria" href="Indumentaria.html">Indumentaria</a>
+                </li>
+                <li class="menu__subListaLink"><a id="linkEquipaje" href="equipaje.html">Equipaje</a></li>
+                <li class="menu__subListaLink"><a id="linkComodidad" href="comodidad.html">Comodidad</a>
+                </li>
+                <li class="menu__subListaLink"><a id="linkTecnologia" href="tecnologia.html">Tecnología</a>
+                </li>
+            </ul>
+            <li class="menu__link"><a href="Novedades.html">Novedades</a></li>
+            <li class="menu__link"><a href="LoMasVendido.html">Lo mas vendido</a></li>
+            <li class="menu__link"><a href="Ofertas.html">Ofertas</a></li>
+            <li class="menu__link"><a href="Contacto.html">Contacto</a></li>
+        </ul>
+
+    </div>
+
+    <main id="contactoMain" class="contactoMain">
+        <!-- MAIN PERSONALIZADO PARA ESTA SECCIÓN -->
+
+        <section class="contactoMain__contenedor">
+
+            <h3 class="contactoMain__titulo">Dejanos tu consulta</h3>
+            <form id="formContacto" class="form" action="">
+                <input id="userName" class="form__Nombre" type="text" name="nombre" placeholder="Nombre">
+                <input id="userLastName" class="form__Apellido" type="text" name="apellido" placeholder="Apellido">
+                <input id="userEmail" class="form__Email" type="email" name="email" placeholder="Correo electrónico"
+                    required>
+                <textarea class="form__mensaje" name="mensaje" id="mensaje" cols="50" rows="8"
+                    placeholder="Mensaje"></textarea>
+                <div class="form__Buttons">
+                    <input id="buttonSendContact" class="form__submit" type="submit" value="Enviar">
+                </div>
+            </form>
+        </section>
+
+
+
+    </main>
+
+
+    <footer class="footer">
+        <div class="container-fluid">
+            <div class="row footer__row justify-content-around">
+                <div class="footer__menus col-lg-2 col-md-3 col-sm-6 col-12">
+                    <a href="index.html">
+                        <h5>Inicio</h5>
+                    </a>
+                    <a href="Novedades.html">
+                        <h5>Novedades</h5>
+                    </a>
+                    <a href="LoMasVendido.html">
+                        <h5>Lo más vendido</h5>
+                    </a>
+                    <a href="Ofertas.html">
+                        <h5>Ofertas</h5>
+                    </a>
+                    <a href="Contacto.html">
+                        <h5>Contacto</h5>
+                    </a>
+                </div>
+                <div class="footer__datos col-lg-2 col-md-3 col-sm-6 col-12">
+                    <p>Tel:1-800-000-000</p>
+                    <p>Email:checkin@gmail.com</p>
+                </div>
+                <div class="footer__enviosYPreguntas col-lg-2 col-md-3 col-sm-4 col-12">
+                    <a href="">
+                        <h5>Envíos y Devoluciones</h5>
+                    </a>
+                    <a href="">
+                        <h5>Preguntas Frecuentes</h5>
+                    </a>
+                </div>
+
+                <div class="footer__redes col-lg-1 col-md-3 col-sm-4 col-12">
+                    <div>
+                        <a href="">
+                            <ion-icon name="logo-facebook"></ion-icon>
+                        </a>
+                    </div>
+                    <div>
+                        <a href="">
+                            <ion-icon name="logo-instagram"></ion-icon>
+                        </a>
+                    </div>
+                    <div>
+                        <a href="">
+                            <ion-icon name="logo-twitter"></ion-icon>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="JS/jquery-3.6.0.min.js"></script>
+    <script src="JS/elements.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="JS/verificacionDeEstados.js"></script>
+
+    <script src="JS/main.js"></script>
+    <script src="JS/menuDeNavegacion.js"></script>
+    <script src="JS/consultasContacto.js"></script>
+    <script src="JS/tarjeta.js"></script>
+    <script src="JS/inicioDeSesion.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous">
+    </script>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+</body>
+
+</html>

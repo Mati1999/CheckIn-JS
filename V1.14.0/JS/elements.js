@@ -2,6 +2,7 @@
 const carritoBody = $('#carritoBody');
 const agregarCarrito = $('#agregarCarrito');
 const totalCarrito = $('#totalCarrito');
+const elContador = $('#elContador');
 
 // Variables de productos de indumentaria
 const contProdInd = $('#indumentariaProd');
@@ -23,6 +24,17 @@ const contProdTec = $('#tecnologiaProd');
 const filtroProdTec = $('#filtroProdTec');
 const filtroProdTecResponsive = $('#filtroProdTecResponsive');
 
+//Variables de productos mas vendidos
+const contProdMasVendido = $('#loMasVendidoProd');
+
+//Variables de productos de oferta
+const contProdOferta = $('#ofertaProd')
+
+//Variables de productos en index
+const contProdIndexOferta = $('#indexOfertaProd');
+const contProdIndexInd = $('#indexIndProd');
+const contProdIndexMasVendido = $('#indexMasVendidoProd');
+
 
 // Menú de navegación
 const menu = $('#menu');
@@ -38,3 +50,34 @@ const userLastName = $('#userLastName');
 const userEmail = $('#userEmail');
 const mensaje = $('#mensaje');
 const buttonSendContact = $('#buttonSendContact');
+
+// Variables del buscador
+const linkIndumentaria = $('#linkIndumentaria');
+const linkEquipaje = $('#linkEquipaje');
+const linkComodidad = $('#linkComodidad');
+const linkTecnologia = $('#linkTecnologia');
+
+// Variables de filtros
+const filtroElegido = $('#filtroElegido');
+
+
+// Variables formulario tarjeta
+let formTarjeta = $('#tarjeta');
+let cardNumber = $('#cardNumber');
+let cardCode = $('#cardCode');
+let cardExpiration = $('#cardExpiration');
+let DNI = $('#DNI');
+let btnTarjetaComprar = $('#btnTarjetaComprar');
+let btnCancelar = $('#btnCancelar');
+let mainIndex = $(".mainIndex")
+
+// Variables Inicio Sesion
+const mainAll = $('#mainAll');
+const btnModalInicioSesion = $('#btnModalInicioSesion');
+const btnNombreInicioSesion = $('#btnNombreInicioSesion');
+const usuarioInicioSesion = $('#usuarioInicioSesion');
+const formInicioSesion = $('#formInicioSesion');
+const emailInicioSesion = $('#emailInicioSesion');
+const passwordInicioSesion = $('#passwordInicioSesion');
+const btnInicioSesion = $('#btnInicioSesion');
+const btnCerrarSesion = $('#btnCerrarSesion');
