@@ -3,6 +3,10 @@ $(() => {
 
     //////////////////////  INICIO DE SESIÓN  //////////////////////
 
+    /**
+     * Descripción: En este js creo el fincionamiento del Inicio de sesión, cuando hago click en el "btnModalInicioSesion" verifico si el usuario ya está logeado o no, si lo está muestro el mensaje de cerrar sesión y si no está logeado, le pido que inicie sesión.
+     */
+
     btnModalInicioSesion.click(() => {
         if (JSON.parse(localStorage.getItem('usuario')) == null || JSON.parse(localStorage.getItem('usuario')).sesionIniciada == false) {
             formInicioSesion.toggleClass('ocultarTarjeta');
@@ -17,6 +21,10 @@ $(() => {
             })
         }
     })
+
+    /**
+     * Descripción: En esta parte cuando hago click en "btnInicioSesion" verifico que todos los inputs estén completos y luego hago el inicio de sesión si los datos están bien.
+     */
 
     btnInicioSesion.click((e) => {
         e.preventDefault();

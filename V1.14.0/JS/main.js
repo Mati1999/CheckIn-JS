@@ -21,9 +21,6 @@ $(() => {
     const productosURLIndex = "data/productos.json";
     let productos = [];
 
-    /**
-     * Descripción: Uso del metodo GET para traer los productos de un .json estático (productos.json), para poder usarlos en mi HTML.
-     */
 
     let formatData = (data) => {
         let dataFormated = {}
@@ -32,6 +29,10 @@ $(() => {
         })
         return dataFormated;
     }
+
+    /**
+     * Descripción: Uso del metodo GET para traer los productos de un .json estático (productos.json), para poder usarlos en mi HTML.
+     */
 
     $.get(productosURL,(respuesta,estado) => {
         if (estado === "success") {
@@ -53,6 +54,10 @@ $(() => {
             })
             let nombreProductoBuscador;
             let cantidadProdBuscados;
+            /**
+             * Descipción: En esta función utilizo la API de autocomplete para poder usarla en el buscador de mi sitioweb que me permite buscar los nombres de los productos y luego de seleccionarlos, hago click en el buscador y luego "Enter" para que me redirija a la página donde está ese producto.
+             */
+
             $('#autocomplete-input').keypress((e) => {
                 if (e.which === 13) {
                     nombreProductoBuscador = e.target.value;
@@ -87,13 +92,7 @@ $(() => {
             })
 
 
-            //////////////////////  AGREGAR PRODUCTOS AL HTML DE FORMA DINÁMICA A TRAVEZ DE UN JSON ESTÁTICO  //////////////////////
-
-
-            /**
-             * Descripción: Traigo del localStorage los productos, y guardo el array en una variable.
-             */
-            // let productos = JSON.parse(localStorage.getItem("Productos"));
+            //////////////////  AGREGAR PRODUCTOS AL HTML DE FORMA DINÁMICA A TRAVEZ DE UN JSON ESTÁTICO  //////////////////
 
             /**
              * Descripción: Del array de productos, hago un filtrado de los productos por categoría y los guardo en variables.
@@ -105,7 +104,7 @@ $(() => {
             let productosOferta = productos.filter(prod => prod.oferta === true);
             let productosMasVendidos = productos.filter(prod => prod.masVendido === true);
 
-            // INDUMENTARIA
+            ////////////////   INDUMENTARIA   ////////////////
 
             const crearProductos = (contenedorProd,productos) => {
 
@@ -239,7 +238,7 @@ $(() => {
             crearProductos(contProdComod,productosComod)
             crearProductos(contProdTec,productosTec)
 
-            // CREACIÓN DE PRODUCTOS DE LA SECCIÓN DE LO MAS VENDIDO Y OFERTAS
+            //////////////// CREACIÓN DE PRODUCTOS DE LA SECCIÓN DE LO MAS VENDIDO Y OFERTAS  ////////////////
 
             const crearProductosMasVendYOfert = (contenedorProd,productos) => {
 
@@ -267,7 +266,7 @@ $(() => {
                 </button>
                     `);
 
-                    // A travez del un if ternario me fijo si el producto tiene talle o no, si tiene, muestro el modal con las opciones de talles y sino no lo muestro
+                    // A travez del un if me fijo si el producto tiene talle o no, si tiene, muestro el modal con las opciones de talles y sino no lo muestro
 
                     if (productos[i].talles.length > 3) {
 
@@ -382,7 +381,12 @@ $(() => {
             crearProductosMasVendYOfert(contProdOferta,productosOferta);
 
 
-            // CARRITO DE COMPRA
+            ////////////////   CARRITO DE COMPRA   ////////////////
+
+            /**
+             * Descripción: En esta función busco atraves del producto que quiero agregar al carrito el talle de ese producto. Para luego guardarlo en una variable y usarlo luego.
+             * @param {String} talleElegido: Variable donde guardo el talle del producto que voy a agregar al carrito.
+             */
             const talleSelectedContainer = $('.talleSelectedContainer');
             let talleElegido;
             talleSelectedContainer.each((ind,element) => {
@@ -399,10 +403,8 @@ $(() => {
                 });
             })
 
-
-
             /**
-             * Descipción: A contProdInd le coloco el evento click para que cuando se haga click en el boton "Agregar producto", se agregue el producto en el carrito.
+             * Descipción: Le coloco el evento click a los comtenedores los productos para que cuando se haga click en el boton "Agregar producto", se agregue el producto en el carrito.
              * @param {object} carrito: Creo un objeto donde voy a agregar los productos en el carrito.
              */
             let carrito = {};
@@ -417,6 +419,7 @@ $(() => {
             clickAgregarCarrito(contProdTec);
             clickAgregarCarrito(contProdMasVendido);
             clickAgregarCarrito(contProdOferta);
+
             /**
              * Descripción: En esta funcion obtengo el evento "e" del click pero con un if selecciono solo cuando hago click en el elemento que tenga la clase "agregarCarrito", luego le paso a la función setCarrito(el padre del padre del boton "Agregar al carrito") ya que luego voy a poder obtener la imagen, y toda la info del producto.
              */
@@ -434,7 +437,7 @@ $(() => {
              Despues con un if verifico si el producto que voy a agregar está ya creado, si está creado aumento su cantidad en 1, sino se creo nuevo. 
              Al crear un nuevo objeto ingreso ese objeto en el carrito con un indice que es su id y luego como valor el producto.
              Luego llamo la funcipon pintarCarrito() y le paso como parámetro el carritoNuevo
-             * @param {object} carritoNuevo: Creo un objeto donde se van a ingresar los productos luego de haber comprobado si se eliminaron antes algunos o no.
+             * @param {object} carritoNuevo: Traigo desde el localStorage el carrito que está creado para poder usarlo.
              IMPORTANTE:
              Si en el caso de que no se haya ejecutado el click de eliminar un producto. Cuando yo agreguego un producto nuevo, llamo la función eliminarProducto, y esta función me va a traer el carritoNuevo siempre con los elementos eliminados.
              */
@@ -461,6 +464,10 @@ $(() => {
                     cantidad: 1
                 }
 
+
+                /**
+                 * Descipción: Si un producto  no tiene talle (mochila por ejemplo), se crea el talle como el id de ese producto
+                 */
                 if (producto.talleID == undefined) {
                     producto.talleID = producto.id
                 }
@@ -478,8 +485,6 @@ $(() => {
 
             /**
              * Descripción: En esta función recibo el carrito y luego itero sobre él para poder ingresar por html los productos dentro de él.
-             * @param {elementNode} productoCarrito: Creo un div donde se van a ingresar los datos de los productos del carrito. Y luego los ingreso en el cuerpo del carrito conncarritoBody.appendChild(productoCarrito);
-             * @param {elementNode} botonEliminar: obtengo de los productos del carrito el boton para eliminar el producto. Y luego ejecuto la función eliminarProducto() y le paso como parámetro el boton para eliminar y el carrito.
              */
             const pintarCarrito = (carrito) => {
                 carritoBody.text(``);
@@ -567,7 +572,6 @@ $(() => {
             }
 
             if (Object.keys(JSON.parse(localStorage.getItem('carrito'))).length != 0) {
-
                 pintarCarrito(JSON.parse(localStorage.getItem('carrito')));
             }
 
@@ -579,16 +583,16 @@ $(() => {
     //////////////////////  INDEX  //////////////////////
 
 
-
-
-
-    // CREACIÓN DE PRODUCTOS PARA EL INDEX
+    ////////////////////// CREACIÓN DE PRODUCTOS PARA EL INDEX //////////////////////
 
     $.get(productosURLIndex,(respuesta,estado) => {
         if (estado === "success") {
             productos = respuesta;
         }
 
+        /**
+        * Descripción: Del array de productos, hago un filtrado de los productos por categoría y l/guardo en variables.
+        */
 
         let productosInd = productos.filter(prod => prod.categoria === "indumentaria");
         let productosOferta = productos.filter(prod => prod.oferta === true);
@@ -810,6 +814,9 @@ $(() => {
                 cantidad: 1
             }
 
+            /**
+                 * Descipción: Si un producto  no tiene talle (mochila por ejemplo), se crea el talle como el id de ese producto
+                 */
             if (producto.talleID == undefined) {
                 producto.talleID = producto.id
             }
@@ -826,8 +833,6 @@ $(() => {
 
         /**
          * Descripción: En esta función recibo el carrito y luego itero sobre él para poder ingresar por html los productos dentro de él.
-         * @param {elementNode} productoCarrito: Creo un div donde se van a ingresar los datos de los productos del carrito. Y luego los ingreso en el cuerpo del carrito conncarritoBody.appendChild(productoCarrito);
-         * @param {elementNode} botonEliminar: obtengo de los productos del carrito el boton para eliminar el producto. Y luego ejecuto la función eliminarProducto() y le paso como parámetro el boton para eliminar y el carrito.
          */
         const pintarCarrito = (carrito) => {
             carritoBody.text(``);
