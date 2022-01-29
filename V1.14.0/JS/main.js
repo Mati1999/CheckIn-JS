@@ -913,7 +913,7 @@ $(() => {
                     pintarCarrito(carritoNuevo);
                 }
             })
-
+            carritoNuevo = Object.assign({},carritoNuevo);
             return carritoNuevo;
         }
         if (Object.keys(JSON.parse(localStorage.getItem('carrito'))).length != 0) {
