@@ -567,7 +567,6 @@ $(() => {
                     }
                 })
                 carritoNuevo = Object.assign({},carritoNuevo);
-                console.log(carritoNuevo);
                 return carritoNuevo;
             }
 
