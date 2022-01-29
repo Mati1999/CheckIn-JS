@@ -478,7 +478,6 @@ $(() => {
                 }
 
                 carritoNuevo[producto.id + producto.talleID + producto.imagen] = { ...producto };
-
                 localStorage.setItem('carrito',JSON.stringify(carritoNuevo));
                 pintarCarrito(carritoNuevo);
             }
@@ -545,6 +544,7 @@ $(() => {
 
                 botonEliminar.each(function (ind,element) {
                     eliminarProducto(element,carrito);
+                    console.log(carrito);
                 })
 
             }
@@ -556,7 +556,6 @@ $(() => {
              */
             const eliminarProducto = (botonEliminar,carrito) => {
                 $(botonEliminar).click(e => {
-                    console.log(carritoNuevo);
                     carritoNuevo = Object.values(carrito).filter(i => (i.talleID + i.imagen) !== ($(botonEliminar).data('id')));
                     if (Object.keys(carritoNuevo).length == 0 || carritoNuevo.length == 0) {
                         carritoNuevo = {};
@@ -567,7 +566,8 @@ $(() => {
                         pintarCarrito(carritoNuevo);
                     }
                 })
-
+                carritoNuevo = Object.assign({},carritoNuevo);
+                console.log(carritoNuevo);
                 return carritoNuevo;
             }
 
@@ -890,6 +890,7 @@ $(() => {
 
             botonEliminar.each(function (ind,element) {
                 eliminarProducto(element,carrito);
+                console.log(carrito);
             })
 
 
